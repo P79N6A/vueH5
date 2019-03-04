@@ -1,0 +1,141 @@
+@charset "UTF-8";
+/* CSS Document */
+body, button, select, textarea, input, label, option, fieldset, legend,p,div {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  line-height: 18px;
+   }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: none; }
+img{
+	border: none;
+}  
+
+html {
+	height: 100%;
+	width: 100%;
+  }
+  
+body{
+	display:-webkit-flex;
+	display:flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
+header{
+	height: 1.21rem;
+	width: 100%;
+	text-align: center;
+	border-bottom:1px solid #d2d2d2;
+}
+header div:nth-of-type(1){
+	float: left;
+	width: 27%;
+	line-height:1.21rem ;
+	font-size: 0.28rem;
+	text-align: center;				
+}
+header div:nth-of-type(2){
+	float: left;
+	width: 46%;
+	line-height:1.21rem ;
+	position: relative;
+	font-size: 0.28rem;
+	text-align: center;				
+}
+header div:nth-of-type(3){
+	float: left;
+	width: 27%;
+	line-height:1.21rem ;
+	position: relative;
+	font-size: 0.28rem;
+	text-align: center;				
+}
+header button{	
+	border: none;
+}
+header .header_btn1{
+	width: 0.33rem;
+	height: 0.20rem;
+	margin-left:0.1rem ;
+	background: url(../img/xiala@2x.png)no-repeat;
+	background-size:contain;
+}
+header .header_btn2{
+	width: 0.24rem;
+	height: 0.30rem;
+	margin-right:0.1rem ;
+	background: url(../img/Location@2x.png)no-repeat;
+	background-size:contain;
+}
+header .header_btn3{
+	width: 0.40rem;
+	height: 0.30rem;
+	margin-left:0.1rem ;
+	background: url(../img/fankui@2x.png) no-repeat;
+	background-size:contain ;
+}
+.recom{
+	width: 1.53rem;
+	height:0.38 rem;
+	margin-left: 0.24rem;
+}
+.recom img{
+	width: 100%;
+	height: 100%;
+}
+section{
+	flex: 1;
+	-webkit-flex: 1;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+}
+.top_img1{
+	width: 100%;
+	height:2.7rem;
+	margin-bottom:0.1rem ;
+}
+.top_img1 img{
+	width: 100%;
+	height: 100%;
+}
+.top_img2{
+	width: 100%;
+	height:2.6rem;
+	margin-bottom:0.1rem ;
+}
+.top_img2 img{
+	width: 100%;
+	height: 100%;
+}
+.bottom_img{
+	background: #f6f6f6;
+}
+.bottom_img1{
+	width:7.02rem ;
+	height:2.54rem ;
+	margin: 0 auto 0.1rem;
+}
+.bottom_img1 img{
+	width: 100%;
+	height: 100%;
+}
+
+footer{
+	height: 0.48rem;
+	max-width: 100%;
+	border-top: 1px solid #d2d2d2;
+	text-align: center;
+	
+}
+footer p{
+	font-size: 0.16rem;
+	line-height: 0.48rem;
+	color: #666666;
+}

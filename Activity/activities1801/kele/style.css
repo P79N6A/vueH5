@@ -1,0 +1,242 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 12px;
+    font-family: "Microsoft YaHei";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background: url(images/bg.jpg);
+    background-size: 104%;
+    background-position: center top;
+}
+
+.cou_bottom {
+    width: 7.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.alert_show {
+    width: 5.25rem;
+    height: 52.32%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 19.5%;
+    background: url(images/basemap_img.png);
+    background-size: 100% 100%;
+}
+
+
+/* 大转盘样式 */
+
+.banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.banner .turnplate {
+    display: block;
+    width: 88%;
+    height: 88%;
+    position: relative;
+    top: 30%;
+    left: 6%
+}
+
+.banner .turnplate canvas.item {
+    width: 83%;
+    height: 85%;
+    position: absolute;
+    left: 8.8%;
+    top: 7%;
+}
+
+.banner .turnplate img.pointer {
+    position: absolute;
+    width: 33.68%;
+    height: 40%;
+    left: 0;
+    right: 0;
+    top: 26.5%;
+    margin: 0 auto;
+}
+
+.btn {
+    width: 60%;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 100px;
+}
+
+.btn button {
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 24px;
+    line-height: 50px;
+    background: darkorange;
+    color: white;
+}
+
+.clickbtn {
+    position: absolute;
+    width: 35%;
+    bottom: 3.6%;
+    right: 6.5%;
+}
+
+.start_circle {
+    width: 6.85rem;
+    height: 6.65rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 26.3%;
+    z-index: 3;
+}
+
+.time_limit {
+    width: 7.5rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    top: 33.1%;
+}
+
+.show_box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+
+.show_100 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+    background: black;
+}
+
+.alert_gift_box {
+    width: 6.16rem;
+    height: 52%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    margin-top: -10%;
+}
+
+.get_coupon {
+    width: 2.34rem;
+    height: 0.64rem;
+    position: absolute;
+    bottom: 16.44%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    background-image: url(images/button.png);
+    background-size: 100% 100%;
+}
+
+button {
+    outline: none;
+}
+

@@ -1,0 +1,73 @@
+{
+  "newImage": {
+    "bg_image": "https://download.aikaka.com.cn/ad2eba1e6755b30616106365e3bda183",
+    "prize_img_box": [
+      {
+        "item_id": 0,
+        "rules": false,
+        "prize_img": "https://download.aikaka.com.cn/6d813a3adde2b83178550671ded75876?f=png"
+      },
+      {
+        "item_id": 1,
+        "rules": false,
+        "prize_img": "https://download.aikaka.com.cn/3a106d8964d40992b1e779ab9f7af6b7?f=png"
+      },
+      {
+        "item_id": 2,
+        "rules": true,
+        "prize_img": "https://download.aikaka.com.cn/7ff855d96dc851f50ebeb4f0a4620289?f=png"
+      },
+      {
+        "item_id": 3,
+        "rules": true,
+        "prize_img": "https://download.aikaka.com.cn/db6eb5327bb8d79d2292f7af607a7502?f=png"
+      }
+    ]
+  },
+  "images":[
+    "https://download.aikaka.com.cn/2aab77e44f0765d352ca8283ab7f78bd?f=png",
+    "https://download.aikaka.com.cn/e3979cfd2c070a7c327a7301e2a39f13?f=png",
+    "https://download.aikaka.com.cn/5452d7ee82d069dc3f4556cbfdd5c0a2?f=png",
+    "https://download.aikaka.com.cn/a021696153a230d6f8104dd1498a551e?f=png",
+    "https://download.aikaka.com.cn/3a106d8964d40992b1e779ab9f7af6b7?f=png",
+    "https://download.aikaka.com.cn/7ff855d96dc851f50ebeb4f0a4620289?f=png",
+    "https://download.aikaka.com.cn/db6eb5327bb8d79d2292f7af607a7502?f=png",
+    "https://download.aikaka.com.cn/6d813a3adde2b83178550671ded75876?f=png",
+    "https://download.aikaka.com.cn/ad2eba1e6755b30616106365e3bda183",
+    "https://download.aikaka.com.cn/4fad47b4417d48f16dd6f0f745fa6e59",
+    "https://download.aikaka.com.cn/c274e8cd59e1e234bdcf92d5abb60f90"
+  ],
+  "pages":[
+    {
+      "bg_image": "https://download.aikaka.com.cn/ad2eba1e6755b30616106365e3bda183",
+      "button": "https://download.aikaka.com.cn/2aab77e44f0765d352ca8283ab7f78bd?f=png",
+      "rules": [{
+        "content":"https://download.aikaka.com.cn/e3979cfd2c070a7c327a7301e2a39f13?f=png",
+        "button": "https://download.aikaka.com.cn/a021696153a230d6f8104dd1498a551e?f=png"
+      },{
+        "content": "https://download.aikaka.com.cn/5452d7ee82d069dc3f4556cbfdd5c0a2?f=png",
+        "button": "https://download.aikaka.com.cn/a021696153a230d6f8104dd1498a551e?f=png"
+      }]
+      
+    },{
+      "bg_image": "https://download.aikaka.com.cn/4fad47b4417d48f16dd6f0f745fa6e59",
+      "rules": "https://download.aikaka.com.cn/01c3db760cb9c30946405bd8aca63e2b?f=png"
+    },{
+      "bg_image": "https://download.aikaka.com.cn/c274e8cd59e1e234bdcf92d5abb60f90"
+    }
+  ],
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次抽奖机会"
+  },
+  "music": {
+    "src":"static/test.mp3",
+    "image":"static/images/music.png",
+    "bg_img":"static/images/music_bg.gif"
+  },
+  "host":"http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

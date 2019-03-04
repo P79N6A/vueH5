@@ -1,0 +1,40 @@
+.view {
+  width: 20rem;
+  height: 10rem;
+  position: relative;
+  top: 10rem;
+  -webkit-perspective: 500px;
+  perspective: 500px;
+}
+
+.view .slice {
+  width: 20rem;
+  height: 100%;
+  z-index: 10;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transition: -webkit-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+}
+
+.view .s1 {
+  background-position: 0 0;
+}
+
+.view .s2 {
+  background-position: -3.75rem 0;
+}
+
+.view .s3 {
+  background-position: -7.5rem 0;
+}
+
+.view .s4 {
+  background-position: -11.25rem 0;
+}
+
+.view .s5 {
+  background-position: -15rem 0;
+}

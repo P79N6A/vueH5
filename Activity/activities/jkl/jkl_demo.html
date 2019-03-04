@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>春节优惠大放送</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/slick.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F5fc136fe3a156c411e21f2b7a57f326"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- 轮播 -->
+		<section>
+			<div class="banner">
+				<div id="city"><span>&nbsp;&nbsp;&nbsp;</span><i class="bp1"></i></div>
+				<div id="detail"><i class="bp2"></i><span>位置获取中...</span></div>
+				<a href="feedback.html">
+					<div class="feedback"><span>搜索</span><i class="bp3"></i> </div>
+				</a>
+			</div>
+			<section>
+				<img src="images/header.png">
+			</section>
+		</section>
+
+		<section class="height-25">
+			<div class="roll">
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pHoODuNwFMiETTXH1bmuZn8cqr_E" src="images/r1.png">
+					</div>
+				</div> 
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pHoODuGFe3uSWmZ329GjVEo1-Xcs" src="images/r2.png">
+					</div>
+				</div>
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pHoODuCCPYxqjDIrD_3qPbPWKARI" src="images/r3.png">
+					</div>
+				</div>
+			</div>
+			
+		</section>
+
+
+		<div class="bottom-div">
+			<div class="tags-wrap">
+				<div class="tags">
+					<i></i><span>特价商品</span>
+				</div>
+				<!-- <div class="triangle"></div> -->
+			</div>
+				<img class="recommond-img addCard" data-cardid="pHoODuOg5RYLOSJukxLtv5U4ZhG4" src="images/img_1.jpg">
+				<img class="recommond-img addCard" data-cardid="pHoODuLv0EBovE7bgJSZRy_UNgpk" src="images/img_2.jpg">
+				<img class="recommond-img addCard" data-cardid="pHoODuEYUko3CL8Y5FHJiCXQgkwU" src="images/img_3.jpg">
+				<img class="recommond-img addCard" data-cardid="pHoODuMzyb77nOzBV7JlcFfU0n8U" src="images/img_4.jpg">
+				<img class="recommond-img addCard" data-cardid="pHoODuBGPs4OWl0Lg72JautS2bdQ" src="images/img_5.jpg">
+				<img class="recommond-img addCard" data-cardid="pHoODuNwFMiETTXH1bmuZn8cqr_E" src="images/r1.png">
+				<img class="recommond-img addCard" data-cardid="pHoODuGFe3uSWmZ329GjVEo1-Xcs" src="images/r2.png">
+				<img class="recommond-img addCard" data-cardid="pHoODuBZmnbSkOpuk97025kuTI0c" src="images/r4.png">
+				<img class="recommond-img addCard" data-cardid="pHoODuCCPYxqjDIrD_3qPbPWKARI" src="images/r3.png">
+		</div>
+		
+		<footer>
+			<div class="row footer">
+				<!-- <span class="logo"></span> -->
+				<a href="http://viewer.maka.im/k/HP2CIVRN?DSCKID=a0e7626e-bac7-43cc-a888-d736a4ce9d92&DSTIMESTAMP=1445492954360">北京爱咔咔信息技术有限公司</a>
+			</div>
+		</footer>
+	</div>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/card.js"></script>
+<script src="js/openid_judge.js"></script>
+<script src="js/add_card_csf.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+//滚动插件
+$('.roll').slick({
+	autoplay: true,
+	mobileFirst: true,
+	arrows: false,
+	dots: true,
+	autoplaySpeed: 2000
+});
+//显示位置信息
+$('.banner #detail span').html(showLocation('city','detail'));
+</script>
+</html>

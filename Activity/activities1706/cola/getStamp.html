@@ -1,0 +1,448 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后畅爽就喝可口可乐</title>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/weui.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/getDate.js"></script>
+</head>
+
+<body>
+    <div class="stamp_wrap">
+        <img src="img/stamp_logo.png" class="stamp_logo">
+        <img src="img/stamp_tittle.png" class="stamp_title">
+        <div class="stamp_desc1">购买300ml或者500ml可口可乐同时请店员扫描二维码</div>
+        <div class="stamp_desc2">购买1次即可获得1枚可口可乐印章
+            <br> 首次分享可再获得1枚可口可乐印章
+            <br> 点亮5枚印章即可获赠可口可乐限量礼杯1个
+        </div>
+        <img src="img/stamp.png" class="small_stamp stamp_1">
+        <img src="img/stamp.png" class="small_stamp stamp_2">
+        <img src="img/stamp.png" class="small_stamp stamp_3">
+        <img src="img/stamp.png" class="small_stamp stamp_4">
+        <img src="img/stamp.png" class="small_stamp stamp_5">
+        <!-- 卡券二维码 -->
+        <img src="img/move.gif" class="stamp_coupon small_stamp_move">
+        <!-- 弹出框 -->
+        <div class="show_stamp">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <b class="this_point">您已经成功点亮<br><span class="now_stamp">3</span>枚可口可乐印章</b>
+                <b class="count_point unshare">召唤小伙伴可再获<br>1枚可口可乐印章哦！</b>
+                <b class="count_point shared">再点亮<span class="next_stamp"></span>枚可乐印章<br>即可兑换好礼哦！</b>
+                <button class="buttom_left buttonClick" type="button">好哒</button>
+                <button class="buttom_right buttonClick" type="button">召唤小伙伴</button>
+            </div>
+        </div>
+        <!-- 领取礼品 -->
+        <div class="show_cup">
+            <div class="show_100"></div>
+            <div class="alert_gift_box_cup">
+                <b class="this_point">您已经成功点亮<br>5枚可口可乐印章</b>
+                <b class="count_point">马上去兑换<br>可口可乐限量礼杯吧！</b>
+                <button class="buttom_cup" type="button">马上兑换</button>
+            </div>
+        </div>
+        <!-- 分享 -->
+        <div class="share_box">
+            <img src="img/show_share.png">
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var openid;
+openid = urlGet()['openid'];
+var activity_id;
+activity_id = urlGet()['activity_id'];
+var this_stamp = 0;
+var judge_share = "unshare";
+var instimer;
+var share_click = false;
+var get_piece = {}
+get_piece.openid = openid;
+get_piece.activity_id = activity_id;
+get_piece.activity_item_id = activity_item_id;
+var get_piece_data = get_piece;
+var coupon_code;
+var fromstore;
+if (sessionStorage.getItem('fromstore')) {
+    fromstore = sessionStorage.getItem('fromstore')
+} else {
+    fromstore = "C"
+}
+
+// 上来就检查碎片
+piecesCount()
+    // 上来就判断是否分享过
+judgeShare()
+
+// 获取本地地址
+var this_url = window.location.href;
+// 保存本地址
+sessionStorage.setItem('stamp' + openid, this_url);
+// 好哒取消
+$(".buttom_left").click(function(event) {
+    $(".show_stamp").hide();
+});
+// 召唤小伙伴分享
+$(".buttom_right").click(function(event) {
+    share_click = true
+    $(".show_stamp").hide();
+    $(".share_box").show();
+});
+$(".buttom_cup").click(function(event) {
+    // 跳转加上参数
+    window.location.href = "getGift.html?openid=" + openid + "&activity_id=" + activity_id;
+});
+// 调用弹出框
+function light_stamp(nowStamp, judge_share) {
+    $(".now_stamp").html(nowStamp);
+    var num = $(".now_stamp").html();
+    var next_stamp = 5 - parseInt(num)
+    $(".next_stamp").html(next_stamp)
+    for (var i = 0; i < num; i++) {
+        $(".small_stamp").eq(i).css("display", "block");
+    }
+    if (nowStamp == 5) {
+        $(".show_cup").show();
+    } else {
+        if (judge_share == "shared") {
+            $(".shared").show();
+            $(".unshare").hide();
+        } else {
+            $(".shared").hide();
+            $(".unshare").show();
+        }
+        $(".show_stamp").show();
+        // 继续领券
+    }
+}
+// 调用抽奖
+function piecesCount() {
+    //检查碎片数量
+    $.ajax({
+        type: "GET",
+        url: acmp_host + "couponRecord/piecesCount",
+        data: {
+            'openid': openid,
+            'coupon_id': coupon_id,
+            '_t': Math.random()
+        },
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            if (data.return_code != 200) {
+
+            } else {
+                if (data.data.collected >= data.data.required && data.data.required != 0) {
+                    window.location.href = "getGift.html?openid=" + openid + "&activity_id=" + activity_id
+                } else if (data.data.collected < data.data.required) {
+                    this_stamp = data.data.collected;
+                    for (var i = 0; i < data.data.collected; i++) {
+                        $(".small_stamp").eq(i).css("display", "block");
+                    }
+                }
+            }
+        }
+    });
+    // 并领取一张卡券
+    getStemp()
+}
+// 检查分享
+function shareCheck() {
+    //检查碎片数量
+    $("#loadingToast").show();
+    $.ajax({
+        type: "GET",
+        url: acmp_host + "couponRecord/piecesCount",
+        data: {
+            'openid': openid,
+            'coupon_id': coupon_id,
+            '_t': Math.random()
+        },
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+
+            } else {
+                this_stamp = data.data.collected;
+                for (var i = 0; i < data.data.collected; i++) {
+                    $(".small_stamp").eq(i).css("display", "block");
+                }
+                light_stamp(this_stamp, "shared")
+            }
+        }
+    });
+}
+// 时时检查
+function countCheck() {
+    $("#loadingToast").show();
+    $.ajax({
+        type: "GET",
+        url: acmp_host + "couponRecord/piecesCount",
+        data: {
+            'openid': openid,
+            'coupon_id': coupon_id,
+            '_t': Math.random()
+        },
+        dataType: "json",
+        async: false,
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+
+            } else {
+                this_stamp = data.data.collected;
+                for (var i = 0; i < data.data.collected; i++) {
+                    $(".small_stamp").eq(i).css("display", "block");
+                }
+                light_stamp(this_stamp, judge_share)
+
+            }
+        }
+    });
+}
+//领取碎片的方法
+function getStemp() {
+    var originData;
+    if (sessionStorage.originData) {
+        originData = JSON.parse(sessionStorage.originData);
+        $.ajax({
+            type: "POST",
+            url: acmp_host + "shakeFor/join",
+            async: false,
+            dataType: "json",
+            data: originData,
+            success: function(data) {}
+        });
+    }
+    var this_date = getDate();
+    var get_times = {
+            activity_id: activity_id,
+            openid: openid,
+            begin_time: this_date.begin_time,
+            end_time: this_date.end_time,
+        }
+        // 检查每天领券的次数
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "shakeFor/joinTimes",
+        data: get_times,
+        dataType: "json",
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+
+            } else {
+                if (data.data.times >= 2) {
+                    $(".stamp_coupon").attr("src", "img/limit_text.png");
+                    $(".stamp_coupon").removeClass("small_stamp_move");
+                } else {
+                    if (sessionStorage.getItem('question' + openid)) {
+                        get_piece_data.buyer_get_info = sessionStorage.getItem('question' + openid);
+                    } else {
+                        get_piece_data.buyer_get_info = "集章换礼" + (parseInt(this_stamp) + 1);
+                    }
+                    if (sessionStorage.getItem('third_party_openid')) {
+                        get_piece_data.third_party_openid = sessionStorage.getItem('third_party_openid');
+                        get_piece_data.third_party_name = "kakahui";
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: acmp_host + "shakeFor/gift",
+                        data: get_piece_data,
+                        dataType: "json",
+                        success: function(data) {
+                            $("#loadingToast").hide();
+                            if (data.return_code != 200) {
+
+                            } else {
+                                sessionStorage.removeItem("question" + openid);
+                                coupon_code = data.data.coupon_code;
+                                var img_url = "http://ab.aikaka.com.cn/PublicService/Util/qrcode.php?code=" + encodeURIComponent(cousume_url) + coupon_code;
+                                $(".stamp_coupon").attr("src", img_url)
+                                $(".stamp_coupon").removeClass("small_stamp_move")
+                                    // 判断是否分享过
+                                judgeShare()
+                                    //获取卡券核销状态
+                                instimer = setInterval(function() {
+                                    $.ajax({
+                                        type: "GET",
+                                        url: acmp_host + "couponRecord/info?coupon_code=" + data.data.coupon_code + '&r=' + Math.random(),
+                                        dataType: "json",
+                                        success: function(data) {
+                                            if (data.return_code == 200) {
+                                                var this_record_status = data.data.record_status
+                                                if (this_record_status == "CONSUMED") {
+                                                    countCheck()
+                                                    window.clearInterval(instimer);
+                                                    getStemp()
+                                                }
+                                            } else {
+                                                my_alert("confirm_error", "提示", data.return_msg, "", ["知道啦"], ["green"], function() {
+                                                    WeixinJSBridge.call('closeWindow');
+                                                });
+                                            }
+                                        }
+                                    });
+
+                                }, 1000);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    });
+}
+// 判断是否分享过
+function judgeShare() {
+
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "share/sharedThisTerm",
+        data: {
+            openid: openid
+        },
+        dataType: "json",
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+
+            } else {
+                if (data.data) {
+                    judge_share = "shared"
+                } else {
+                    judge_share = "unshare"
+                }
+            }
+        }
+    });
+}
+// 分享事件
+var share_code;
+wx.ready(function() {
+    wx.showOptionMenu()
+    share_code = urlGet()['openid'] + Date.parse(new Date());
+    var con;
+    if (share_url.indexOf('?') >= 0) {
+        con = '&';
+    } else {
+        con = '?';
+    }
+    var activity_url = share_url + con + "share_code=" + share_code + "&from_openid=" + urlGet()['openid'] + "&activity_id=" + urlGet()['activity_id'] + "&fromstore=" + fromstore;
+
+    var wx_share_url = oauth_api + encodeURIComponent(activity_url);
+    var shareData = {
+        title: share_info.title,
+        desc: share_info.desc,
+        link: wx_share_url,
+        imgUrl: share_info.imgUrl
+    };
+    var shareMessageData = {
+        title: shareData.title,
+        desc: shareData.desc,
+        link: shareData.link,
+        imgUrl: shareData.imgUrl,
+        success: function() {
+            $(".share_box").hide();
+            $(".show_stamp").hide();
+            if (share_click && judge_share == "unshare") {
+                getTime(urlGet()["openid"], "message", "1", activity_id, share_code, coupon_code, info_url_get, get_piece);
+            } else {
+                getTime(urlGet()["openid"], "message", "1", activity_id, share_code, coupon_code, info_url_get);
+            }
+        },
+        cancel: function() {
+            $(".share_box").hide();
+            $(".show_stamp").hide();
+            getTime(urlGet()["openid"], "message", "0", activity_id, share_code, coupon_code, info_url_get);
+        }
+    };
+    var shareTimelineData = {
+        title: shareData.title,
+        desc: shareData.desc,
+        link: shareData.link,
+        imgUrl: shareData.imgUrl,
+        success: function() {
+            $(".share_box").hide();
+            $(".show_stamp").hide();
+            if (share_click && judge_share == "unshare") {
+                getTime(urlGet()["openid"], "time_line", "1", activity_id, share_code, coupon_code, info_url_get, get_piece);
+            } else {
+                getTime(urlGet()["openid"], "time_line", "1", activity_id, share_code, coupon_code, info_url_get);
+            }
+
+        },
+        cancel: function() {
+            $(".share_box").hide();
+            $(".show_stamp").hide();
+            getTime(urlGet()["openid"], "time_line", "0", activity_id, share_code, coupon_code, info_url_get);
+        }
+    };
+    wx.onMenuShareAppMessage(shareMessageData);
+    wx.onMenuShareTimeline(shareTimelineData);
+});
+//获取用户信息
+function getTime(openid, way, result, activity_id, share_code, coupon_code, url_get, get_piece) {
+    var data = {}
+    data.openid = openid;
+    data.way = way;
+    data.result = result;
+    data.activity_id = activity_id;
+    data.share_code = share_code;
+    data.from_coupon_code = coupon_code;
+    if (get_piece) {
+        data.get_piece = get_piece;
+        data.get_piece.from_share_code = share_code;
+        data.get_piece.from_openid = openid;
+        data.get_piece.buyer_get_info = "集章换礼" + (parseInt(this_stamp) + 1);
+    }
+    $.ajax({
+        type: "POST",
+        url: url_get,
+        data: data,
+        dataType: "json",
+        success: function(data) {
+            if (get_piece) {
+                shareCheck()
+            }
+        }
+    })
+};
+</script>
+
+</html>

@@ -1,0 +1,161 @@
+{
+    "title":"酷爽不变 轻盈有加",
+    "turnplate":{
+        "restaraunts": [
+            "1.08元红包",
+            "精美手机壁纸",
+            "1.08元红包",
+            "精美手机壁纸",
+            "1.08元红包",
+            "精美手机壁纸"
+        ],
+        "colors": [
+            "#93d50a",
+            "#f8d000",
+            "#93d50a",
+            "#f8d000",
+            "#93d50a",
+            "#f8d000"
+        ],
+        "fontSize":[
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei"
+        ],
+        "fontColor": [
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff"],
+        "canvasLength": 440,
+        "outsideRadius": 200,
+        "textRadius": 154,
+        "insideRadius": 70,
+        "startAngle": 0,
+        "bRotate": false,
+        "pointer": "images/page2/point.png",
+        "turnplate": "images/page2/turntable.png"
+    },
+    "trunplateCss":{
+        "position":"absolute",
+        "top":"0px",
+        "left":"0px"
+    },
+    "sessionKey":"fiber_coupon_code",
+    "pages": {
+        "page1":{
+            "background": {
+                "type": "color",
+                "color": "#009640"
+            },
+            "images":[{
+                "src":"images/page1/logo.png",
+                "css":{
+                    "width":"18vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"2vw",
+                    "left":"2vw"
+                }
+            },{
+                "src":"images/page1/girl.png",
+                "css":{
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"3vw",
+                    "left":"6vw",
+                    "width":"40vw;",
+                    "left":"30vw"
+                }
+            },{
+                "src":"images/page1/plus.png",
+                "css":{
+                    "width":"42vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"66vw",
+                    "left":"29vw"
+                }
+            },{
+                "src":"images/page1/title.png",
+                "css":{
+                    "width":"70vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"82vw",
+                    "right":"15vw"
+                }
+            },{
+                "src":"images/page1/btn.png",
+                "css":{
+                    "width":"60vw",
+                    "position":"absolute",
+                    "top":"130vw",
+                    "left":"20vw"
+                },
+                "class":[
+                    "uploader"
+                ]
+            }]
+        },
+        "page2":{
+            "background": {
+                "type": "color",
+                "color": "#009640"
+            },
+            "images":[{
+                "src":"images/page1/logo.png",
+                "css":{
+                    "width":"18vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"2vw",
+                    "left":"2vw"
+                }
+            },{
+                "src":"images/page1/girl.png",
+                "css":{
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"3vw",
+                    "left":"6vw",
+                    "width":"30vw;",
+                    "left":"35vw"
+                }
+            },{
+                "src":"images/page2/cola.png",
+                "css":{
+                    "width":"13vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "bottom":"5vw",
+                    "left":"5vw"
+                }
+            }
+            ,{
+                "src":"images/page2/sprite.png",
+                "css":{
+                    "width":"13vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "bottom":"5vw",
+                    "right":"3vw"
+                }
+            },{
+                "src":"images/page2/cocacola.png",
+                "css":{
+                    "width":"100vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "bottom":"0vw",
+                    "z-index":"5"
+                }
+            }]
+        }
+    }
+}

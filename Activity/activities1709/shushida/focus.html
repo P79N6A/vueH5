@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/geturl.js"></script>
+    <style type="text/css">
+       .wrap1{
+        box-sizing: border-box;
+        position: relative;
+        width: 7.5rem;
+        height: 100%;
+        overflow: hidden;
+        margin:0 auto; 
+        background: url(img/qr_bg.jpg);
+        background-size: 100% 100%;
+      }
+       .iph{
+       	width: 4rem;
+        height: 4rem;
+        position: absolute;
+        left: 0;
+        top: 35.7%;
+        right: 0;
+        margin:0 auto;  
+       }
+       .te{
+        text-align: center;
+        width: 100%;
+        height:0.4rem;
+        line-height: 0.4rem;
+        font-size: 0.26rem;
+        color: #ec84ac; 
+       }
+    </style>
+</head>
+
+<body>
+    <div class="wrap1" style="padding: 0.3rem;">
+    	<div class="iph">
+        <img class="qr" style="width:90%;height:90%;border: 3px solid #ec84ac;margin-left:5%;">
+        <p class="te">长按二维码进行关注</p>
+      </div>
+    </div>
+</body>
+<script type="text/javascript">
+	if (sessionStorage.qr_code_url) {
+	  $(".qr").attr('src',sessionStorage.qr_code_url);
+	}
+</script>
+
+</html>

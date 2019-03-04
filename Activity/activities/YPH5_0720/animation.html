@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>雅培全安素，健康小问答</title>
+<script type="text/javascript">
+    //缩放比例
+    if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+        var version = parseFloat(RegExp.$1);
+        if (version > 2.3) {
+            var phoneScale = parseInt(window.screen.width) / 640;
+            document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+        } else {
+            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+        }
+    } else {
+        document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+    }
+</script>
+<link rel="stylesheet" href="css/animate.min.css" />
+<link rel="stylesheet" href="css/animate.css" />
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+
+
+</head>
+<body class="bg">
+<img class="logo" src="images/logo.png">
+
+<div class="prodBox">
+<img class="img1 bounceIn  animated" src="images/prod_1.png" alt="牛奶 285g 或 牛肉 43g ">
+<img class="img2 bounceIn  animated" src="images/prod_2.png" alt="葵花籽油 2g">
+<img class="img3 bounceIn  animated" src="images/prod_3.png" alt="芹菜叶 105g">
+<img class="img4 bounceIn  animated" src="images/prod_4.png" alt="三文鱼 111g">
+<img class="img5 bounceIn  animated" src="images/prod_5.png" alt="樱桃 363g">
+<img class="img6 bounceIn  animated" src="images/prod_6.png" alt="酸奶 185g">
+<img class="img7 bounceIn  animated" src="images/prod_7.png" alt="面包 53g">
+<img class="img8 bounceIn  animated" src="images/prod_8.png" alt="干香菇 203g">
+<img class="img9 bounceIn  animated" src="images/prod_9.png" alt="鲜鸡蛋黄 45g">
+</div>
+<div class="htit">
+<img src="images/htit.png">
+</div>
+
+<div class="jarBox">
+<div class="jar">
+<img src="images/jar.png">
+<div class="jarbg"><img src="images/jarbg.png"></div>
+</div>
+<div class="jarBoxMain">
+<img class="jar1" src="images/jar1.png">
+<img class="jar2" src="images/jar2.png">
+<img class="jar3" src="images/jar3.png">
+<img class="jar4" src="images/jar4.png">
+<img class="jar5" src="images/jar5.png">
+<img class="jar6" src="images/jar6.png">
+<img class="jar7" src="images/jar7.png">
+<img class="jar8" src="images/jar8.png">
+<img class="jar9" src="images/jar9.png">
+</div>
+<div class="val">
+<span class="span1">蛋白质(g)8.610</span>
+<span class="span2">a-亚麻酸(mg)166.89</span>
+<span class="span3">亚油酸(g)1.310</span>
+<span class="span4">膳食纤维(g)30.90</span>
+<span class="span5">碳水化合物(g)30.910</span>
+<span class="span6">维生素C(mg)29.110</span>
+<span class="span7">维生素D(ug)2.49</span>
+<span class="span8">钙(mg)217.910</span>
+<span class="span9">硒(ug)12.４10</span>
+</div> 
+</div>
+
+
+<img class="bottom" src="images/bottom.png">
+
+<script>
+window.onload = function() {
+  $(".img8").delay(1800).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 500,
+                        complete: function() {
+							$(".jarbg").animate({height:'0'},2300);
+							$(".span9").addClass("fadeInLeft animated")
+                        }
+ });
+  $(".img9").delay(1900).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 600,
+                        complete: function() {
+							$(".span8").addClass("fadeInLeft animated")
+                        }
+ });
+  $(".img7").delay(2000).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 700,
+                        complete: function() {
+							$(".span7").addClass("fadeInLeft animated")
+                        }
+ });
+  $(".img6").delay(2100).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 800,
+                        complete: function() {
+							$(".span6").addClass("fadeInLeft animated")
+                        }
+ });
+  $(".img5").delay(2200).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 900,
+                        complete: function() {
+							$(".span5").addClass("fadeInLeft animated")
+                        }
+ });
+ 
+  $(".img4").delay(2300).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 1000,
+                        complete: function() {
+							$(".span4").addClass("fadeInLeft animated")
+                        }
+ }); 
+
+  $(".img3").delay(2400).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 1100,
+                        complete: function() {
+							$(".span3").addClass("fadeInLeft animated")
+                        }
+ });
+
+  $(".img2").delay(2500).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 1200,
+                        complete: function() {
+							$(".span2").addClass("fadeInLeft animated")
+                        }
+ });
+
+  $(".img1").delay(2600).animate({top:'102%'}, {
+                        easing: "easeInExpo",
+                        duration: 1300,
+                        complete: function() {
+							$(".span1").addClass("fadeInLeft animated");
+							setTimeout('$(".htit img").addClass("flipInX animated")', 1000);
+							setTimeout("window.location='enter.html'", 3000 );
+                        }
+ });
+}
+ 
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/geturl.js"></script>
+    <style type="text/css">
+
+       .wel{
+       	width: 6rem;
+       	font-size:20px;
+       	margin: 0.2rem 0 0.4rem 0.4rem; 
+       }
+       .iphone{
+       	text-align: center;
+       	width: 100%;
+       	color: red;
+       	font-size: 0.8rem;
+       	margin-bottom:  0.4rem ;
+       }
+       .qr{
+       	width: 6rem;
+       	height: 6rem;
+       	border: 0 !important;
+        margin:0 0.4rem; 
+       }
+       .changan{
+          	width: 6rem;
+       		text-align: center;
+	       	color: red;
+	       	font-size: 0.55rem;
+	       	margin:0.4rem 0.3rem;
+	       	line-height: 0.7rem;
+       }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" style="padding: 0.3rem;">
+    	<div class="wel">欢迎关注聚什惠!</div>
+    	<br>
+    	<div class="iphone">赢取IPHONE7</div>
+        <br>
+        <img class="qr">
+        <div class="changan">
+            长按二维码并关注聚什惠微信公众平台
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+	if (sessionStorage.qr_code_url) {
+	  $(".qr").attr('src',sessionStorage.qr_code_url);
+	}
+
+</script>
+
+</html>

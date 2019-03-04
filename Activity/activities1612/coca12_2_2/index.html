@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后尽享畅爽</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+</head>
+
+<body>
+    <div class="wrap" style="background-image:url(img/bg_img.jpg); background-size: 100% 100%;">
+        <div class="logo_img">
+            <img src="img/logo.png" />
+        </div>
+        <div class="store_bg">
+            <img src="img/store_bg.png" />
+        </div>
+        <div class="cup">
+            <img src="img/cup.png">
+        </div>
+        <div class="btn_new">
+            <img src="img/btn.png" class="gift">
+        </div>
+        <div class="text_value">
+            <img src="img/text_value.png">
+        </div>
+        <div class="show_box" style="width:100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 999;display:none;">
+            <div style="width:100%;height: 100%;position: fixed;left: 0;top: 0;background:black;opacity: 0.5"></div>
+            <div class="good_gift">
+                <img src="img/good_gift.png">
+            </div>
+            <div class="good_close">
+                <img src="img/good_close.png">
+            </div>
+            <div class="btn_look">
+                <img src="img/look_num.png" class="gift1">
+            </div>
+            <div class="good_text">
+                <img src="img/good_text.png">
+            </div>
+            <div class="qr_box">
+                <img class="show_qr" src="img/qr.png">
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">卡券领取中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/orient.js"></script>
+<script>
+var getCoupon = {};
+getCoupon.activity_id = urlGet()['activity_id'];
+getCoupon.activity_item_id = urlGet()['activity_item_id'];
+getCoupon.openid = urlGet()['openid'];
+localStorage.setItem('unionid', urlGet()['unionid']);
+localStorage.setItem('openid', getCoupon.openid);
+localStorage.setItem('activity_id', getCoupon.activity_id);
+localStorage.setItem('activity_item_id', getCoupon.activity_item_id);
+
+$('.gift').click(function() {
+    $("#loadingToast").show();
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "AcmpApi/shakeFor/drawCoupon",
+        data: getCoupon,
+        dataType: "json",
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+                var dat = {
+                    type: "confirm",
+                    text: '很遗憾',
+                    inte: data.return_msg,
+                    desc: "",
+                };
+                var alertBox = alertFn(dat);
+                $('#alert_box').remove();
+                $('body').append(alertBox);
+
+                alertBox.fadeIn(); //在固定的位置直接使用
+                alertBox.find('#alert_confirm').on('click', function() {
+                    alertBox.hide();
+                });
+            } else {
+                 $(".show_box").css("display", "block");
+                localStorage.setItem('coupon_code', data.data.coupon_code);
+                localStorage.setItem('coupon_id', data.data.coupon.id);
+                // window.location.href = 'show_qr.html';
+                var coupon_code = localStorage.coupon_code;
+                var qr_value = acmp_host + 'shakeFor/index.html#/blank?coupon_code=' + coupon_code;
+
+                var qr_code_path = qrcode_api + encodeURIComponent(qr_value);
+
+                $('.show_qr').attr('src', qr_code_path);
+                //获取卡券核销状态
+                setInterval(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: coupon_bag_host + "consume/status",
+                        data: {
+                            coupon_code: coupon_code
+                        },
+                        success: function(data) {
+                            if (data.return_code == 200) {
+                                notify_received = true;
+                                if (data.message == '成功') {
+                                    var title = '核销通过';
+                                    var detail = '获得印章一枚';
+                                    var desc = '';
+                                    var data = {
+                                        type: "confirm",
+                                        //type: "select",
+                                        text: '核销通过',
+                                        inte: detail,
+                                        desc: desc,
+                                    };
+                                    var alertBox = alertFn(data);
+                                    $('#alert_box').remove();
+                                    $('body').append(alertBox);
+
+                                    alertBox.fadeIn(); //在固定的位置直接使用
+                                    alertBox.find('#alert_confirm').on('click', function() {
+                                        $('.share_box').css("display", "block");
+                                        alertBox.hide();
+                                        window.location.href = "progress.html";
+                                    });
+                                } else if (data.message == '卡券不在有效期') {
+                                    //需要时间戳转日期
+                                    var beginTime=timechange(data.coupon.begin_timestamp);
+                                    var endtime=timechange(data.coupon.end_timestamp);
+                                    var title = '很抱歉';
+                                    var detail = '该券尚无法使用，';
+                                    var desc = '请在' + beginTime + '至' + endtime + '再来使用吧！';
+                                    var data = {
+                                        type: "confirm",
+                                        // type: "select",
+                                        text: '很遗憾',
+                                        inte: detail,
+                                        desc: desc,
+                                    };
+                                    var alertBox = alertFn(data);
+                                    $('#alert_box').remove();
+                                    $('body').append(alertBox);
+
+                                    alertBox.fadeIn(); //在固定的位置直接使用
+                                    alertBox.find('#alert_confirm').on('click', function() {
+                                        alertBox.hide();
+                                    });
+                                }
+                            }
+                        }
+                    });
+
+                }, 1000);
+            }
+        }
+    });
+
+});
+//时间戳转化成日期
+function timechange(nS){
+    var d = new Date(parseInt(nS) * 1000);
+    var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+    return str
+}
+$('.gift1').click(function() {
+     window.location.href = "progress.html"
+});
+
+$(".good_close").click(function() {
+    $(".show_box").css("display", "none")
+})
+</script>
+
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = '活动首页';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+
+</html>

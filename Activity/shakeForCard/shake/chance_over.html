@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title></title>
+
+	<style type="text/css">
+		.popup {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(0, 0, 0, .7);
+			width: 100%;
+			color: #fff;
+			padding: 20px;
+			font-size: 20px;
+			z-index: 999;
+		}
+		.lead-line img {
+			width: 20%;
+		    float: right;
+		}
+		.popup p{
+			width: 80%;
+    		float: left;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/screen.css">
+</head>
+<body>
+	<div class="container">
+		<div id="card">
+			<img class="bg-img" src="img/chance_over.jpg">
+		</div>
+	</div>
+	<div class="popup">
+		<div class="lead-line">
+			<img  src="img/share-it.png">
+		</div>
+		<p>分享到朋友圈，11.11-11.13期间到超市发双榆树店服务台，可领取精美礼品一份，数量有限先到先得！</p>
+	</div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script src="js/card.js"></script>
+<script src="js/jweixin-1.0.0.js"></script>
+<script src="js/wxjs.js"></script>
+<script>
+	$(function() {
+		var conH = $(".container").height(),
+			popH = 322/1208*conH;
+		$(".popup").css({'height':conH+'px'}).click(function() {
+			$(this).hide();
+		});
+		$(".lead-line img").css({'height':popH+'px'});
+		$(".popup p").css({'margin-top':popH+'px'});
+	})
+</script>
+</html>

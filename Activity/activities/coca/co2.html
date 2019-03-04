@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/resize.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<script type="text/javascript" src="js/get_url.js" ></script>
+	</head>
+	<body>
+		<div class="wrap2_1">
+			<img src="img/7weeks-2-1.png">
+			<div class="wrap_2_1">
+			</div>
+		</div>
+		<div class="wrap2_2" style="display:none">
+			<img src="img/7weeks-2-2.png">
+			<div class="wrap_2_2_1">
+			</div>
+			<div class="wrap_2_2_2">
+			</div>
+			
+		</div>
+		<div class="wrap_pay" style="display: none">
+			<img src="img/pay.jpg"/>
+		</div>
+		<script>
+			$(".wrap_2_1").on("click",function(){
+				$(".wrap2_1").css("display","none");
+				$(".wrap2_2").css("display","block");
+				$(".wrap2_2").css("opacity","1");
+			})
+			$(".wrap_2_2_1").on("click",function(){
+				$(".wrap2_1").css("display","block");
+				$(".wrap2_2").css("display","none");
+				$(".wrap_pay").css("display","none");
+			})
+		</script>
+	</body>
+</html>
+<script type="text/javascript">
+var openid = urlGet()['openid'];
+var activity_id = urlGet()['activity_id'];
+$('.wrap_pay').click(function(){
+	alert("支付成功");
+	$(".wrap2_2").css("opacity","1");
+	$(".wrap_pay").css("display","none");
+
+	var getCoupon = {};
+    getCoupon.activity_item_id = 223;
+    getCoupon.activity_id = activity_id;
+    getCoupon.openid = openid;
+    $.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+        data: getCoupon,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert(data.return_msg);
+            }
+            else{
+                var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+                location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url);
+            }
+        }
+    });
+});
+
+$(".wrap_2_2_2").on("click",function(){
+	$(".wrap2_2").css("opacity","0.5");
+	$(".wrap_pay").css("display","block");
+})
+</script>
+

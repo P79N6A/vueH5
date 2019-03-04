@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>雅培全安素，健康小问答</title>
+<link type="text/css" rel="stylesheet" href="css/swiper.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+</head>
+<body class="bg">
+<img class="logo" src="images/logo.png">
+<img class="title" src="images/title.png">
+
+<dl class="activity">
+<dt><span>活动时间：</span><p>即日起-8月31日</p></dt>
+<dd><span>参与方式：</span><p>买全安素900g1听或538g 2盒送400g全安素产品1听；
+                        买全安素900g2听或538g 4盒送400g全安素产品2听
+                        或900g产品1听。</p>
+<dd>
+</dl>
+
+
+  <div class="swiper-container couSlide">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img id="103" class="wChild_1" src="images/coud_1.png"><span>全安素<b>罐装独享</b>礼包</span></div>
+            <div class="swiper-slide"><img id="104" class="wChild_1" src="images/coud_1.png"><span>全安素<b>罐装双重</b>礼包</span></div>
+            <div class="swiper-slide"><img id="105" class="wChild_1" src="images/coud_1.png"><span>全安素<b>盒装独享</b>礼包</span></div>
+            <div class="swiper-slide"><img id="106" class="wChild_1" src="images/coud_1.png"><span>全安素<b>盒装双重</b>礼包</span></div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+
+<a class="btn draw" href="javascript:void(0)" target="_self">点击领取</a>
+<p class="for">所有赠品以实物为准，卡券仅限活动时间内有效</p>
+<div class="h15"></div>
+<div class="h15"></div>
+<img class="bottom" src="images/bottom.png">
+
+
+<!-- 回答正确  -->
+<div class="FixBg none"></div>
+<section class="FixHint correct none">
+<img src="images/right.png">
+<div>领取成功！</div>
+</section>
+
+<script>
+$(".draw").click(function(){
+    var getCoupon = {};
+    getCoupon.activity_item_id = $('.swiper-slide-active').children().eq(0).attr('id');
+    getCoupon.activity_id = $.cookie('activity_id');
+    getCoupon.openid = $.cookie('openid');
+    getCoupon.name = $.cookie('name');
+    getCoupon.phone = $.cookie('phone');
+    $.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+        data: getCoupon,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert(data.return_msg);
+            }
+            else{
+            	$(".correct,.FixBg").fadeIn(300).delay(1000).fadeOut(300);
+                var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+                location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url) + "&subscribe_url=" +
+                            encodeURIComponent('http://mp.weixin.qq.com/s?__biz=MzIzNTE0OTc1OA==&mid=402036324&idx=1&sn=55f4b5d2c5413e5207c8a3fec85b0d71#rd') + "&app_id=wx7ac53bee6ee222ba";
+            }
+      }});
+
+})
+
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+    });
+</script>
+
+
+</body>
+</html>

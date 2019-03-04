@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/rem.js" ></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="bgImg">
+				<img src="img/img0.png"/>
+			</div>
+			<div class="btn">
+				点我领取
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$('.wrap').click(function(){
+	var getCoupon = {};
+    getCoupon.activity_item_id = 168;
+    getCoupon.activity_id = urlGet()['activity_id'];
+    getCoupon.openid = urlGet()['openid'];
+
+	$.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+        data: getCoupon,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert('请通过摇一摇重新进入');
+            }
+            else{
+                var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+                location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url) + "&subscribe_url=" +
+                            encodeURIComponent('http://mp.weixin.qq.com/s?__biz=MzIzNTE0OTc1OA==&mid=402036324&idx=1&sn=55f4b5d2c5413e5207c8a3fec85b0d71#rd') + "&app_id=wx7ac53bee6ee222ba";
+            }
+        }
+    });
+});
+
+function urlGet()
+{
+    var aQuery = window.location.href.split("?");//取得Get参数
+    var aGET = new Array();
+    if(aQuery.length > 1)
+    {
+        var aBuf = aQuery[1].split("&");
+        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+        {
+            var aTmp = aBuf[i].split("=");//分离key与Value
+            aGET[aTmp[0]] = aTmp[1];
+        }
+    }
+    return aGET;
+}
+	
+</script>

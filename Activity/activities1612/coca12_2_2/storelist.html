@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后尽享畅爽</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+</head>
+
+<body>
+   <div class="wrap" style="background-image:url(img/bg_img.jpg); background-size: 100% 100%;">
+        <div class="logo_img">
+            <img src="img/logo.png" />
+        </div>
+        <div class="store_bg">
+            <img src="img/store_bg.png" />
+        </div>
+        <div class="cup">
+            <img src="img/cup.png">
+        </div>
+        <div class="btn_new">
+            <img src="img/btn.png" class="gift">
+        </div>
+        <div class="text_value">
+            <img src="img/text_value.png">
+        </div>
+        <div class="show_box" style="width:100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 999;display:none;">
+            <div style="width:100%;height: 100%;position: fixed;left: 0;top: 0;background:black;opacity: 0.5"></div>
+            <img src="img/store_model.png" style="width:5.61rem;height:85.82%;position:absolute;top:1% ;left:0;right:0;margin:0 auto;">
+            <img src="img/close.png" class="close">
+            <div class="store_box">
+                <p class="store_p">1.深圳大学-文山湖餐厅</p>
+                <p class="store_p">2.深圳大学-新西南餐厅</p>
+                <p class="store_p">3.深圳大学-老西南餐厅</p>
+                <br>
+                <p class="store_p_1">(点击门店名查看详细地址)</p>
+            </div>
+            <div class="store_box1" style="display: none;">
+                <p class="store_p1 add"></p>
+                <p class="store_p1 address"></p>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">卡券领取中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/orient.js"></script>
+<script>
+localStorage.setItem('activity_id', urlGet()['activity_id']);
+localStorage.setItem('from_unionid', urlGet()['from_unionid']);
+localStorage.setItem('unionid', urlGet()['unionid']);
+localStorage.setItem('openid', urlGet()['openid']);
+// 统计分享后点击事件
+getuserinfo(urlGet()['openid'], urlGet()['from_openid'], urlGet()['activity_id'], info_ajax_url)
+
+
+$(".close").on("click", function() {
+    $(".show_box").css("display","none");
+})
+$(".gift").on("click",function(){
+    $(".show_box").css("display","block");
+})
+
+$(".store_p").on('click', function() {
+    var liNum = $(this).html();
+    $(".store_box").css("display", "none")
+    $(".store_box1").css("display", "block")
+    $(".add").html(liNum);
+    if (liNum == "1.深圳大学-文山湖餐厅") {
+        $(".address").html("深圳南山区南海大道3688号深圳大学文山湖(近桂庙新村)");
+    } else if (liNum == "2.深圳大学-新西南餐厅") {
+        $(".address").html("深圳南山区南海大道3688号深南大道深圳大学西门内");
+    } else if (liNum == "3.深圳大学-老西南餐厅") {
+        $(".address").html("深圳南山区南海大道3688号深南大道深圳大学西南区篮球场对面的一个二层饭堂");
+    }
+});
+$(".store_box1").on('click', function() {
+    $(".store_box").css("display", "block")
+    $(".store_box1").css("display", "none")
+});
+
+
+</script>
+
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = '活动分享';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id,
+        from_unionid: localStorage.from_unionid
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+
+</html>

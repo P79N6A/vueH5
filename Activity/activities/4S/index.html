@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>北汽新能源</title>
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css
+">
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+</head>
+<body>
+	<div class="container">
+		<div class="sec-1 relative">
+			<img src="images/img1.png">
+			<p>北汽新能源  新血来袭</p>
+		</div>
+		<div class="sec-2">
+			<div class="clearfix">
+				<a href="info.html">
+					<div class="cube left">
+						<p>车型介绍</p>
+						<i class="fa fa-chevron-circle-right icon-link"></i>
+					</div>
+				</a> 
+				<div class="left left-over ml2 relative">
+					<img src="images/img2.png">
+					<p>北汽陆霸  霸气侧漏</p>
+				</div>
+			</div>
+			<div class="btns">
+				<button>预约试驾</button><button>最新优惠</button><a href="wheel/index.html"><button>好礼天天送</button></a>
+			</div>
+		</div>
+		<div class="sec-2" style="padding-top:0;padding-bottom: 0;">
+			<div class="clearfix">
+				<div class="left left-over relative">
+					<img src="images/img3.png">
+					<p>修养之道  一脉相乘  My Service</p>
+				</div>
+				<div class="cube left ml2 org">
+					<p style="color:#fff;">售后服务</p>
+					<i class="fa fa-chevron-circle-right icon-link"></i>
+				</div>
+			</div>
+			<div class="btns">
+				<button>售后预约</button><button>养护讲堂</button><button>新能源二手车</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="zepto.min.js"></script>
+<script>
+	var screenH = window.innerHeight;
+	$('body').css({'height': screenH + "px",'overflow':'hidden'});
+	$('.sec-2').css({'height': 0.32*screenH + "px"});
+	$('.sec-1').css({'height': 0.38*screenH + "px"});
+	$('.cube').css({'height': 0.26*screenH -20 + "px"});
+	$('.left-over').css({'height': 0.26*screenH -20 + "px"});
+	$('.btns button').css({'padding': 0.015*screenH + "px"});
+</script>
+</html>

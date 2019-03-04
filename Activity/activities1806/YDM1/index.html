@@ -1,0 +1,185 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>凤雏酱鸡</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <!-- <script type="text/javascript" src="js/awardRotate.js"></script> -->
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <!-- <script type="text/javascript" src="js/vconsole.js"></script> -->
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-no-swiping">
+                <!-- 第一页 -->
+                <div class="logo"><img src="images/logo.png" class="logo-item" /><div></div></div>
+                <img src="images/zi.png" class="zi">
+                <div class="button">马上领取</div>
+                <div class="address">
+                    <img src="images/zi1.png">
+                </div>
+            </div>
+            <div class="swiper-slide swiper-no-swiping">
+                <!-- 第二页 -->
+                <div class="logo"><img src="images/logo.png" class="logo-item" /><div></div></div>
+                <div class="title">请选择您心仪的礼赠</div>
+                <div class="item">
+                    <div class="item-title">配料──</div>
+                    <div class="select" data-index="1692">宽粉</div>
+                    <div class="select" data-index="1693">芝士</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">饮料──</div>
+                    <div class="select" data-index="1694">可乐</div>
+                    <div class="select" data-index="1695">汽水</div>
+                </div>
+                <div class="item">
+                    <div class="item-title">主食──</div>
+                    <div class="select" data-index="1696">炒饭</div>
+                </div>
+                <div class="foot2"></div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <script src="js/swiper/js/swiper.min.js"></script>    
+</body>
+<script type="text/javascript">
+$('body,html').height(document.body.clientHeight);
+let this_url = window.location.href
+//let vConsole = new VConsole()
+if ($.trim(this_url).substr(0, 9) == "http://ab") {
+    var acmp_host = 'http://ab.aikaka.com.cn/AcmpCola/AcmpApi/';
+    var coupon_bag_host = 'http://ab.aikaka.com.cn/AcmpCola/CouponBagV2/';
+} else if ($.trim(this_url).substr(0, 21) == "http://acmp.aikaka.co") {
+    var acmp_host = 'http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+} else {
+    var acmp_host = 'http://acmp.aikaka.cc/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+}
+var openid = urlGet()['openid']
+//有卡券跳转到卡券页面
+if(!sessionStorage['jumped_to_card']){
+    //检查是否有历史卡券
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "couponRecord/list",
+        data: {'akk_openid':openid, 'skip': 0, 'size' : 1},
+        dataType: "json",
+        success: function(data) {
+            if(data.data.list.length == 0){
+                return false;
+            }
+            sessionStorage['jumped_to_card'] = 1;
+            let first_coupon = data.data.list[0];
+            if(
+                (first_coupon.id == 1984 
+                || first_coupon.id == 1985 
+                || first_coupon.id == 1986 
+                || first_coupon.id == 1987 
+                || first_coupon.id == 1988
+                ) && 
+                first_coupon.record_status != 'CONSUMED'
+            ){
+                coupon_code = first_coupon.coupon_code;
+                window.location.href = coupon_bag_host + 'webcoupon.html' + "?coupon_code=" + coupon_code + "&openid=" + openid;
+            }
+        }
+    })
+}
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+//实例化翻页功能
+var mySwiper = new Swiper ('.swiper-container', {
+    direction : 'vertical',
+    effect : 'flip',
+    slidesPerView: 1,
+    centeredSlides : true,
+    noSwiping : true,
+    // noSwipingClass : 'stop-swiping',
+    navigation: {
+      nextEl: '.button',
+    }
+}) 
+$(function(){
+    //配置基础信息
+    var activity_id = urlGet()['activity_id']
+    var store_code = urlGet()['store_code']
+    var openid = urlGet()['openid']
+    //点击选中效果
+    $(".select").click(function(){
+        //$(this).addClass("active")
+        $("#loadingToast").show();
+        let getData = {}
+        getData.openid = openid
+        getData.activity_id = activity_id
+        getData.store_code = store_code
+        getData.activity_item_id = $(this).data("index")
+        $.ajax({
+            type: "POST",
+            url: acmp_host + "prize/lottery",
+            data: getData,
+            dataType: "json",
+            success: function(data) {
+                $("#loadingToast").hide();
+
+                if (data.return_code != 200) {
+                    if (data.return_msg == "超出每人每天参与次数，欢迎明天继续参与") {
+                        my_alert("confirm_error", "很遗憾", "超出每人每天参与次数", "欢迎明天继续参与", ["知道啦"], ["green"], function() {});
+                    } else {
+                        if(data.return_msg == '谢谢参与'){
+                            $(".alert_gift_box").css({ "background-image": "url(images/xiexie.png)", "top": "5%" })
+                        }else{
+                            my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function() {});
+                        }
+                    };
+                } else {
+                    //获取奖品
+                    let GetSelect = data.data.coupon.id; //从后台拿数据
+                    let coupon_code = data.data.coupon_code;
+                    window.location.href = coupon_bag_host + 'webcoupon.html' + "?coupon_code=" + coupon_code + "&openid=" + openid;
+                }
+            },
+            error: function(rest) {
+                my_alert("confirm_error", "加载失败", "网络出小差啦", "请再试试吧！", ["知道啦"], ["green"], function() {})
+            }
+        })
+    })
+});
+</script>
+</html>

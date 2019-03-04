@@ -1,0 +1,161 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+}
+
+body {
+    overflow: hidden;
+    background: #c12360;
+}
+
+img {
+    width: 100%;
+}
+
+.wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    background-image: url(../img/bg_img.jpg);
+}
+
+#loadingToast {
+    font-size: 12px;
+}
+
+.Main_title {
+    width: 6.1rem;
+    height: 8.0%;
+    position: absolute;
+    top: 6.63%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.Buffett {
+    width: 2.1rem;
+    height: 2.28rem;
+    position: absolute;
+    top: 16.99%;
+    right: 5.86%;
+}
+
+.coca_title {
+    width: 7.5rem;
+    height: 40.38%;
+    position: absolute;
+    top: 20.72%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.common_style{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+.limit_tex {
+    width: 6rem;
+    top: 65.3%;
+    font-size: 0.38rem;
+    line-height: 0.64rem;
+    color: #ffffff;
+}
+
+.date{
+    width: 3.75rem;
+    height: 0.65rem;
+    top: 71.22%; 
+    font-size: 0.46rem;
+    line-height: 0.65rem;
+    color: #b62046; 
+    background: #ffffff;
+    border-radius: 0.1rem;   
+}
+.Buffett_tex{
+    width: 6rem;
+    top: 77.36%;
+    font-size: 0.38rem;
+    line-height: 0.64rem;
+    color: #ffffff;   
+}
+.desc_tex{
+    width: 7rem;
+    line-height:0.48rem ;
+    font-size: 0.28rem;
+    top: 84.49%;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>广州高铁</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+ </head>
+ <body>
+ 	<header>
+ 		<div>
+ 			<i class="map"></i>
+ 			<span>您当前旅程所达城市：</span>
+ 			<span id="city"></span>
+ 		</div>
+ 	</header>
+ 	<div class="container">
+ 		<div class="mb-10 sec sec-1">
+ 			<p>今日温度：<span class="ml-5" id="temperature"></span></p>
+ 			<p>pm2.5：<span class="ml-5" id="solar"></span></p>
+ 			<p>天气：<span class="ml-5" id="cloth"></span></p>
+ 		</div>
+ 		<div class="sec-2 mb-10">
+ 			<p style="font-weight: bold;">您所乘的车次为：D901</p>
+ 			<p>该车次离发车时间还有：20分钟</p>
+ 		</div>
+ 		<div class="sec sec-3 mb-10">
+	 		<a href="http://imfw.cn/l/311971">
+	 			<div class="title-div">
+	 				<span class="title">艳遇惊喜</span>
+	 				<span class="sub-title">后海约你</span>
+	 				<a href="#" class="r-link">更多>></a>
+	 			</div>
+			</a>
+ 		</div>
+ 		<div class="sec sec-4 mb-10">
+ 		<a href="http://app.gewara.com">
+ 			<div class="title-div">
+ 				<p class="title">星球大战&nbsp;原力觉醒</p>
+ 				<span class="sub-title">老梗传承30年助你看懂“星战7”</span>
+ 			</div>
+ 			</a>
+ 		</div>
+ 		<div class="sec sec-5 mb-10">
+ 		<a href="http://d.nuomi.com/?1009764s">
+ 			<div class="title-div">
+ 				<p class="title">冬日涮“铜锅”</p>
+ 				<span class="sub-title">体验老北京</span>
+ 				<a href="#" class="r-link">更多>></a>
+ 			</div>
+ 			</a>
+ 		</div>
+ 		<div class="sec sec-6 mb-10">
+	 		<a href="http://app-down.x.netease.com/download/game/g18/channel/gc">
+	 			<div class="title-div">
+	 				<span class="title">梦幻西游</span>
+	 				<span class="sub-title">好玩不需要理由</span>
+	 				<a href="#" class="r-link">更多>></a>
+	 			</div>
+ 			</a>
+ 		</div>
+ 		<footer>北京爱咔咔信息技术有限公司</footer>
+ 	</div>
+ </body>
+<script type="text/javascript" src = "http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> <script src="js/zepto.min.js"></script>
+ <script src="js/wxjssdk.js"></script>
+ <script>
+ $(function(){
+ 	var screenH = window.innerHeight,
+ 		h = (screenH-190)/4,
+ 		latitude,
+ 		longitude;
+ 	$('body').css({'height': screenH + "px",'overflow':'hidden'});
+ 	$('.sec').css({'height': h + "px",'overflow':'hidden'});
+ 	$('.sec-1 p').css({'line-height': (h-40)/3 + "px",'overflow':'hidden'});
+
+ 	wx.ready(function() {
+ 		wx.getLocation({
+ 		    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+ 		    success: function (res) {
+ 		        latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+ 		        longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+ 		        var speed = res.speed; // 速度，以米/每秒计
+ 		        var accuracy = res.accuracy; // 位置精度
+
+ 		        /**
+ 		         * 根据地理位置获取坐标
+ 		         */
+ 		        $.ajax({
+ 		        	type: 'GET',
+ 		        	url: 'http://api.map.baidu.com/telematics/v3/weather?ak=F5fc136fe3a156c411e21f2b7a57f326&output=json',
+ 		        	dataType: 'jsonp',
+ 		        	data:{
+ 		        		location: longitude+','+latitude,
+ 		        		output: 'json'
+ 		        	},
+ 		        	success:function(result) {
+ 		        		$('#city').text(result.results['0'].currentCity);
+ 		        		$('#temperature').text(result.results['0'].weather_data[0].temperature);
+ 		        		$('#solar').text(result.results['0'].pm25);
+ 		        		$('#cloth').text(result.results['0'].weather_data[0].weather);
+ 		        	},
+ 		        	error: function(result) {
+ 		        		$('#city').text('未能获取');
+ 		        		$('#temperature').text('未知');
+ 		        		$('#solar').text('未知');
+ 		        		$('#cloth').text('未知');
+ 		        	}
+ 		        });
+ 		    }
+ 		});
+ 	});
+ 	
+ 	
+
+ })
+ 	
+ </script>
+ </html>

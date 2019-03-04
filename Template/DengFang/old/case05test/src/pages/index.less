@@ -1,0 +1,152 @@
+#template {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  /*加载动画*/
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -2.5rem;
+      margin-top: -2.5rem;
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  /*音乐组件*/
+  .music-image {
+    position: fixed;
+    top: 1.4rem;
+    right: 1rem;
+    z-index: 20;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  .music-active {
+    animation: active 1s linear infinite;
+    @keyframes active {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  /*锦囊*/
+  .silk-bag-icon {
+    position: fixed;
+    top: .5rem;
+    right: .5rem;
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  /*海报*/
+  /*.poster-parent {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .poster-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .poster-child {
+    !*  -webkit-transition: -webkit-clip-path .01s;
+      transition: clip-path .01s;*!
+      //-webkit-mask-size: 100%;
+      //clip-path: circle(100px at center);
+      !*-webkit-mask-repeat: no-repeat;
+      -webkit-mask-image: -webkit-gradient(radial, 1 1, 1, 1 1, 2, color-stop(0.00, rgba(0, 0, 0, 1)));
+      -webkit-transition: all 1.5s ease-out;*!
+    }
+    .poster-button {
+      position: absolute;
+      left: 50%;
+      bottom: 1.5rem;
+      margin-left: -2.25rem;
+      width: 4.5rem;
+      height: 3.5rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  }*/
+
+  .poster-parent {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .poster-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .poster-button {
+      position: absolute;
+      left: 50%;
+      bottom: 1.5rem;
+      margin-left: -2.25rem;
+      width: 4.5rem;
+      height: 3.5rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .poster-child-action {
+      -webkit-animation: poster-action 15s;
+      animation: poster-action 15s;
+      @keyframes poster-action {
+        to {
+          clip-path: circle(0 at center);
+        }
+      }
+    }
+    .poster-child-paused {
+      animation-play-state: paused;
+      -webkit-animation-play-state: paused; /* Safari 和 Chrome */
+    }
+  }
+  /*剩余次数*/
+  .prize-draw-number-text {
+    position: absolute;
+    bottom: 4.5rem;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    font-size: .8rem;
+    color: orange;
+  }
+}

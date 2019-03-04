@@ -1,0 +1,93 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>美汁源</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdkhttps.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/vconsole.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="page1 swiper-slide swiper-no-swiping">
+                <!-- 第一页 -->
+                <div class="mains">
+                    <img src="images/page1/logo1.png" alt="" class="logo">
+                    <img src="images/page1/logo.png" alt="" class="title">
+                    <img src="images/page1/rlogo.png" alt="" class="left">
+                    <img src="images/page1/ren.png" alt="" class="ren">
+                    <img src="images/page1/yl.png" alt="" class="center">
+                    <img src="images/page1/llogo.png" alt="" class="right">
+                    <img src="images/page1/anniu.png" alt="" class="button1">
+                </div>
+            </div>
+
+            <div class="page2 swiper-slide swiper-no-swiping">
+                <img src="images/page1/logo1.png" alt="" class="logo">
+                <img src="images/page2/logo.png" alt="" class="title">
+                <img src="images/page2/xia.png" alt="" class="left">
+                <img src="images/page2/yl.png" alt="" class="right">
+                <!-- 转盘 -->
+                <div class="start_circle">
+                    <div class="banner">
+                        <div class="turnplate" style="">
+                            <canvas class="item" id="wheelcanvas" width="440px" height="440px"></canvas>
+                            <img class="pointer" src="images/page2/ks.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page3 swiper-slide swiper-no-swiping">
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="alertContent" style="display:none;">
+      <div class="show">
+        <img src="images/page2/yo.png" alt="" class="item" id="item">
+      </div>
+    </div>
+    <script src="js/swiper/js/swiper.min.js"></script>    
+</body>
+<script type="text/javascript" src="js/wheelinit.js"></script>
+<script type="text/javascript" src="js/business.js"></script>
+<script>
+    wx.ready(function () {
+        //隐藏右上角菜单禁用分享
+        wx.hideOptionMenu()
+    });
+</script>
+</html>

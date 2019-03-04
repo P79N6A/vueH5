@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>雅培全安素，健康小问答</title>
+<link type="text/css" rel="stylesheet" href="css/swiper.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+</head>
+<body class="bg">
+<img class="logo" src="images/logo.png">
+<img class="title" src="images/title.png">
+
+<dl class="activity">
+<dt><span>活动时间：</span><p>即日起-8月31日</p></dt>
+<dd><span>参与方式：</span><p>买全安素900g1听/538g 2盒送全安素400g<br/>买全安素900g2听/538g 4盒送2罐全安素400g</p>
+<dd>
+</dl>
+
+
+  <div class="swiper-container couSlide">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img id="330" class="wChild_1" src="images/coud_1.png"><span>全安素<b>罐装独享</b>礼包</span></div>
+            <div class="swiper-slide"><img id="331" class="wChild_1" src="images/coud_1.png"><span>全安素<b>盒装独享</b>礼包</span></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+
+<a class="btn draw" href="javascript:void(0)" target="_self">点击领取</a>
+<p class="for">所有赠品以实物为准，卡券仅限活动时间内有效</p>
+<div class="h15"></div>
+<div class="h15"></div>
+<img class="bottom" src="images/bottom.png">
+
+
+<!-- 回答正确  -->
+<div class="FixBg none"></div>
+<section class="FixHint correct none">
+<img src="images/right.png">
+<div>领取成功！</div>
+</section>
+
+<script>
+$(".draw").click(function(){
+    var getCoupon = {};
+    getCoupon.activity_item_id = $('.swiper-slide-active').children().eq(0).attr('id');
+    getCoupon.activity_id = $.cookie('activity_id');
+    getCoupon.openid = $.cookie('openid');
+    getCoupon.name = $.cookie('name');
+    getCoupon.phone = $.cookie('phone');
+    getCoupon.third_party_openid = $.cookie('third_party_openid');
+    getCoupon.third_party_name = $.cookie('third_party_name');
+    $.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/AcmpBeta/AcmpApi/shakeFor/gift",
+        data: getCoupon,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert(data.return_msg);
+            }
+            else{
+            	$(".correct,.FixBg").fadeIn(300).delay(1000).fadeOut(300);
+                //已经关注
+                if($.cookie('subscribe') == 1){
+                    var coupon_url = 'http://ab.aikaka.com.cn/CouponBeta/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+                    location.href = coupon_url;
+                //没有关注
+                }else{
+                    var subscribe_url = 'http://t.cn/RcBraHp';
+                    location.href = subscribe_url;
+                }
+            }
+      }});
+
+})
+
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+    });
+</script>
+
+
+</body>
+</html>

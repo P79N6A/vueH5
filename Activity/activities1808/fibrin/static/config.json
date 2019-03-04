@@ -1,0 +1,57 @@
+{
+  "newImage": {
+    "bg_image": "https://download.aikaka.com.cn/ad2eba1e6755b30616106365e3bda183",
+    "prize_img_box": [
+      {
+        "item_id": 0,
+        "rules": false,
+        "prize_img": "https://download.aikaka.com.cn/91079961e509330375f302679f99b3cf?f=png",
+        "zi":"static/page1/xiexie.png"
+      },
+      {
+        "item_id": 1,
+        "rules": false,
+        "prize_img": "https://download.aikaka.com.cn/3b80a98733a9417bb3b71344fcb63e8e?f=png",
+        "zi": "static/page1/zhongjiang.png"
+      }
+    ]
+  },
+  "images":[
+    "static/page1/anniu.png",
+    "static/page1/bai.png",
+    "static/page1/bj.jpg",
+    "static/page1/gongxi.png",
+    "static/page1/hui.png",
+    "static/page1/ren.png",
+    "static/page1/xiexie.png",
+    "static/page1/yihan.png",
+    "static/page1/zhongjiang.png",
+    "https://download.aikaka.com.cn/f8e636de3e030ed8cbdaad0939eb3aa0?f=png",
+    "https://download.aikaka.com.cn/91079961e509330375f302679f99b3cf?f=png",
+    "https://download.aikaka.com.cn/3b80a98733a9417bb3b71344fcb63e8e?f=png"
+  ],
+  "pages":[
+    {
+      "bg_image": "https://download.aikaka.com.cn/46e646abad9fd189c0a12c57b02393ec?f=png",
+      "button": "https://download.aikaka.com.cn/45b62a88c55839d4f044910051ddecc4?f=png",
+      "supernatant":"https://download.aikaka.com.cn/8c7ca053b8e60c3f25b40c0e544c5915?f=png",
+      "logo":"https://download.aikaka.com.cn/974553dd6cc09c7a14899cc772cf72db?f=png",
+      "images": [
+        "https://download.aikaka.com.cn/0397fd98d855b6f3fd51e67a61426193?f=png",
+        "https://download.aikaka.com.cn/2d593e1bc1c6cca76a71a4cc2b099bbd?f=png",
+        "https://download.aikaka.com.cn/2e431f291bd4df5ad50caf700ce7ee5f?f=png"
+      ]
+    }
+  ],
+  "music": {
+    "src":"static/test.mp3",
+    "image":"static/images/music.png",
+    "bg_img":"static/images/music_bg.gif"
+  },
+  "host":"http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

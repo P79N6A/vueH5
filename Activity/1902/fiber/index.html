@@ -1,0 +1,96 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/weui_toast.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/wheelinit.js"></script>
+    <script src="js/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/business.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdkhttps.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/vconsole.js"></script>
+    <script src="js/swiper/js/swiper.min.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!--首页-->
+            <div class="page1 swiper-slide swiper-no-swiping">
+                <div style="position:absolute;width: 100vw;height: 73vw;background-image: url('images/page1/bg.jpg'); background-size: 100% auto;"></div>
+                <div style="position:absolute;width: 100vw;top: 73vw;height: 1vw;background-color: white"></div>
+                <p style="position: absolute;top: 112vw;z-index: 10;font-size: 3.4vw;text-align: center;width: 92vw;left: 4vw;font-weight: bold;">上传含可口可乐产品的购物小票，每上传1张小票可获得1次抽奖机会，抽取微信现金红包及可口可乐精美手机壁纸，每人每天仅可参与1次哦~</p>
+                <input type="hidden" name="" class="img" id="img">
+            </div>
+            <!--转盘页-->
+            <div class="page2 swiper-slide swiper-no-swiping">
+                <div style="position:absolute;width: 100vw;height: 90vw;background-image: url('images/page1/bg.jpg'); background-size: 100% auto;"></div>
+                <div style="position:absolute;width: 100vw;top: 90vw;height: 1vw;background-color: white"></div>
+                <p style="position: absolute;bottom: 10vw;z-index: 10;font-size: 3.4vw;text-align: center;width: 80vw;left: 10vw;font-weight: bold;">提交成功！恭喜获得一次抽奖机会！</p>
+                <!-- 转盘 -->
+                <div class="start_circle">
+                    <div class="banner">
+                        <div class="turnplate">
+                            <canvas class="item" id="wheelcanvas" width="440px" height="440px"></canvas>
+                            <img class="pointer"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="alertContent" style="display: none;">
+        <img src="images/alert/redpeck.png" style="position: absolute;top: 15vw;width: 80vw;left: 10vw;" class="getRed">
+    </div>
+    <div class="alertContent1" style="display: none;">
+        <div style="position: absolute;width: 90vw;height: 100vw;left: 5vw;top: 5vw;overflow:hidden;">
+            <img src="images/alert/wallpaper.jpg" style="position: relative;width: 100%;">
+        </div>
+        <div style="position: absolute; top:107vw;width:90vw;text-align:center;left:5vw;">
+            <p style="font-size: 4vw;text-align: center;font-weight: bold;color: white;">很遗憾，您这次没有中奖</p>
+            <p style="font-size: 4vw;text-align: center;font-weight: bold;color: white;">赠送您一张手机壁纸，祝您天天好心情</p>
+            <p style="font-size: 4vw;text-align: center;font-weight: bold;color: white;">（PS：长按上方图片即可保存成功哦！）</p>
+        </div>
+        <img src="images/alert/close.png" style="position: absolute;top: 130vw;width: 60vw;left: 20vw;" class="closePage">
+    </div>
+</body>
+<script>
+    wx.ready(function () {
+        //隐藏右上角菜单禁用分享
+        wx.hideOptionMenu()
+    });
+</script>
+</html>

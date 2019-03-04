@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/resize.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<script type="text/javascript" src="js/get_url.js" ></script>
+		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
+	</head>
+	<body>
+		<div class="wrap1_1">
+			<img src="img/7weeks-1-1.png">
+			<div class="wrap_1_1">
+			</div>
+		</div>
+		<div class="wrap1_2" style="display: none;">
+			<img src="img/7weeks-1-2.png">
+			<div class="erweima">
+				<img class="qr_code" style="background-color:black">
+			</div>
+			<div class="wrap_1_2">
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+var from_openid = urlGet()['from_openid'];
+var openid = urlGet()['openid'];
+var activity_id = urlGet()['activity_id'];
+$(".wrap_1_1").on("click",function(){
+	//生成二维码链接
+	var activity_url = 'http://ab.aikaka.com.cn/shakeApp/activities/coca/index.html?activity_id='+activity_id+'&from_openid='+openid;
+	qr_code_url = "http://ab.aikaka.com.cn/PublicService/Util/qrcode.php?code=" + encodeURIComponent('http://ab.aikaka.com.cn/PublicService/Weixin/oauth/base' + "?callback_url=" + encodeURIComponent(activity_url));
+	$('.qr_code').attr("src", qr_code_url);
+
+	onSearch();
+
+	$(".wrap1_1").css("display","none");
+	$(".wrap1_2").css("display","block");
+});
+$(".wrap_1_2").on("click",function(){
+	stopSearch();
+	$(".wrap1_1").css("display","block");
+	$(".wrap1_2").css("display","none");
+});
+
+$(function(){
+	if(from_openid && openid && activity_id && from_openid != 'undefined' && $.cookie('undo') != 0){
+		//给原用户领取卡券
+		var getCoupon = {};
+        getCoupon.activity_item_id = 222;
+        getCoupon.activity_id = activity_id;
+        getCoupon.openid = from_openid;
+        $.ajax({
+            type: "POST",
+            url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+            data: getCoupon,
+            dataType: "json",
+            success: function(data){
+                if(data.return_code!=200){
+                    alert(data.return_msg);
+                }
+                else{
+                	$.cookie('undo', 0);
+                	//给自己发券
+                	var getCoupon = {};
+	                getCoupon.activity_item_id = 222;
+	                getCoupon.activity_id = activity_id;
+	                getCoupon.openid = openid;
+	                $.ajax({
+	                    type: "POST",
+	                    url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+	                    data: getCoupon,
+	                    dataType: "json",
+	                    success: function(data){
+	                        if(data.return_code!=200){
+	                            alert(data.return_msg);
+	                        }
+	                        else{
+	                            var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+	                            location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url);
+	                        }
+	                    }
+	                });
+                }
+            }
+        });
+	}
+});
+
+function stopSearch(){
+	window.clearTimeout(t1);//去掉定时器 
+}
+count_start = false;
+function onSearch(){
+	check();
+	t1 = window.setTimeout("onSearch()", 3000);//使用字符串执行方法
+}
+function check(){
+	var getCouponList = {};
+	getCouponList.openid = openid;
+	$.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/Coupon/couponlist_info",
+        data: getCouponList,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert(data.return_msg);
+            }
+            else{
+            	var count = 0;
+            	for(var i in data.data.list){
+            		if(data.data.list[i].id == 512 && data.data.list[i].record_status == 'APPLIED'){
+            			count ++;
+            			coupon_code = data.data.list[i].coupon_code;
+            		}
+            	}
+
+            	if(count_start === false){
+            		count_start = count;
+            	}
+            	if(count > count_start){
+            		stopSearch();
+            		//显示券
+            		var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + coupon_code;
+                    location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url);
+            	}
+            }
+        }
+    });
+}
+</script>

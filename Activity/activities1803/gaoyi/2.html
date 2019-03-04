@@ -1,0 +1,215 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>德国高仪 “百万让利”</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+</head>
+<body>
+    <div class="wrap2">
+        <table style="margin-top: 10%;margin-left: 0%;width: 100%">
+            <tr>
+                <td style="font-size: 12pt;color:white;text-align: right;width: 25%">姓名</td>
+                <td><input type="text" class="real_name" maxlength="20"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12pt;color:white;text-align: right">手机号</td>
+                <td><input type="number" class="phone" maxlength="11"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12pt;color:white;text-align: right">购买金额</td>
+                <td><input type="number" min="0" max="100000" class="amount"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 12pt;color:white;text-align: right">协议编号</td>
+                <td><input type="text" class="doc"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 9pt;color:white;text-align: center" colspan="2">（须填写真实有效协议编号，填写非真实编号将不能参加返现活动）</td>
+            </tr>
+        </table>
+        <div class="upload" style="margin-top:5%;margin-left: 7%;width: 40%;height: 26%;z-index: 2;overflow: hidden;float: left;">
+            <img src="images/2upload.png" style="width: 100%;height: auto;z-index: 2;pointer-events: none;overflow: hidden;" id="img">
+        </div>
+        <div class="upload2" style="margin-top:5%;margin-left: 6%;width: 40%;height: 26%;z-index: 2;overflow: hidden;float: left;">
+            <img src="images/2ht.png" style="width: 100%;height: auto;z-index: 2;pointer-events: none;overflow: hidden;" id="img2">
+        </div>
+        <div class="sub" style="bottom:3%;margin-left: 25%;z-index: 3;width: 50%;position: absolute;">
+            <img src="images/2btn.png" style="pointer-events: none;" >
+        </div>
+        <div class="show_box">
+            <div class="show_100">
+                
+            </div>
+            <div class="alert_gift_box">
+                <button class="get_coupon" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var media_id = {};
+$(function(){
+    $('.upload').click(function(){
+        wx.ready(function(){
+            upload('img');
+        });
+    });
+    $('.upload2').click(function(){
+        wx.ready(function(){
+            upload('img2');
+        });
+    });
+    $('.sub').click(function(){
+        //解除提示
+        $('input').css('border-color', 'white');
+        $('.warn').remove();
+        var sub_data = {};
+        sub_data.real_name = $('.real_name').val();
+        sub_data.phone = $('.phone').val();
+        sub_data.amount = $('.amount').val();
+        sub_data.doc = $('.doc').val();
+        sub_data.media_id = media_id.img;
+        sub_data.doc_pic = media_id.img2;
+        sub_data.city = sessionStorage['city'];
+        var pass = 1;
+        if(!sub_data.real_name.length || sub_data.real_name.length > 20){
+            warn('real_name');
+            pass = 0;
+        }
+        if(sub_data.phone.length != 11){
+            warn('phone');
+            pass = 0;
+        }
+        if(!sub_data.amount || sub_data.amount <= 0 || sub_data.amount > 10000000){
+            warn('amount');
+            pass = 0;
+        }
+        if(!sub_data.doc){
+            warn('doc');
+            pass = 0;
+        }
+        if(!pass){
+            return false;
+        }
+        if(!sub_data.media_id){
+            my_alert("confirm_error", "","请上传销售凭证","",["知道啦"],["green"],function(){});
+            return false;
+        }
+        if(!sub_data.doc_pic){
+            my_alert("confirm_error", "","请上传销售协议合同","",["知道啦"],["green"],function(){});
+            return false;
+        }
+
+        sub_data.openid = sessionStorage['openid'];
+        
+        //开始上传
+        $("#loadingToast").show();
+        $.ajax({
+            type: "POST",
+            url: acmp_host + 'shakeFor/groupBuy',
+            data: sub_data,
+            dataType: "json",
+            success: function(data) {
+                if(data.return_code == 200){
+                    window.location.href = '3.html';
+                }else{
+                    $("#loadingToast").hide();
+                    my_alert("confirm_error", "",data.return_msg,"",["知道啦"],["green"],function(){});
+                }
+            }
+        })
+    });
+    $('input').focus(function(){
+        $('input').css('border-color', 'white');
+        $('.warn').remove();
+    });
+});
+function warn(classes){
+    $('.' + classes).css('border-color', 'red');
+    $('.' + classes).after('<b style="color:red;font-size:18pt" class="warn">×</b>');
+}
+function upload(data) {
+
+       $var_img = data;//selertor
+           $var_input = $('#'+data+'_input'); //图片值 identify_img2_input
+
+            wx.chooseImage({
+                count: 1, // 默认9
+                sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    //images.localId = res.localIds;
+                    localIds = res.localIds;  // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    document.getElementById($var_img).src = localIds;   //选择的图片 显示
+                    //必须做一下mediaId的设定，否则将会无法在安卓端得到微信上传功能的触发
+                    localId = localIds.toString();
+                  //在成功选择图片或拍照的时候 可以触发上传图片,
+                    wx.uploadImage({
+                        localId: localId, // 需要上传的图片的本地ID，由chooseImage接口获得
+                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                         
+                        success: function (res) {
+                            media_id[data] = res.serverId; // 返回图片的服务器端ID 
+                        },
+                        fail:function(res){
+                            alert(res.errMsg);
+                            // alert(JSON.stringify(res))
+                        }
+                    });
+
+                }
+            });
+        }
+function strlen(str){
+    var len = 0;
+    for (var i=0; i<str.length; i++) { 
+     var c = str.charCodeAt(i); 
+    //单字节加1 
+     if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) { 
+       len++; 
+     } 
+     else { 
+      len+=2; 
+     } 
+    } 
+    return len;
+}
+
+$('body,html').height(document.body.clientHeight);
+
+</script>
+
+</html>

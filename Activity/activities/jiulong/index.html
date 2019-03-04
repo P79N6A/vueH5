@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>久隆百货</title>
+	<style>
+	*{margin:0;padding:0;}
+	.container {position: relative;background: url("bg.png") no-repeat; -webkit-background-size: 100% 100%;	background-size: 100% 100%; text-align: center;}
+	#wrap{position: absolute;bottom:40px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="wrap">
+			<img src="btn.png" width="50%" id="btn">
+		</div>
+	</div>
+</body>
+<script src="zepto.min.js"></script>
+<script src="http://zb.weixin.qq.com/app/shakehb/BeaconShakehbJsBridge.js"></script>
+<script>
+	$(function(){
+		var screenH = window.innerHeight;
+		$('.container').css({'height': screenH + "px",'overflow':'hidden'});
+
+		var lottery_id = urlGet()['lottery_id'];
+		var openid = urlGet()['openid']
+
+		// 点击领红包
+		$('#btn').click(function(){
+			var check_subscribe = "http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe";
+			var subscribe_url = "http://mp.weixin.qq.com/s?__biz=MjM5ODEzMjY5Mw==&mid=402530026&idx=1&sn=ab9000f4d5f511f3cbcfe700e59f38da#rd";
+			var target = "http://ab.aikaka.com.cn/shakeApp/activities/jiulong/redpack.html?openid="+openid+"&lottery_id="+lottery_id;
+			location.href = check_subscribe+"?callback_url="+encodeURIComponent(target)+"&subscribe_url="+
+			encodeURIComponent(subscribe_url)+"&app_id=wxc621060981997753";
+		});
+
+		/**
+		* url get parameters
+		* @public
+		* @return array()
+		*/
+		function urlGet()
+		{
+		    var aQuery = window.location.href.split("?");//取得Get参数
+		    var aGET = new Array();
+		    if(aQuery.length > 1)
+		    {
+		        var aBuf = aQuery[1].split("&");
+		        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+		        {
+		            var aTmp = aBuf[i].split("=");//分离key与Value
+		            aGET[aTmp[0]] = aTmp[1];
+		        }
+		    }
+		    return aGET;
+		}
+	});
+</script>
+</html>

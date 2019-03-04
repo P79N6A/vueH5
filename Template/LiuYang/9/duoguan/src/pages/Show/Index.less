@@ -1,0 +1,154 @@
+.main{
+    .page{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100vw;
+        .yanhua1{
+            position: absolute;
+            top:1rem;
+            left: 1rem;
+            width: 3rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua2{
+            position: absolute;
+            top:11rem;
+            right: 2rem;
+            width: 3rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua3{
+            position: absolute;
+            top:14rem;
+            left: 1rem;
+            width: 3rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua4{
+            position: absolute;
+            top:18rem;
+            right: 1rem;
+            width: 1.5rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua5{
+            position: absolute;
+            top:25rem;
+            left: 1.5rem;
+            width: 2rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua6{
+            position: absolute;
+            top:26rem;
+            right: 1rem;
+            width: 2.5rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua7{
+            position: absolute;
+            bottom:3.5rem;
+            left: 2rem;
+            width: 3rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .yanhua8{
+            position: absolute;
+            bottom: 8rem;
+            right: 7rem;
+            width: 4.5rem;
+            .image{
+                width: 100%;
+            }
+        }
+        .animate-wrapper{
+            box-shadow: transparent 0rem 0rem 0.1rem; 
+            border-radius: 0rem; 
+            animation: zoomIn 1s 0.7s 1 both;
+        }
+        .animate-wrapper1{
+            box-shadow: transparent 0rem 0rem 0.1rem; 
+            border-radius: 0rem; 
+            animation: fadeInDown 1s 0.7s 1 both;
+        }
+        .animate-wrapper2{
+            box-shadow: transparent 0rem 0rem 0.1rem; 
+            border-radius: 0rem; 
+            animation: bounceInDown 1s 0.7s 1 both;
+        }
+
+        .title{
+            position: absolute;
+            top:4rem;
+            left: 15vw;
+            width: 70vw;
+            .image{
+                width: 100%;
+            }
+        }
+        .rules{
+            position: absolute;
+            top:14.5rem;
+            left: 10vw;
+            width: 80vw;
+            transform: translate3d(-50%, 0, 0);
+            .image{
+                width: 100%;
+            }
+        }
+    }
+}
+@keyframes zoomIn{
+    0% {
+        -webkit-transform: scale3d(.3,.3,.3);
+        transform: scale3d(.3,.3,.3);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes fadeInDown{
+    0% {
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+@keyframes bounceInDown{
+    0% {
+        -webkit-transform: translate3d(0,400%,0);
+        transform: translate3d(0,400%,0);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+        opacity: 1;
+    }
+}

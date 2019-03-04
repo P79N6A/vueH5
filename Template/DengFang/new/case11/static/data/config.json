@@ -1,0 +1,50 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "home_bg_image": "./static/data/images/home-bg.jpg",
+    "join_btn": "./static/data/images/join-btn.png",
+    "list_bg": "static/data/images/list-bg.png",
+    "share_image": "./static/data/images/prize01.png",
+    "default_image":"./static/data/images/card-default.png",
+    "card_list": [
+      {
+        "item_id": 1,
+        "image_url": "./static/data/images/card01.png"
+      },
+      {
+        "item_id": 2,
+        "image_url": "./static/data/images/card02.png"
+      },
+      {
+        "item_id": 3,
+        "image_url": "./static/data/images/card03.png"
+      },
+      {
+        "item_id": 4,
+        "image_url": "./static/data/images/card04.png"
+      },
+      {
+        "item_id": 5,
+        "image_url": "./static/data/images/card05.png"
+      },
+      {
+        "item_id": 6,
+        "image_url": "./static/data/images/card06.png"
+      }
+    ]
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次参加机会"
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/",
+  "title": "翻牌",
+  "gameTime": 60
+}
+
+
+
+
+

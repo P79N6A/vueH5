@@ -1,0 +1,275 @@
+﻿body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body{color:#333; font-size:12px;font-family:"微软雅黑";overflow: hidden;
+}
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+input{ font-size:12px;}
+a{ text-decoration:none; color:#000;}
+a:hover{color:#c00; text-decoration:none;}
+.clear{clear:both;}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+.wrap{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+.bg-img{
+ position: absolute;
+ display: inline-block;
+ height: 100%; transform: translateX(-50%); position: absolute;
+
+}
+.que-bg-img{
+position: absolute;
+ display: inline-block;
+ height: 100%; transform: translateX(-50%); position: absolute;    
+}
+.btn-click{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border:none;
+    background: none;
+    background-size: 100% 100%; 
+    z-index: 2;
+}
+#loadingToast {
+    font-size: 12px;
+}
+.limit_tex {
+    width: 6rem;
+    position: absolute;
+    top: 71.4%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #78ad2c;
+    z-index: 2;
+    font-weight: 600;
+}
+
+.limit_times {
+    font-weight: 600;
+}
+
+.btn_ {
+    width: 2.48rem;
+    height: 0.78rem;
+    position: absolute;
+    top: 77%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    background-image: url(../img/btn_bg.png);
+    background-size: 100% 100%;
+    z-index: 3;
+}
+
+.Subtitle {
+    width: 4.51rem;
+    height: 0.54rem;
+    position: absolute;
+    top: 62.93%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.gift {
+    width: 1.37rem;
+    height: 1.39rem;
+    position: absolute;
+    top: 71.31%;
+    right: 15.46%;
+}
+
+.word-rule {
+    width: 4.85rem;
+    height: 14.92%;
+    position: absolute;
+    bottom: 1.9%;
+    left: 3.2%;
+}
+
+.show_box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+
+.show_100 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    background: black;
+}
+
+.alert_gift_box {
+    width: 6.32rem;
+    height: 60.3%;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url(../img/Popup.png);
+    background-size: 100% 100%;
+}
+
+.get_coupon {
+    width: 4.09rem;
+    height: 0.64rem;
+    position: absolute;
+    bottom: 5.44%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    background-image: url(../img/button.png);
+    background-size: 100% 100%;
+}
+
+.coupon_img {
+    width: 4.5rem;
+    height: 32.6%;
+    position: absolute;
+    bottom: 19%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+
+}
+
+.ques_btn{
+    width:2.9rem ;
+    height: 0.78rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top:89.88%;
+    z-index: 6;    
+}
+.ques_one{
+    position: absolute;
+    padding-left: 0.28rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top:33.99%;
+    color:#000000; font-size: 0.30rem;width:100%;
+    text-align: left;
+    font-size: 0.28rem;
+}
+.ques_two{
+    position: absolute;
+    padding-left: 0.28rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top:53.39%;
+    color:#000000;font-size: 0.30rem;
+    font-size: 0.28rem;
+    text-align: left;
+}
+.ques_three{
+    position: absolute;
+    padding-left: 0.28rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top:67.33%;
+    color:#000000;font-size: 0.30rem;width:100%;
+    font-size: 0.28rem;
+    text-align: left;
+}
+.option{
+    margin-top: 2.6%;font-size: 0.26rem;
+    text-align: left;
+}
+.left{
+    position: absolute;
+    left: 0.28rem; 
+}
+.left2{
+    position: absolute;
+    left: 3.9rem; 
+}
+.left3{
+    position: absolute;
+    left: 0.28rem; 
+    top:206%; 
+}
+.right{
+    position: absolute;
+    left: 5.06rem; 
+}
+.middle{
+    position: absolute;
+    left: 2.66rem;    
+}
+.margin_top_32{
+    margin-top: 3.15%;
+}
+.que_one_f{
+    width: 6.94rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+.que_one{
+    box-sizing: border-box;
+    width: 20%;
+    /* display: inline-block; */
+    float: left;
+    border-top: 1px solid #770226;
+    border-bottom:  1px solid #770226;
+    background: #b8cc2f;
+}
+.emotion{
+    box-sizing: border-box;
+    width:100%;
+    height: 0.7rem;
+    border-bottom:  1px solid #770226; 
+    text-align: center; 
+    line-height: 0.7rem;
+    font-size: 0.24rem; 
+    font-weight: 600;
+}
+
+.emobot_tex b{
+    line-height:0.6rem; 
+    font-size: 0.24rem;
+}
+button{
+    outline:none;
+}
+.ques_btn img{
+    width: 100%;
+    height: 100%;
+}
+.que_one_f{
+    color: #ffffff;
+}
+
+

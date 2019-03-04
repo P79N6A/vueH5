@@ -1,0 +1,109 @@
+.main{
+    .page{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-color:#000;
+        height: 100vh;
+        width: 100vw;
+        .title{
+            width: 30vw;
+            position: absolute;
+            left: 5vw;
+            top: 4vh;
+        }
+        .bottom{
+            position: absolute;
+            top:74%;
+            height: 24%;
+            transform: translate(-50%, 0);
+        }
+        .myTable{
+            display:flex;
+            flex-direction: column !important;
+            justify-content: center;
+            align-items:center;
+            position: absolute;
+            width: 80vw;
+            top: 12%;
+            left:10%;
+            border:1px solid #94D600;
+            background-color:#2F2F2F;
+            overflow: hidden;
+            .x{
+                position: absolute;
+                top:6px;
+                right:6px;
+                width:30px;
+            }
+            .titles{
+                letter-spacing:6px;
+                width:100%;
+                color:#94D600;
+                font-size: 24px;
+                
+                text-align: center;
+                line-height: 40px;
+                margin-top:16px;
+                margin-bottom: 20px;
+                text-shadow: -4px 4px 2px #000;
+            }
+            .scroll{
+                width: 100%;
+                height: 45vh;
+                overflow-x: scroll;
+                padding-bottom: 20px;
+                .items{
+                    position: relative;
+                    left: 8%;
+                    width:84%;
+                    height:44px;
+                    background-color:#000;
+                    display: flex;
+                    margin-bottom: 12px;
+                    justify-content: space-around;
+                    align-items: center;
+                    border-radius: 2px;
+                    background-size: 100%;
+                    .show{
+                        margin-left: 6px;
+                        width: 26%;
+                        transform:scale(0.8);
+                    }
+                    .texts{
+                        margin-right: 10%;
+                        width: 40%;
+                        height: 100%;
+                        transform:scale(0.8);
+                        .prizefont{
+                            line-height: 22px;
+                            color: #fff;
+                            white-space:nowrap;
+                            font-size: 12px;
+                            font-weight: bold;
+                            letter-spacing:1px;
+                        }
+                    }
+                    .getit{
+                        width: 22%;
+                        margin-right: 6px;
+                    }
+                }
+            }
+            .des{
+                text-indent: 8px;
+                height: 20px;
+                line-height: 20px;
+                margin-bottom:30px;
+                font-size: 12px;
+                color: #fff;
+                width: 80%;
+                text-align: left;
+                text-shadow: -4px 4px 2px #000;
+            }
+            .button{
+                width: 60%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

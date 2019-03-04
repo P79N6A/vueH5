@@ -1,0 +1,75 @@
+html{
+	overflow-y: hidden;
+}
+
+#wrap{
+	background: #fe6555;
+	color:#fff;
+	padding: 2em 0;
+	box-sizing:border-box;
+	text-align: center;
+	height: 1000px;
+}
+#wrap2{
+	background: #f8f8f8;
+	color:#612f0e;
+	padding: 2em 0;
+	box-sizing:border-box;
+	text-align: center;
+}
+.title{
+	margin: 0 auto;
+	width: 100%;
+	overflow: hidden;
+	
+}
+
+.title p{
+	font-size: 22px;
+}
+
+.title h4{
+	font-size: 34px;
+}
+
+#last{
+	margin-top: 13%;
+}
+
+#last h4 span{
+	color: #ffec14;
+	padding: 0 4px;
+}
+#shake{
+	margin-top: 15%;
+	background: url(../img/shake-bg.png) no-repeat;
+	background-position: 50%;
+	background-size: auto 100%;
+}
+#float{
+	position: absolute;
+	background: url(../img/caidai.png) no-repeat;
+	background-size: 100% auto;
+	width: 100%;
+	height: 50%;
+	top: 20%;
+}
+
+#over{
+	margin-top: 15%;
+}
+
+#over img{
+	width: 40%;
+}
+
+.mt_15{
+	margin-top: 15%;
+}
+
+.btn{
+	padding: 5px 20px;
+	background: #f6d144;
+	font-size: 25px;
+	display: inline-block;
+}

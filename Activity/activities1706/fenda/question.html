@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>毕业季 未来精彩芬橙</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<body style="background:#f18a07; ">
+    <div class="wrap">
+        <img class="que-bg-img" src="img/que_bg_img.jpg">
+        <img class="logo-img" src="img/logo.png">
+        <div class="ques_one">
+            <span style="font-weight: 600;">1.你喜欢芬达炫扭瓶吗？</span>
+            <br/>
+            <div class="option">
+                <div class="left"><span class="radio span_1" style="width:0.32rem;height: 0.32rem; top:0;display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">超有趣！城会玩~</b></div>
+                <div class="left2"><span class="radio span_1" style="width:0.32rem;height: 0.32rem;top:0rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">还不错</b></div>
+                <div class="left3"><span class="radio span_1" style="width:0.32rem;height: 0.32rem;top:0.5rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">不喜欢！什么鬼~</b></div>
+            </div>
+        </div>
+        <div class="ques_two">
+            <span><b>2.你愿意购买芬达炫扭瓶吗？</b></span>
+            <br/>
+            <div class="option">
+                <div class="left"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">I do!比心~</b></div>
+                <div class="middle"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem; float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">看心情喽~</b></div>
+                <div class="right"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem; float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">高冷拒绝！</b></div>
+            </div>
+        </div>
+        <div class="ques_three">
+            <span style="font-weight: 600;">3.你愿意把芬达炫扭瓶推荐给你的朋友吗？</span>
+            <br/>
+            <div class="option">
+                <div class="left"><span class="radio span_3" style="width:0.32rem;height: 0.32rem; top:0;display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">当然!厉害了芬达炫扭瓶!</b></div>
+                <div class="left3"><span class="radio span_3" style="width:0.32rem;height: 0.32rem;top:0rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">我要认真考虑下......</b></div>
+                <div class="left4"><span class="radio span_3" style="width:0.32rem;height: 0.32rem;top:0.5rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">No!友谊的小船说翻就翻!</b></div>
+            </div>
+        </div>
+        <button class="ques_btn" style="background:none;border: none;z-index: 10;" type="button">
+            <img src="img/active.png" />
+        </button>
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <p class="coupon_title">免费赠饮券</p>
+                <p class="coupon_desc">芬达汽水1瓶</p>
+                <img class="coupon_img" src="img/fd.png">
+                <button class="get_coupon" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+</body>
+<script>
+var share_code_judge, activity_id;
+activity_id = ques_activity_id;
+share_code_judge = urlGet()['share_code'];
+
+var a, b, c, coupon_code;
+$('.radio').css({
+    "background": "url(img/n.png)",
+    "background-size": "100% 100%"
+})
+$('.span_1').click(function() {
+    a = $(this).siblings("b").html()
+    $(this).css({
+        "background": "url(img/y.png)",
+        "background-size": "100% 100%"
+    }).addClass('checkYes');
+    $('.span_1').not(this).css({
+        "background": "url(img/n.png)",
+        "background-size": "100% 100%"
+    }).removeClass('checkYes');
+})
+$('.span_2').click(function() {
+    b = $(this).siblings("b").html()
+    $(this).css({
+        "background": "url(img/y.png)",
+        "background-size": "100% 100%"
+    }).addClass('checkYes');
+    $('.span_2').not(this).css({
+        "background": "url(img/n.png)",
+        "background-size": "100% 100%"
+    }).removeClass('checkYes');
+})
+$('.span_3').click(function() {
+    c = $(this).siblings("b").html()
+    $(this).css({
+        "background": "url(img/y.png)",
+        "background-size": "100% 100%"
+    }).addClass('checkYes');
+    $('.span_3').not(this).css({
+        "background": "url(img/n.png)",
+        "background-size": "100% 100%"
+    }).removeClass('checkYes');
+})
+
+var no_repeat_share_code = urlGet()['share_code'] + "stop_back";
+$('.ques_btn').click(function() {
+    if ($('.checkYes').length != 3) {
+        my_alert("confirm_error", "提示", "请先填完问卷", "", ["知道啦"], ["green"], function() {});
+        return false
+    }
+    if (localStorage[no_repeat_share_code] == "ok") {
+        my_alert("confirm_error", "很遗憾", "您已经参与此次问卷活动", "", ["知道啦"], ["green"], function() {});
+        return false
+    }
+    $("#loadingToast").show();
+    var getData = {};
+    getData.openid = urlGet()['openid'];
+    getData.activity_id = activity_id;
+    getData.from_openid = urlGet()['from_openid'];
+    getData.from_share_code = urlGet()['share_code'];
+    getData.activity_item_id = ques_activity_item_id;
+    getData.buyer_get_info = a + "||" + b + "||" + c;
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "shakeFor/gift",
+        data: getData,
+        dataType: "json",
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+                if (data.return_msg == "超出每人每天参与次数，欢迎明天继续参与") {
+                    my_alert("confirm_error", "很遗憾", "超出每人每天参与次数", "欢迎明天继续参与", ["知道啦"], ["green"], function() {});
+                } else {
+                    my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function() {});
+                };
+            } else {
+                localStorage[no_repeat_share_code] = "ok";
+                $(".show_box").show();
+                coupon_code = data.data.coupon_code;
+            }
+        },
+        error: function() {
+            $("#loadingToast").hide();
+            my_alert("confirm_error", "加载失败", "网络出小差啦", "请再试试吧！", ["知道啦"], ["green"], function() {})
+        }
+    });
+
+    $(".get_coupon").click(function(event) {
+        window.location.href = coupon_bag_host + 'webcoupon.html' + "?coupon_code=" + coupon_code + "&openid=" + urlGet()['openid'];
+    });
+
+})
+wx.ready(function() {
+    wx.hideOptionMenu();
+});
+</script>
+
+</html>

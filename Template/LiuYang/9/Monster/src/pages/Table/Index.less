@@ -1,0 +1,94 @@
+.main{
+    .page{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-color:#000;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title{
+            width: 30vw;
+            position: absolute;
+            left: 5vw;
+            top: 6vw;
+        }
+        .bottom{
+            position: absolute;
+            top: 75%;
+            height: 24%;
+        }
+        .myTable{
+            display:flex;
+            flex-direction: column !important;
+            justify-content: center;
+            align-items:center;
+            position: relative;
+            width: 80vw;
+            top: 12%;
+            height: 63%;
+            border:1px solid #94D600;
+            background-color:#2F2F2F;
+            .titles{
+                letter-spacing:6px;
+                width:100%;
+                color:#94D600;
+                font-size: 20px;
+                text-align: center;
+                line-height: 40px;
+                margin-bottom: 10px;
+                text-shadow: -4px 4px 2px #000;
+            }
+            .items{
+                width:90%;
+                height:36px;
+                line-height: 36px;
+                .lable{
+                    color:#94D600;
+                    display: inline-block;
+                    text-shadow: -4px 4px 2px #000;
+                    width: 20%;
+                }
+                input{
+                    background-color:rgb(0, 0, 0);
+                    height:20px;
+                    line-height: 20px;
+                    border-style: none;
+                    outline: none;
+                    color: #fff;
+                    display: inline-block;
+                    outline: none;
+                    -webkit-user-select:auto !important;
+                    width: 65%;
+                }
+                .error{
+                    background-color:rgba(255, 1, 1, 0.5) !important;
+                    height:20px;
+                    line-height: 20px;
+                    border-style: none;
+                    outline: none;
+                    color: #fff !important;
+                    display: inline-block;
+                    outline: none;
+                    width: 65%;
+                }
+            }
+            .des{
+                text-indent: 2px;
+                height: 20px;
+                line-height: 20px;
+                margin-bottom:20px;
+                font-size: 12px;
+                color: #fff;
+                width: 80%;
+                text-align: left;
+                text-shadow: -4px 4px 2px #000;
+            }
+            .button{
+                width: 60%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

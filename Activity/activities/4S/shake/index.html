@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>相约三月天 幸福女人节</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/sweetalert2.css">
+ </head>
+ <body>
+ 	<div class="container">
+		<div class="btn-wrap">
+            <div id="lottery" style='height:100px'></div>
+		</div>
+ 	</div>
+ </body>
+<script src="js/zepto.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/sweetalert2.js"></script><script>
+$(function(){
+	var screenH = window.innerHeight;
+	$('.container').css({'height': screenH + "px",'overflow':'hidden'});
+
+	$('.btn-wrap').css({'bottom': realityH(256, 1136) + "px",'overflow':'hidden'});
+
+	function realityH(oriP, oriH) {
+	    var out;
+	    out = screenH*(oriP/oriH);
+	    return out;
+	}
+
+	var openid = urlGet()['openid'];
+	var activity_id = urlGet()['activity_id'];
+
+	// 点击抽奖
+	$('#lottery').click(function() {
+		$.ajax({
+			url: '/shakeForCard/activity/get_coupon',
+			dataType: 'json',
+			type: 'GET',
+			data: {
+				openid: openid,
+				activity_id: activity_id
+			},
+			beforeSend:function() {
+				$('#loadingToast').show();
+			},
+			success:function(res) {
+				$('#loadingToast').hide();
+				if(res.retCode==0){
+					location.href = "/shakeForCard/show_webcoupon?coupon_code="+res.coupon.coupon_code;
+				}else{
+					location.href = "over.html";
+				}
+			}
+		});
+	});
+
+
+});
+
+
+</script>
+</html>

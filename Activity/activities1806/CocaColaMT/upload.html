@@ -1,0 +1,155 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>可口可乐MT</title>
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link href="upload.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <!-- <script type="text/javascript" src="js/vconsole.js"></script> -->
+</head>
+<body>
+    <div class="wrap">
+        <img src="images/top.jpg" style="pointer-events: none;" class="image-top">
+        <img src="images/lipinzi.png" style="pointer-events: none;" alt="" class="lipin">
+        <div class="content">
+            <img src="images/logos.png" style="pointer-events: none;" class="image-log" alt="" />
+            <input type="text" class="buyer_name" style="font-size: 18pt;margin-top: -10%" placeholder="姓名">
+            <input type="text" class="buyer_phone" style="font-size: 18pt;"  placeholder="手机号码">
+            <div id="up">确认无误提交</div>
+            <div class="buyer_bottom"><br /></div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="alert" style="display:none;">
+        <img src="images/tanchuang.png" alt="" class="tanchang">
+    </div>
+</body>
+<script type="text/javascript">
+$('body,html').height(document.body.clientHeight);
+
+let this_url = window.location.href
+//let vConsole = new VConsole()
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+if ($.trim(this_url).substr(0, 9) == "http://ab") {
+    var acmp_host = 'http://ab.aikaka.com.cn/AcmpCola/AcmpApi/';
+    var coupon_bag_host = 'http://ab.aikaka.com.cn/AcmpCola/CouponBagV2/';
+} else if ($.trim(this_url).substr(0, 21) == "http://acmp.aikaka.co") {
+    var acmp_host = 'http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+} else {
+    var acmp_host = 'http://acmp.aikaka.cc/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.cc/cocacola/CouponBagV2/';
+}
+
+//上传小票照片
+$(function(){
+    // $('.alert').click(function(){
+    //     $('.alert').hide()
+    // })
+    $('.tanchang').click(function(){
+        WeixinJSBridge.call('closeWindow');
+        return false;
+    })
+    function warn(classes){
+        $('.' + classes).css({ "background-color": "#FBA9A7" });
+    }
+    //验证输入信息
+    $("input").blur(function(){
+
+        let vals = $(this).val()
+        if(!vals || vals.length > 16){
+            $(this).css({ "background-color": "#FBA9A7" })
+        }
+    })
+    $("input").focus(function(){
+        $(this).css({ "background-color": "#FFFFFF" })
+    })
+    $('#up').click(function(){
+        localStorage.removeItem('mt_href')
+        var sub_data = {};
+        sub_data.buyer_name = $('.buyer_name').val();
+        sub_data.buyer_phone = $('.buyer_phone').val();
+        var pass = 1;
+        if(!sub_data.buyer_name.length || sub_data.buyer_name.length > 16){
+            warn('buyer_name');
+            pass = 0;
+        }
+        if(!sub_data.buyer_phone.length || sub_data.buyer_phone.length > 16){
+            warn('buyer_phone');
+            pass = 0;
+        }
+        if(!pass){
+            return false;
+        }
+        sub_data.coupon_code = localStorage['mt_coupon_code'];
+        
+        //开始提交
+        $("#loadingToast").show();
+        $.ajax({
+            type: "POST",
+            url: acmp_host + 'prize/updateUserInfo',
+            data: sub_data,
+            dataType: "json",
+            success: function(data) {
+                if(data.return_code == 200){
+                    //快速核销掉
+                    $.ajax({
+                        type: "POST",
+                        url: acmp_host + 'consume/scrape',
+                        data: sub_data,
+                        dataType: "json",
+                        success: function(data) {
+                            $("#loadingToast").hide();
+                            if(data.return_code == 200){
+                                $('.alert').show()
+                            }else{
+                                localStorage.removeItem('mt_coupon_code')
+                                my_alert("confirm_error", "",data.return_msg,"",["知道啦"],["green"],function(){$('.alert').show()});
+                            }
+                        }
+                    });
+                    
+                }else{
+                    $("#loadingToast").hide()
+                    my_alert("confirm_error", "",data.return_msg,"",["知道啦"],["green"],function(){});
+                }
+            }
+        })
+    });
+});
+</script>
+
+</html>

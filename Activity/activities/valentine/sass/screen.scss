@@ -1,0 +1,24 @@
+@import "compass/reset", "variables", "compass", "global";
+
+body {
+    font-size: 14px; 
+}
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: url("../images/bg-v.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.container.over {
+    background: url("../images/over.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn-wrap{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+

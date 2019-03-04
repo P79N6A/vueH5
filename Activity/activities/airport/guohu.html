@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>联合双赢</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheet/global.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/a1023.css">
+	<style type="text/css">
+		.container{margin:0 auto;}
+		section{padding: 0;}
+		.item1{background:url("images/1.jpg") no-repeat}
+		.item4{background:url("images/4.png") no-repeat}
+		.item3{background:url("images/3.jpg") no-repeat}
+		.item2{background: #ff0000 url("images/2.png") no-repeat ;}
+	</style>	
+</head>
+<body>
+	<div class="container">
+		<section>
+			<a href="http://m.mercedes-benz.com.cn/;mbp_l=zh/">
+				<div class="item item1 addCard" data-cardid="pToLbjhLhW1OZfcHJpmYWWQIpunA">
+				</div>
+			</a>
+		</section>
+		<section>
+			<a href="http://m.airchina.com.cn/ac/?cid=BR-pinzhuan:20150706:SEM:BaiduBM:CHN:000005">
+				<div class="item item2 addCard" data-cardid="pToLbjhLhW1OZfcHJpmYWWQIpunA">
+				</div>
+			</a>
+		</section>
+		<section>
+			<a href="images/winning/winning/winning.html">
+				<div class="item item3 addCard" data-cardid="pToLbjhLhW1OZfcHJpmYWWQIpunA">
+				</div>
+			</a>
+		</section>
+		<section>
+			<a href="http://b2b.bjatb.com/Customize/Login.aspx">
+				<div class="item item4 addCard" data-cardid="pToLbjhLhW1OZfcHJpmYWWQIpunA">
+				</div>
+			</a>
+		</section>
+		
+
+	</div>
+
+<script src="js/zepto.min.js"></script>
+<script>
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
+$('.item').css({'height':screenHeight*.25 + 'px'});
+if( screenHeight > 600) {
+	$('.btn-get').css({'bottom':screenWidth*25/70*0.08 + 'px'});
+}else {
+	$('.btn-get').css({'bottom':screenWidth*25/70*0.03 + 'px'});
+}
+
+</script>
+</body>
+</html>

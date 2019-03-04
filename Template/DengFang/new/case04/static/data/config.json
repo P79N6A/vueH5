@@ -1,0 +1,29 @@
+{
+  "images": {
+    "bg_image": "static/data/images/bg.png",
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "type": "intact_eggs",
+        "prize_img": "static/data/images/intact.png"
+      },
+      {
+        "type": "chapped_eggs",
+        "prize_img": "static/data/images/chapped.png"
+      }
+    ],
+    "prize_draw": "static/data/images/mallet.png"
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次抽奖机会"
+  },
+  "music": "static/data/test.mp3",
+  "host":"http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

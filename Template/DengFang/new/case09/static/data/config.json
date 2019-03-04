@@ -1,0 +1,23 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "home_bg_image": "./static/data/images/home-bg.png",
+    "prize_draw": "./static/data/images/prize-draw.png",
+    "friend_bg_image": "static/data/images/friend-bg.png",
+    
+    "share_image": "./static/data/images/prize01.png",
+    "default_image": "./static/data/images/default.png"
+  },
+  "tooltips": {
+    "prize_draw_number": "还差{n}位小伙伴"
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

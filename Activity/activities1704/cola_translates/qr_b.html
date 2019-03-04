@@ -1,0 +1,96 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后畅爽就喝可口可乐</title>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/weui.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<body>
+    <div class="wrap" style="background-image: url(img/bg.jpg)">
+        <img src="img/logo.png" class="logo">
+        <div class="text_qr">
+            长按识别二维码
+            <br> 关注公众号
+        </div>
+        <img src="img/qr_img_b.png" class="title">
+        <img src="img/cola.png" class="sub_logo">
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var this_url = window.location.href;
+var openid, third_party_openid, activity_id, entry, from_openid;
+from_openid = urlGet()['from_openid'];
+openid = urlGet()['openid'];
+activity_id = activity_id_b;
+third_party_openid = urlGet()['third_party_openid'];
+entry = urlGet()['entry'];
+if (typeof(openid) == "undefined") {
+    var _url = "http://ab.aikaka.com.cn/PublicService/Weixin/oauth/option?callback_url=" + encodeURIComponent(this_url);
+    window.location.href = _url;
+} else {
+    if (typeof(third_party_openid) == "undefined") {
+        var new_url = "http://ab.aikaka.com.cn/PublicService/Weixin/oauth/base?app_id=wxbd1b32f7dd733666&callback_url=" + encodeURIComponent(this_url);
+        window.location.href = new_url;
+    } else {
+        document.write("<script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'>" + "<" + "/script>");
+        // 统计是从哪里参与的活动
+        var originData = {};
+        originData.akk_openid = openid;
+        originData.activity_id = activity_id;
+        if (entry) {
+            originData.entry = entry;
+        } else {
+            originData.entry = 'UNKNOWN';
+        }
+        if (from_openid) {
+            originData.from_openid = from_openid;
+        }
+        originData.store_name = "B";
+        $.ajax({
+            type: "POST",
+            url: acmp_host + "shakeFor/join",
+            async: false,
+            dataType: "json",
+            data: originData,
+            success: function(data) {}
+        });
+    }
+}
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+</script>
+
+</html>

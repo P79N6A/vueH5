@@ -1,0 +1,113 @@
+@import "compass/reset", "variables", "compass", "global";
+
+body {
+    font-size: 14px; 
+}
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header {
+    height: 40px;
+    background: #399eea;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.sec-1 {
+    background: url("../images/img1.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px 15px;
+    color: #fff;
+}
+
+.sec-3 {
+    background: url("../images/img2.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px 15px;
+}
+
+.sec-4 {
+    background: url("../images/img3.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px 15px;
+    width: 57%;
+    float: left;
+}
+
+.sec-5 {
+    background: url("../images/img4.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px 15px;
+    width: 40%;
+    float: right;
+}
+
+.sec-6 {
+    background: url("../images/img5.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px 15px;
+}
+
+.sec-2 {
+    height: 50px;
+    padding: 5px 15px;
+    background: #fffbd9;
+    line-height: 20px;
+}
+
+footer {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.r-link {
+    float: right;
+    font-size: 12px;
+}
+
+.title-div {
+    position: absolute;
+    left: 0;
+    bottom:0;
+    color: #fff;
+    background: rgba(0,0,0,.7);
+    padding: 10px;
+    width: 100%; 
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .sub-title {
+        font-size: 12px;
+    }
+    a {
+        color: #fff;
+    }
+}
+
+.sec {
+    position: relative;
+}
+
+.map {
+    position: relative;
+    top: 10px;
+    background: url("../images/map.png") no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-size: 15px auto;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>德国高仪 “百万让利”</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+</head>
+<!--
+<div style="width: 78%;height:28pt;position: absolute;bottom: 8%;left: 11%;z-index: 3;border-radius: 2pt 2pt 2pt 2pt;
+    border: 1pt solid white;font-size: 16pt;text-align: center;color:white;" class="close">关闭</div>
+-->
+<img src="images/4qrbj.png" style="width: 68%;height:auto;position: absolute;bottom: 15%;right:6%;z-index: 3" class="click" />
+<div style="position: fixed;bottom: 5%;z-index: 2" class="close">
+    <img src="images/3btn.png" style="width: 70%;margin-left: 15%">
+</div>
+<body>
+    <div class="wrap3">
+        <div style="margin-top: 15%;color: white;width: 100%">
+            <p class="center xl">恭喜您获得VIP团购折扣返现资格！</p>
+        </div>
+        <div style="margin-left: 10%;color: white;width: 85%">
+            <p style="margin-top: 3%"></p>
+            <p style="margin-top: 3%"></p>
+            <p class="xl">当前该活动总户数为：<i class="user"></i> 户</p>
+            <p class="xl">当前返现折扣为：<i class="discount"></i></p>
+            <p style="margin-top: 3%"></p>
+            <p class="xl">您当前返现金额为: <i class="amount" style="font-size: 20pt;color: #dda460"></i>元</p>
+            <p style="margin-top: 3%"></p>
+            <p class="xl">我们将在团购结束后向您发出返现邀请函 敬请关注！</p>
+            <p style="margin-top: 3%"></p>
+            <table class="bj" style="display: none">
+                <tr>
+                    <td width="30%" valign="top">返现地点：</td>
+                    <td width="70%">北京高仪金源店</td>
+                </tr>
+                <tr>
+                    <td valign="top">门店地址：</td>
+                    <td>海淀区远大路1号居然之家一层洁具厅DS25-1-1-011A</td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td>010-88864023</td>
+                </tr>
+                <tr>
+                    <td>返现时间：</td>
+                    <td>2018年4月7日</td>
+                </tr>
+            </table>
+            <table class="dl" style="display: none">
+                <tr>
+                    <td width="30%" valign="top">返现地点：</td>
+                    <td width="70%">大连大世界家居店</td>
+                </tr>
+                <tr>
+                    <td valign="top">门店地址：</td>
+                    <td>大连市沙河口区五一广场4号家居大世界</td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td>0411-39916599</td>
+                </tr>
+                <tr>
+                    <td>返现时间：</td>
+                    <td>2018年4月7日</td>
+                </tr>
+            </table>
+            <table class="sy" style="display: none">
+                <tr>
+                    <td width="30%" valign="top">返现地点：</td>
+                    <td width="70%">沈阳铁西红星美凯龙高仪店</td>
+                </tr>
+                <tr>
+                    <td valign="top">门店地址：</td>
+                    <td>沈阳市铁西区北二东路35号红星美凯龙一层</td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td>024-85637499</td>
+                </tr>
+                <tr>
+                    <td>返现时间：</td>
+                    <td>2018年4月7日</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+
+    <div class="share_box">
+        <img src="images/show_share.png">
+    </div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('.close').click(function(){
+            // wx.closeWindow();
+            $(".share_box").show();
+        });
+        $(".share_box").click(function(){
+            // wx.closeWindow();
+            $(".share_box").hide();
+        });
+    });
+    //地点
+    var city = sessionStorage['city'];
+    $('.'+city).show();
+
+    //获取户数
+    var openid = sessionStorage['openid'];
+    var city   = sessionStorage['city'];
+    var post_data = {
+        openid:openid,
+        city:city
+    };
+    $.ajax({
+        type: "POST",
+        url: acmp_host + 'shakeFor/groupBuyStatus',
+        data: post_data,
+        dataType: "json",
+        success: function(data) {
+            var count = data.data.count;
+            var amount = data.data.amount;
+            if(city != 'sy'){
+                if(count < 200){
+                    discount = 10;
+                }else if(count < 700){
+                    discount = 9.5;
+                }else if(count < 1000){
+                    discount = 9;
+                }else if(count < 1500){
+                    discount = 8.5;
+                }else{
+                    discount = 8;
+                }
+            }else{
+                if(count < 500){
+                    discount = 10;
+                }else if(count < 1000){
+                    discount = 9.5;
+                }else if(count < 1500){
+                    discount = 9;
+                }else{
+                    discount = 8.5;
+                }
+            }
+
+            if(discount == 10){
+                $('.discount').html('无折扣');
+            }else{
+                $('.discount').html(discount+'折');
+            }
+            amount = (amount * (10 - discount) / 10).toFixed(2);
+            $('.amount').html(amount);
+            $('.user').html(count);
+        }
+    })
+    
+</script>
+
+</html>

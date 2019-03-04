@@ -1,0 +1,148 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>德国高仪 “百万让利”</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+</head>
+<img src="images/logo.png" style="width: 35%;height:auto;position: absolute;top: 3%;right: 5%;z-index: 2" />
+<img src="images/1bj.png" style="width: 80%;height:auto;position: absolute;top: 26%;left: 10%;z-index: 2;display: none" class="city" />
+<img src="images/1btn.png" style="width: 8%;height:auto;position: absolute;bottom: 3%;left: 46%;z-index: 3" class="click" />
+<div style="width: 90%;height:auto;position: absolute;top: 38%;left: 5%;text-align: center;z-index: 4">
+    <p class="s" style="color: white">当前总户数为:<i class="user xl" style="color: #dda460"></i>，当前返现折扣为:<i class="discount xl" style="color: #dda460"></i></p>
+</div>
+<body>
+    <div class="wrap1">
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <button class="get_coupon" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    //地点
+    var city = urlGet()['city'];
+    if(city == 'sy'){
+        $('.city').attr('src', 'images/1sy.png');
+    }else if(city == 'dl'){
+        $('.city').attr('src', 'images/1dl.png');
+    }
+    $('.city').show();
+    //事件
+    $(function(){
+        $("body").on("touchstart", function(e) {
+            // 判断默认行为是否可以被禁用
+            if (e.cancelable) {
+                // 判断默认行为是否已经被禁用
+                if (!e.defaultPrevented) {
+                    e.preventDefault();
+                }
+            }   
+            startX = e.originalEvent.changedTouches[0].pageX,
+            startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").on('touchend', function(e){
+            moveEndY = e.originalEvent.changedTouches[0].pageY;
+            Y = moveEndY - startY;
+            if ( Y < 0 ) {
+                from = urlGet()['s'];
+                if(from == 'share'){
+                    var jump = '4.html';
+                }else{
+                    var jump = '2.html';
+                }
+                window.location.href = jump;
+            }
+        });
+
+        var openid = sessionStorage['openid'];
+        var city   = sessionStorage['city'];
+        var post_data = {
+            openid:openid,
+            city:city
+        };
+        $.ajax({
+            type: "POST",
+            url: acmp_host + 'shakeFor/groupBuyStatus',
+            data: post_data,
+            dataType: "json",
+            success: function(data) {
+                var count = data.data.count;
+                var amount = data.data.amount;
+                if(city != 'sy'){
+                    if(count < 200){
+                        discount = 10;
+                    }else if(count < 700){
+                        discount = 9.5;
+                    }else if(count < 1000){
+                        discount = 9;
+                    }else if(count < 1500){
+                        discount = 8.5;
+                    }else{
+                        discount = 8;
+                    }
+                }else{
+                    if(count < 500){
+                        discount = 10;
+                    }else if(count < 1000){
+                        discount = 9.5;
+                    }else if(count < 1500){
+                        discount = 9;
+                    }else{
+                        discount = 8.5;
+                    }
+                }
+
+                if(discount == 10){
+                    $('.discount').html('无折扣');
+                }else{
+                    $('.discount').html(discount+'折');
+                }
+                if(amount < 5000){
+                    amount = '0.00';
+                }else{
+                    amount = (amount * (10 - discount) / 10).toFixed(2);
+                }
+                $('.amount').html(amount);
+                $('.user').html(count);
+            }
+        })
+    });
+    
+</script>
+
+</html>

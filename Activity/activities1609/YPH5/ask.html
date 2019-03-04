@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>雅培全安素，健康小问答</title>
+<link rel="stylesheet" href="css/animate.min.css" />
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+</head>
+<body class="bg">
+<img class="logo" src="images/logo.png">
+
+<div class="ask">
+<dl class="show" style="display:block">
+<dt><span>1.</span><p>什么是人体生命活动中必需的重要物质，
+有助于组织的形成和生长？</p></dt>
+<dd>
+<span><label><input type="radio" name="one"  value="蛋白质"> A. 蛋白质 </label></span>
+<span><label><input type="radio" name="one"  value="氨基酸"> B. 氨基酸</label></span>
+<span><label><input type="radio" name="one"  value="维生素"> C. 维生素</label></span>
+<span><label><input type="radio" name="one"  value="脂肪"> D. 脂肪</label></span>
+</dd>
+</dl>
+
+<dl>
+<dt><span>2.</span><p>哪两种脂肪酸是必需的脂肪酸?</p></dt>
+<dd>
+<span><label><input type="radio" name="two"  value="硬脂酸"> A. 硬脂酸 </label></span>
+<span><label><input type="radio" name="two"  value="软油酸"> B. 软油酸 </label></span>
+<span><label><input type="radio" name="two"  value="亚油酸及α-亚麻酸"> C. 亚油酸及α-亚麻酸 </label></span>
+<span><label><input type="radio" name="two"  value="软脂酸"> D. 软脂酸 </label></span>
+</dd>
+</dl>
+
+<dl>
+<dt><span>3.</span><p>促进钙吸收的维生素是哪一种？</p></dt>
+<dd>
+<span><label><input type="radio" name="three"  value="维生素A"> A. 维生素A  </label></span>
+<span><label><input type="radio" name="three"  value="维生素B"> B. 维生素B </label></span>
+<span><label><input type="radio" name="three"  value="维生素C"> C. 维生素C </label></span>
+<span><label><input type="radio" name="three"  value="维生素D"> D. 维生素D </label></span>
+</dd>
+</dl>
+ 
+<dl>
+<dt><span>4.</span><p>帮助蛋白质代谢和利用的维生素是哪一种？</p></dt>
+<dd>
+<span><label><input type="radio" name="four"  value="维生素D"> A. 维生素D  </label></span>
+<span><label><input type="radio" name="four"  value="维生素B6"> B. 维生素B6 </label></span>
+<span><label><input type="radio" name="four"  value="维生素C"> C. 维生素C </label></span>
+<span><label><input type="radio" name="four"  value="维生素A"> D. 维生素A </label></span>
+</dd>
+</dl>
+
+</div>
+
+<!--<a class="btn nextBtn" href="javascript:void(0)" target="_self">下一题</a> -->
+
+<div class="h15"></div>
+<div class="h15"></div>
+<img class="bottom" src="images/bottom.png">
+
+
+
+<!-- 请选择答案  -->
+<div class="FixBg none"></div>
+<section class="FixHint choose none">
+<img src="images/right.png">
+<div><strong>请选择答案</strong></div>
+</section>
+<!-- 回答正确  -->
+<section class="FixHint correct none">
+<img src="images/right.png">
+<div><strong>回答正确</strong> </div>
+</section>
+
+<!-- 回答正确  -->
+<section class="FixHint error none">
+<img src="images/right.png">
+<div><strong>回答错误</strong> <span>正确答案：<b>A. 蛋白质</b></span></div>
+</section>
+
+<!-- 回答正确  -->
+<section class="FixHint allright none">
+<img src="images/right.png">
+<div><strong>恭喜你，完成了</strong> <span>雅培全安素健康小问答的所有问题</span></div>
+</section>
+
+
+<script>
+	 var Ha=$(".ask dl").outerHeight();
+	 $(".ask").css("height",Ha+"px");
+var asktrue = ["A","C","D","B"]//模拟正确答案
+$(function(){
+	$("input").click(function(){
+		var index = $(".ask dl").index($("dl.show")[0]);//获取当前显示题号
+		var checked = $("dl.show input:checked")//选中的文本框
+		var True 	= asktrue[index].charCodeAt()-65;//获取正确答案对应的数字
+		var allask  = $(".ask dl");//所有问题
+		console.log(index);
+		if(checked.length>0){//选中文本框
+			if($("dl.show input").index(checked) == True){//答案 正确
+					if(allask.length > index + 1){
+						allask.removeClass("show").stop().fadeOut(300,function(){
+							allask.eq( index + 1).addClass("show").stop().fadeIn(0);
+							})
+ 						if($(".ask dl:last").hasClass("show")){
+							  $(".nextBtn").text("完成")
+						}
+					}else{
+						$(".FixHint.allright,.FixBg").fadeIn(300,function(){
+							setTimeout("window.location='animation.html'", 2000 )
+ 						}) 
+					}
+			}else{//答案 错误
+				 $(".FixHint.error b").html($("dl.show span").eq(True+1).text());
+				 $(".FixHint.error,.FixBg").stop().fadeIn(300).delay(1000).fadeOut(500);
+					
+			}
+		}else{//未选中文本框
+			$(".FixHint.choose,.FixBg").fadeIn(300).delay(1500).fadeOut(300);
+		}
+		
+		
+	})
+
+	
+})
+</script>
+
+
+
+
+</body>
+</html>

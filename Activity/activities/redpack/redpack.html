@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<title>红包</title>
+	<style>
+		*{margin: 0; padding: 0;}
+		.container{
+			background: url("bg.png") no-repeat;
+			-webkit-background-size: 100% 100%;
+			background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+</body>
+<script src="jquery-2.1.4.min.js"></script>
+<script src="http://zb.weixin.qq.com/app/shakehb/BeaconShakehbJsBridge.js"></script>
+<script>
+	$(function() {
+		$('.container').css({'height': $(window).height()+'px'});
+		$(".container").click(function(){
+			$.getJSON('/PublicService/Weixin/shakeAround/lottery/lotteryExt',{
+				lottery_id: urlGet()['lottery_id'],
+				openid: urlGet()['openid']
+			}, function(res) {
+				console.log(res.jumpHongbao);
+				BeaconShakehbJsBridge.ready(function(){
+				//跳转到抽红包页面
+				     BeaconShakehbJsBridge.invoke('jumpHongbao',{
+					     lottery_id: res.jumpHongbao.lottery_id,
+					     noncestr: res.jumpHongbao.noncestr,
+					     openid: res.jumpHongbao.openid,
+					     sign: res.jumpHongbao.sign
+					});
+				});
+			});
+		});
+	});
+
+	/**
+	* url get parameters
+	* @public
+	* @return array()
+	*/
+	function urlGet()
+	{
+	    var aQuery = window.location.href.split("?");//取得Get参数
+	    var aGET = new Array();
+	    if(aQuery.length > 1)
+	    {
+	        var aBuf = aQuery[1].split("&");
+	        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+	        {
+	            var aTmp = aBuf[i].split("=");//分离key与Value
+	            aGET[aTmp[0]] = aTmp[1];
+	        }
+	    }
+	    return aGET;
+	}
+</script>
+</html>

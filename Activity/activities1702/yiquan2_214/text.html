@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>独怡无二 浪漫泉城</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/weui.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+</head>
+
+<body>
+    <div class="wrap3">
+        <img class="logo" src="img/logo.png">
+        <img class="logo_next" src="img/title.png">
+        <div class="tex_g"><b>提交成功！</b></div>
+        <div class="tex_d">请您在<b>2月14日19:00-19:20</b>至<b>悠唐博纳影城找怡泉英式管家</b>兑换观影券,兑换凭证为您填写的联系方式。</div>
+        <div class="tex_e">地址 : 北京市朝阳区朝阳门外大街三丰北里 2 号楼悠唐购物中心地下一层</div>
+        <div class="tex_f"><b>温馨提示:请注意截图保存此页面</b></div>
+        <div class="tex_box">
+            <div>您提交的观影人信息为</div>
+            <div class="p"><b>我的名字&nbsp;:&nbsp;</b><span class="myname1"></span></div>
+            <div class="p"><b>我的手机号码&nbsp;:&nbsp;</b><span class="myphone1"></span></div>
+            <div class="p"><b>Ta的名字&nbsp;:&nbsp;</b><span class="Taname1"></span></div>
+            <div class="p"><b>Ta的名字&nbsp;:&nbsp;</b><span class="Taphone1"></span></div>
+        </div>
+        <img class="buttom_img" src="img/pitcher.png">
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/common.js"></script>   
+    <script type="text/javascript" src="js/text.js"></script>
+</body>
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = '怡泉确认页';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+
+</html>

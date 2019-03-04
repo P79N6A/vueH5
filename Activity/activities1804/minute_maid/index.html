@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" /><meta charset=utf-8><title>美汁源新一代果粒</title><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0"><link rel=stylesheet href=static/swiper/swiper.css><link rel=stylesheet href=2nd/css/weui.css><script src=http://libs.baidu.com/jquery/2.1.4/jquery.min.js></script><script src=static/swiper/swiper.js></script><link href=./static/css/app.499b79b0fb3aad7c78a7a804d81e62e5.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.8e29fff85ccc8b7b25b4.js></script><script type=text/javascript src=./static/js/vendor.11101f56267eef3d2387.js></script><script type=text/javascript src=./static/js/app.489f67df45d00f31291e.js></script><script type=text/javascript src=./static/js/common.js></script><script type=text/javascript src=./static/js/getPrize.js></script><script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script><script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'></script>
+<div id="loadingToast" class="weui_loading_toast" style="display:none;font-size:10pt;">
+    <div class="weui_mask_transparent"></div>
+    <div class="weui_toast">
+        <div class="weui_loading">
+            <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+            <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+        </div>
+        <p class="weui_toast_content">加载中</p>
+    </div>
+</div>
+<script type="text/javascript">
+    $(window).load(function(){
+        
+        sessionStorage["activity_id"] = urlGet()['activity_id'];
+        sessionStorage["openid"] = urlGet()['openid'];
+        sessionStorage["store_code"] = urlGet()['store_code'];
+        sessionStorage["from"] = urlGet()['from'];
+        sessionStorage["from_openid"] = urlGet()['from_openid'];
+        sessionStorage["activity_item_id"] = 1660;
+
+        //安放图标
+        var logo = '';
+        logo += '<img src="./images/logo.png" style="position:absolute;left:3%;top:3%;width:20%;height:auto;z-index:2"/>';
+        logo += '<img src="./images/biaoti.png" style="position:absolute;left:8%;top:15%;width:84%;height:auto;z-index:2"/>';
+        logo += '<img src="./images/anniu.png" style="position:absolute;left:25%;top:33%;width:50%;height:auto;z-index:2"/ class="getPrize">';
+        $('.activity-bg').append(logo);
+    });
+</script></body></html>

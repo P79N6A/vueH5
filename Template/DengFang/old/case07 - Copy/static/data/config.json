@@ -1,0 +1,68 @@
+{
+  "images": {
+    "bg_image": "static/data/images/test1.png",
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "bg_image_style": {
+      "w": 2586,
+      "h": 1206
+    },
+    "bg_image_box": [
+      "static/data/images/zwj/p1.png",
+      "static/data/images/zwj/p2.png",
+      "static/data/images/zwj/p3.png",
+      "static/data/images/zwj/p4.png",
+      "static/data/images/zwj/p5.png",
+      "static/data/images/zwj/p6.png",
+      "static/data/images/zwj/p7.png",
+      "static/data/images/zwj/p8.png",
+      "static/data/images/zwj/p9.png",
+      "static/data/images/zwj/p10.png",
+      "static/data/images/zwj/p11.png",
+      "static/data/images/zwj/p12.png",
+      "static/data/images/zwj/p13.png",
+      "static/data/images/zwj/p14.png",
+      "static/data/images/zwj/p15.png",
+      "static/data/images/zwj/p16.png",
+      "static/data/images/zwj/p17.png",
+      "static/data/images/zwj/p18.png",
+      "static/data/images/zwj/p19.png",
+      "static/data/images/zwj/p20.png"
+    ],
+    "bubble_img_box": [
+      {
+        "item_id": 1,
+        "x": 1,
+        "y": -400,
+        "link": "./static/data/images/bubble01.png"
+      },
+      {
+        "item_id": 2,
+        "x": 5,
+        "y": -251,
+        "link": "./static/data/images/bubble02.png"
+      },
+      {
+        "item_id": 3,
+        "x": 12,
+        "y": 200,
+        "link": "./static/data/images/bubble01.png"
+      },
+      {
+        "item_id": 4,
+        "x": 14,
+        "y": 300,
+        "link": "./static/data/images/bubble01.png"
+      }
+    ]
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/",
+  "title":"xxxxxxx"
+}
+
+
+
+
+

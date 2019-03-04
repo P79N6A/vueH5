@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/screen.css">
+</head>
+<body>
+	<div class="container">
+		<div id="card">
+			<img class="bg-img" src="img/no_prize.jpg">
+			<button class="btn-common" id="reover"></button>
+		</div>
+	</div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script src="js/card.js"></script>
+<script src="js/jweixin-1.0.0.js"></script>
+<script src="js/wxjs.js"></script>
+<script>
+	$("#reover").click(function() {
+		window.location.href = "chaoshifa?entry=retry";
+	});
+</script>
+</html>

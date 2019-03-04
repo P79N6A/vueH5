@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>咔咔惠</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/sweetalert2.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/slick.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F5fc136fe3a156c411e21f2b7a57f326"></script>
+	<script src="js/openid_judge.js"></script>
+</head>
+<body>
+	<div class="container">
+		<section>
+			<div class="banner">
+				<div id="city"><span>&nbsp;&nbsp;&nbsp;</span><i class="bp1"></i></div>
+				<div id="detail"><i class="bp2"></i><span>位置获取中...</span></div>
+				<a href="feedback.html">
+					<div class="feedback"><span>反馈</span><i class="bp3"></i> </div>
+				</a>
+			</div>
+			<img class="height-25" src="images/csf/top.jpg">
+		</section>
+		
+		<section class="height-25 mt10">
+			<!-- 轮播开始 -->
+			<div class="roll">
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pb1BQuHP-JOhUm9p4xrHprZEr9pI" src="images/csf/roll1.jpg">
+					</div>
+				</div> 
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pb1BQuOrE0aLR7o_SfKZK2HX_1NI" src="images/csf/roll2.jpg">
+					</div>
+				</div>
+				<div class="roll-item">
+					<div >
+						<img class="height-25 addCard" data-cardid="pb1BQuFlrISD-cFQbaPfRi3D_920" src="images/csf/roll3.jpg">
+					</div>
+				</div>
+			</div>
+			<!-- 轮播结束 -->
+		</section>
+
+		<div class="bottom-div">
+			<div class="tags-wrap">
+				<div class="tags">
+					<i></i><span>精品推荐</span>
+				</div>
+				<div class="triangle"></div>
+			</div>
+			
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuE97wLuxZx9pz1HVSXQxMVs" src="images/csf/img1.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuIhOyRVGxMYHcixi2KBtmnk" src="images/csf/img2.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuN1d46cud6DI9jLx3D1PCb0" src="images/csf/img3.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuPiCzUbrHO1HEf3kuneYRRc" src="images/csf/img4.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuH2T9HwbWwYvJWtWrUOMZ_w" src="images/csf/img5.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuHP-JOhUm9p4xrHprZEr9pI" src="images/csf/roll1.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuOrE0aLR7o_SfKZK2HX_1NI" src="images/csf/roll2.jpg">
+			</section>
+			<section>
+				<img class="recommond-img addCard" data-cardid="pb1BQuFlrISD-cFQbaPfRi3D_920" src="images/csf/roll3.jpg">
+			</section>
+		</div>
+		
+		<footer>
+			<div class="row footer">
+				<!-- <span class="logo"></span> -->
+				<a href="http://viewer.maka.im/k/HP2CIVRN?DSCKID=a0e7626e-bac7-43cc-a888-d736a4ce9d92&DSTIMESTAMP=1445492954360">北京爱咔咔信息技术有限公司</a>
+			</div>
+		</footer>	
+	</div>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/global.js"></script>
+<script src="../js/add_card_csf.js"></script>
+<script>
+	//滚动插件
+	$('.roll').slick({
+		autoplay: true,
+		mobileFirst: true,
+		arrows: false,
+		dots: true,
+		autoplaySpeed: 2000
+	});
+
+	//显示位置信息
+	$('.banner #detail span').html(showLocation('city','detail'));
+</script>
+</html>

@@ -1,0 +1,47 @@
+{
+    "images": {
+        "music_image": "static/data/images/music.png",
+        "silk_bag_image": "http://ab.aikaka.com.cn/AcmpBeta/TemplateManage/uploads_temp/img/2018-03-22/5ab34438e359b1521697848.png",
+        "illustrate_image": "http://ab.aikaka.com.cn/AcmpBeta/TemplateManage/uploads_temp/img/2018-03-22/5ab34434629441521697844.png",
+        "activity_bg": "https://download.aikaka.com.cn/4b5e33f3673f11618c0214ce87aff0c4",
+        "prize_img_box": [
+
+        ]
+    },
+    "dialog_list": [
+        {
+            "type": "default",
+            "content": "六儿，不想下楼，给我带二食堂的红烧排骨饭，要大份。"
+        },
+        {
+            "type": "user",
+            "content": "OK"
+        },
+        {
+            "type": "default",
+            "content": "六儿，其实我有句话一直想告诉你，但我不确定能不能说"
+        },
+        {
+            "type": "user",
+            "content": "老大，别吓我……"
+        },
+        {
+            "type": "default",
+            "content": "你真的想听？"
+        },
+        {
+            "type": "user",
+            "content": "说吧"
+        },
+        {
+            "type": "default",
+            "content": "加瓶饮料。你请。"
+        },
+        {
+            "type": "user",
+            "content": "😳😳😳"
+        }
+    ],
+    "music": "./static/data/test.mp3",
+    "host": "http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/"
+}

@@ -1,0 +1,135 @@
+﻿body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body{color:#333; font-size:12px;font-family:"微软雅黑";overflow: hidden;
+}
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+input{ font-size:12px;}
+a{ text-decoration:none; color:#000;}
+a:hover{color:#c00; text-decoration:none;}
+.clear{clear:both;}
+html,body{
+	width: 100%;
+	height: 100%;
+	font-size: 50px;
+}
+body{
+	overflow: hidden; 
+}
+img{
+	width: 100%;
+}
+button{
+	outline: none;
+}
+.wrap{
+	box-sizing: border-box;
+	position: relative;
+	width: 7.5rem;
+	height: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	background-size: 100% 100%;
+	background-image:url(../img/bg_img.jpg); 
+}
+.limit_tex{
+    width: 6rem;
+	height: 6.14%;
+	position: absolute;
+	top: 31.34%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+    font-size: 0.28rem;
+    line-height: 0.74rem;
+    text-align: center;
+    color: #ffffff;
+}
+.btn_{
+	width: 4.17rem;
+	height: 8.62%;
+	position: absolute;
+	top: 69.65%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	border:none;
+	background: none;
+	background-image: url(../img/btn_bg.png);
+	background-size: 100% 100%; 
+}
+.logo-and-title{
+	width: 6.67rem;
+	height: 27.94%;
+	position: absolute;
+	top:3.15%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.gift{
+	width: 4.17rem;
+	height: 34.58%;
+	position: absolute;
+	top:37.23%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.word-and-drink{
+	width: 6.53rem;
+	height: 18.57%;
+	position: absolute;
+	bottom: 1%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.show_box{
+	width:100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 999;display:none;
+}
+.show_100{
+	width:100%;height: 100%;position: fixed;left: 0;top: 0;opacity: 0.5;
+	background-image: url(../img/mask.png);
+	background-size: 100% 100%; 
+
+}
+.alert_gift_box{
+  width: 6.32rem;
+  height: 65.42%;
+  position: absolute;
+  top: 7.96%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-image: url(../img/Popup.png);
+	background-size: 100% 100%; 
+}
+.get_coupon{
+	width: 3.53rem;
+	height: 0.66rem;
+	position: absolute;
+	bottom: 12.6%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	border:none;
+	background: none;
+	background-image: url(../img/button.png);
+	background-size: 100% 100%; 
+}
+.coupon_img{
+	width: 4.10rem;
+	height: 25.10%;
+	position: absolute;
+	bottom: 24%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	border:none;
+}
+#loadingToast{
+	font-size: 12px;
+}
+
+
+

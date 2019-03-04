@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Markdown 文档小工具</title>
+</head>
+<style type="text/css">
+html{
+    height: 100%;
+}
+body{
+    height: 90%;
+}
+div{
+    width: 49%;
+    border:1px solid black;
+    float: left;
+    height: 100%;
+}
+input{
+    width: 70%;
+}
+table{
+    width: 100%
+}
+table td{
+    border:1px solid #F00;
+    width: 25%;
+}
+table input{
+    width: 90%
+}
+textarea{
+    width: 80%;
+    height:100px;
+}
+p{
+    white-space:nowrap;
+    width: 100%;
+    margin: 5px 5px 5px 5px;
+}
+button{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.show_md{
+    height: 90%;
+    width: 90%
+}
+</style>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(document).on('change', "input", function(){
+        updateMD();
+    });
+    $(".request_text").change(function(){
+        var data = JSON.parse($('.request_text').val());
+        param = getData(data);
+        table = '';
+        for(var i in param){
+            table += '<tr>';
+            table += '<td><input type="text" value="'+param[i]+'"></td>';
+            table += '<td><input type="text"></td>';
+            table += '<td><input type="text"></td>';
+            table += '<td><input type="text"></td>';
+            table += '</tr>';
+        }
+        $('.request').append(table);
+    });
+    $(".response_text").change(function(){
+        var data = JSON.parse($('.response_text').val());
+        param = getData(data);
+        table = '';
+        for(var i in param){
+            table += '<tr>';
+            table += '<td><input type="text" value="'+param[i]+'"></td>';
+            table += '<td><input type="text"></td>';
+            table += '<td><input type="text"></td>';
+            table += '<td><input type="text"></td>';
+            table += '</tr>';
+        }
+        $('.response').append(table);
+    });
+});
+
+/**
+ * 遍历对象，获得所有字段
+ */
+function getData(data, pre = ''){
+    var param = [];
+    for(var i in data){
+        if(Array.isArray(data[i]) && typeof(data[i][0]) == 'object'){
+            param.push(pre + i);
+            param = param.concat(getData(data[i][0], pre + i + '.'));
+        }
+        else if(typeof(data[i]) == 'object' && !Array.isArray(data[i])){
+            param.push(pre + i);
+            param = param.concat(getData(data[i], pre + i + '.'));
+        }else{
+            param.push(pre + i);
+        }
+    }
+    return param;
+}
+
+function updateMD(){
+    var md = [];
+    md.push('### ' + $('.title').val());
+    md.push($('.desc').val());
+    md.push('#### 接口请求说明');
+    md.push('```');
+    md.push('请求方式：' + $('.type').val());
+    md.push('请求地址：' + $('.url').val());
+    md.push('```');
+    
+    md.push('#### 参数说明');
+    md.push('参数：');
+    md.push('```json');
+    md.push(JSON.stringify(JSON.parse($('.request_text').val()), null, 4));
+    md.push('```');
+    md.push('说明：');
+    var request_arr = [];
+    $('.request input').each(function(){
+        request_arr.push($(this).val());
+    });
+    md.push('| 参数名称 | 是否必填 | 类型 | 说明 |');
+    md.push('| ---- | ---- | ---- | ---- |');
+    md = md.concat(makeTable(request_arr));
+
+    md.push('#### 返回值');
+    md.push('参数：');
+    md.push('```json');
+    md.push(JSON.stringify(JSON.parse($('.response_text').val()), null, 4));
+    md.push('```');
+    md.push('说明：');
+    var return_arr = [];
+    $('.response input').each(function(){
+        return_arr.push($(this).val());
+    });
+    md.push('| 参数名称 | 总是返回 | 类型 | 说明 |');
+    md.push('| ---- | ---- | ---- | ---- |');
+    md = md.concat(makeTable(return_arr));
+
+    $('.show_md').val(md.join("\n"));
+}
+
+function makeTable(data){
+    var table = [];
+    for(var i = 0; i < data.length; i += 4){
+        i = parseInt(i);
+        var i1 = i + 1;
+        var i2 = i + 2;
+        var i3 = i + 3;
+        table.push('| ' + data[i] + ' | ' + data[i1] + ' | ' + data[i2] + ' | ' + data[i3] + ' |');
+    }
+    
+    return table;
+}
+
+</script>
+<body>
+    <div>
+        <p>标题：<input type="text" class="title"></p>
+        <p>描述：<input type="text" class="desc"></p>
+        <p><b>接口请求说明</b></p>
+        <p>请求方式：
+            <select class="type">
+                <option value="POST" selected="selected">POST</option>
+                <option value="GET">GET</option>
+            </select>
+        </p>
+        <p>请求地址：<input type="text" class="url"></p>
+        <p><b>参数说明</b></p>
+        <p>参数：<textarea class="request_text"></textarea></p>
+        <table class="request">
+            <tr>
+                <td>参数名称</td>
+                <td>是否必填</td>
+                <td>类型</td>
+                <td>说明</td>
+            </tr>
+        </table>
+        <p><b>返回值</b></p>
+        <p>参数：<textarea class="response_text"></textarea></p>
+        <table class="response">
+            <tr>
+                <td>参数名称</td>
+                <td>总是返回</td>
+                <td>类型</td>
+                <td>说明</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <textarea class="show_md" id="show_md"></textarea>
+    </div>
+    <button class="copy">复制</button>
+</body>
+<script type="text/javascript">
+$(function(){
+    $('.copy').click(function(){
+        var Url2=document.getElementById("show_md");
+        Url2.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+    });
+});
+</script>
+</html>

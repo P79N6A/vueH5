@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/geturl.js"></script>
+    <script type="text/javascript" src="js/orient.js"></script>
+    <script type="text/javascript" src="js/alert.js"></script>
+    <script src='http://res.wx.qq.com/open/js/jweixin-1.1.0.js'></script>
+    <style type="text/css">
+    .rule{
+       text-align: center; 
+       position: absolute;
+       font-family: "微软雅黑";
+       font-weight: 600;
+       width: 23%;
+       height: 0.5rem;
+       font-size: 0.24rem;
+       line-height: 0.5rem;
+       right: -2px;
+       top: 1.5%;
+       border-top-left-radius:0.3rem;
+       border-bottom-left-radius:0.3rem;
+       color: #ffffff;
+       background: #ff51a6;
+    }
+    .show_ruleall{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        display: none;
+    }
+    .show_rule{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+    .mm{
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="bgimg" id="bgimg" src="img/bg.jpg">
+        <button  id="btn"  disabled="disabled">
+            <img class=" gift" data-activity_item="1205" src="img/btn.png">
+        </button>
+        <button  id="btn1" disabled="disabled">
+            <img class=" gift" data-activity_item="1206" src="img/btn.png">
+        </button>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+    <div class="show_ruleall">
+        <div class="mm"></div>
+        <div class="show_rule"><img class="rule_img"></div>
+    </div>
+</body>
+<script type="text/javascript">
+var third_party_openid, index_url, from, activity_id, openid, _imgUrl, _title, _desc;
+var aquery = window.location.href.split("?");
+third_party_openid = urlGet()['xjj_openId'];
+activity_id = urlGet()['activity_id'];
+openid = urlGet()['openid'];
+from = urlGet()['from'];
+if (typeof(from) == "undefined") {
+    from = 0;
+}
+index_url = aquery[0];
+if (typeof(third_party_openid) == "undefined") {
+    var _url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8794fd4ba5b3da63&redirect_uri=http://www.szhyweb.com/MMGWEB/OauthServlet&response_type=code&scope=snsapi_base&state=" + index_url + "QwechatQ30000019QwechatQactivity_id=" + urlGet()['activity_id'] + "QwechatQopenid=" + urlGet()['openid'] + "QwechatQfrom=" + from + "QwechatQstore_code=" + urlGet()['store_code'] + "#wechat_redirect";
+    window.location.href = _url;
+} else {
+    var beacon_msg={};
+    beacon_msg.ajax_url="http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift";
+    beacon_msg.ajax_qr_url="http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/guideQr";
+    var host_;
+    host_ = beacon_msg.ajax_url.split("AcmpApi")[0];
+    localStorage.setItem('search_host', host_ + "AcmpApi/");
+    if (from == "scan") {
+        document.write("<script src='js/search.js'>" + "<" + "/script>");
+        document.write("<script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'>" + "<" + "/script>");
+    } else {
+        $("#btn").removeAttr("disabled");
+        $("#btn1").removeAttr("disabled");
+        document.write("<script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'>" + "<" + "/script>");
+    }
+
+    $('.gift').click(function() {
+        if (activity_id == "undefined" || openid == "undefined" || typeof(activity_id) == "undefined" || typeof(openid) == "undefined") {
+            my_alert("confirm", "提示", '请到现场', "通过“摇一摇”参与活动", ["知道啦"], ["black"], function() {
+                WeixinJSBridge.call('closeWindow');
+            })
+            return false
+        }
+        var getCoupon = {};
+        if (sessionStorage.major && sessionStorage.minor) {
+            getCoupon.major = sessionStorage.major;
+            getCoupon.minor = sessionStorage.minor;
+        }
+        getCoupon.activity_item_id = $(this).data('activity_item');
+        getCoupon.activity_id = urlGet()['activity_id'];
+        getCoupon.openid = urlGet()['openid'];
+        $("#loadingToast").show();
+        $("#loadingToast .weui_toast p").html("卡券领取中");
+        $.ajax({
+            type: "POST",
+            url: beacon_msg.ajax_url,
+            data: getCoupon,
+            dataType: "json",
+            success: function(data) {
+                $("#loadingToast").hide();
+                if (data.return_code != 200) {
+                    my_alert("confirm", "提示", data.return_msg, "", ["知道啦"], ["black"], function() {})
+                } else {
+                    if (urlGet()['subscribe'] == 1) {
+                        window.location.href = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+                    } else {
+                        var getCoupon_qr = {};
+                        getCoupon_qr.coupon_code = data.data.coupon_code
+                        $.ajax({
+                            type: "GET",
+                            url: beacon_msg.ajax_qr_url,
+                            data: getCoupon_qr,
+                            dataType: "json",
+                            success: function(data) {
+                                if (data.return_code != 200) {
+                                    my_alert("confirm", "提示", "请去聚什惠公众号", "查看中奖结果", ["知道啦"], ["black"], function() {})
+                                } else {
+                                    sessionStorage.setItem('qr_code_url', data.data.qr_code_url);
+                                    window.location.href = "focus.html"
+                                }
+                            },
+                            error: function(data) {
+                                my_alert("confirm", "提示", "请去聚什惠公众号", "查看中奖卡券", ["知道啦"], ["black"], function() {})
+                            }
+                        });
+                    }
+                }
+            },
+            error: function(data) {
+                $("#loadingToast").hide();
+                my_alert("confirm", "提示", '请在网络畅通的环境下，重新再试', "", ["知道啦"], ["black"], function() {})
+            }
+        });
+    });
+    if (activity_id == "undefined" || typeof(activity_id) == "undefined") {
+        wx.ready(function() {
+            wx.hideOptionMenu();
+        });
+    } else {
+        var shareData = {};
+        shareData.activity_id = urlGet()['activity_id'];
+        $.ajax({
+            type: "POST",
+            url: localStorage.search_host + "activity/shareInfo",
+            data: shareData,
+            dataType: "json",
+            success: function(data) {
+                if (data.return_code != 200) {
+                    // my_alert("confirm", "提示", "获取分享内容失败", "请重新再试", ["知道啦"], ["black"], function() {})
+                } else {
+                    _title = data.data.title;
+                    _desc = data.data.sub_title;
+                    _imgUrl = data.data.logo_path;
+                    // 自定义分享内容
+                    wx.ready(function() {
+                        var shareData = {
+                            title: _title,
+                            desc: _desc,
+                            link: index_url,
+                            imgUrl: localStorage.search_host + _imgUrl
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                    });
+
+                }
+            },
+            error: function(data) {
+                my_alert("confirm", "提示", '获取分享内容失败啦', "请重新再试", ["知道啦"], ["black"], function() {
+                    WeixinJSBridge.call('closeWindow');
+                })
+            }
+        });
+    }
+
+}
+</script>
+
+</html>

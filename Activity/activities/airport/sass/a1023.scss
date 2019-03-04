@@ -1,0 +1,44 @@
+@import "compass/reset", "global", "compass/css3/border-radius";
+
+$btn-bg: #df163a;
+$btn-c: #fae930;
+
+header {
+	margin-bottom: 10px;
+}
+
+section {
+	padding: 6px 5%;
+}
+
+.item {
+	position: relative;
+	background-size: 100% 100% !important;
+}
+
+.item1 {
+	background: url("../images/a1023/11.png") no-repeat;
+}
+.item2 {
+	background: url("../images/a1023/22.png") no-repeat;
+}
+.item3 {
+	background: url("../images/a1023/33.png") no-repeat;
+}
+.item4 {
+	background: url("../images/a1023/44.png") no-repeat;
+}
+.item5 {
+	background: url("../images/a1023/55.png") no-repeat;
+}
+
+.btn-get {
+	position: absolute;
+
+	left: 13%;
+	padding: 3px 16px;
+	background: $btn-bg;
+	color: $btn-c;
+	font-size: 16px;
+	@include border-radius();
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+    <title>卡券库存</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <body>
+        <div class="container">
+            <table border="0" cellpadding="0" cellspacing="0" class="a_table">
+                <tr>
+                    <td align="right" style="font-size: 20px; font-weight: bold;width:50%">
+                        活动开始时间：
+                    </td>
+                    <td>
+                        <?php echo date("Y-m-d H:i:s",$start_time);?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" style="font-size: 20px; font-weight: bold;width:50%">
+                        当前时间：
+                    </td>
+                    <td>
+                        <?php echo date("Y-m-d H:i:s",$now);?>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table border="0" cellpadding="0" cellspacing="0" class="a_table">
+                <?php foreach ($coupon_list as $coupon) { ?>
+                <tr>
+                    <td align="right" style="font-size: 20px; font-weight: bold;width:50%">
+                        <?php echo $coupon['title']?>：
+                    </td>
+                    <td>
+                        <?php echo $coupon['stock']?>
+                    </td>
+                    <td>
+                        已领：<?php echo $coupon['get']?>
+                    </td>
+                </tr>
+                <?php }?>
+            </table>
+            <p class="p_button" onclick="javascript:location.href=location.href.split('?')[0]+'?_t='+Math.random()">刷新页面</p>
+        </div>
+    </body>
+</html>	
+
+    

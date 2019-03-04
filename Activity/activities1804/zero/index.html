@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>无糖联盟无限畅爽</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left_button">
+            <p style="font-size:16px;">温馨提示：</p>
+            <p>每人每天均可参与3次</p>
+            <p>奖品数量有限，发完为止</p>
+        </div>
+        <div class="cou_bottom">
+            <img src="images/yinliao.png">
+        </div>
+        <div class="start_circle">
+            <img src="images/car.png" id="shan-img1" style="display:none;" />
+            <img src="images/tv.png" id="shan-img2" style="display:none;" />
+            <div class="banner">
+                <div class="turnplate" style="background-image:url(images/zhuanpan.png);background-size:100% 100%;">
+                    <canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+                    <img class="pointer" src="images/zhizhen.png" />
+                </div>
+            </div>
+        </div>
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <button class="get_coupon" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <!-- <div style="position: absolute;bottom: 4%;text-align:center;width: 100%">
+        <p style="font-size: 12pt;color: #ffffff">您还有<b class="limit_times"></b>次抽奖机会</p>
+    </div> -->
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+var clwidth = document.body.clientWidth;
+var clheight = document.body.clientHeight;
+var clbi = clheight / clwidth
+if (clbi < 1.49) {
+    $(".start_circle").css({
+        "width": "5.4rem",
+        "height": "5.4rem"
+    })
+}
+</script>
+
+</html>

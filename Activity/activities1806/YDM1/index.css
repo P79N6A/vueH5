@@ -1,0 +1,178 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 14pt;
+}
+input::-ms-input-placeholder{text-align: center;}
+input::-webkit-input-placeholder{text-align: center;}
+input{
+    width: 82%;
+    height: 25pt;
+    border-color: #e1041b;
+    border-width: 1pt;
+    border-radius: 12pt;
+    margin-bottom: 4%;
+    left: 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: hsl(0, 157, 42);
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+} 
+
+.swiper-slide{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/bj.jpg');
+    background-repeat:no-repeat;
+    background-position:top;
+    background-size: cover;
+    color:#fff;
+}
+/*第一页*/
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+.logo-item{
+    margin-left: 20px;
+    height: 26%;
+    width: 20%;
+}
+.zi{
+    width: 80%;
+}
+
+.button{
+    height: 44px;
+    width: 70%;
+    color: #fff;
+    font-weight:bolder;
+    line-height: 44px;
+    font-size: 20px;
+    background-color: #C0995F;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    top:-36px;
+}
+.address{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+.address img{
+    width:86%;
+}
+/*第二页*/
+.title{
+    width: 70%;
+    text-align: center;
+    font-size: 22px;
+}
+.item-title{
+    font-size: 18px;
+    font-weight: bolder;
+}
+.item{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+}
+.select{
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+    border-radius: 6px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 5%;
+}
+.foot1{
+    height: 10px;
+}
+.foot2{
+    height: 60px;
+}
+.active{
+    background:rgba(192,153,94,0.8);
+}

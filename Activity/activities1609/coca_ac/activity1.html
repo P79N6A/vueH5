@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/weui.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/example.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<script type="text/javascript" src = "js/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<div class="wrap js_container">
+			<img class="bgimg" src="img/bg2.png">
+			<div class="btn" id="showLoadingToast">
+				<img src="img/btn1.png" class="btnn">
+			</div>
+		</div>
+		<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+                <div class="weui_mask_transparent"></div>
+                <div class="weui_toast">
+                    <div class="weui_loading">
+                        <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+                    </div>
+                    <p class="weui_toast_content">卡券领取中</p>
+                </div>
+        </div>
+	</body>
+	<script>
+		$('.btnn').click(function(){
+		  	var getCoupon = {};
+		    getCoupon.activity_item_id = $.cookie('activity_item_id');
+		    getCoupon.activity_id = $.cookie('activity_id');
+		    getCoupon.openid = $.cookie('openid');
+		    if(!$.cookie('activity_item_id') || $.cookie('activity_item_id') == 0){
+		    	alert('请通过摇一摇重新进入');
+		    	return false;
+		    }
+		    $("#loadingToast").show();
+		    $.ajax({
+		        type: "POST",
+		        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+		        data: getCoupon,
+		        dataType: "json",
+		        success: function(data){
+		        	$("#loadingToast").hide();
+		            if(data.return_code!=200){
+		                alert(data.return_msg);
+		            }
+		            else{
+		            	$.cookie('activity_item_id', 0);
+					    $.cookie('activity_id', 0);
+					    $.cookie('openid', 0);
+		                var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+		                location.href = coupon_url;
+		            }
+		      	}
+		    });
+		});
+</script>
+</html>

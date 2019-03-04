@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+    <title>卡券</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <body>
+        <div class="container">
+            <table border="0" cellpadding="0" cellspacing="0" class="a_table">
+                <?php foreach ($coupon_list as $coupon) { ?>
+                <tr>
+                    <td class="coupon_manage" align="center" style="font-size: 20px; font-weight: bold">
+                        <?php echo $echo $coupon['title']?>
+                    </td>
+                    <td>
+                        <?php echo $echo $coupon['stock']?>
+                    </td>
+                </tr>
+                <?php }?>
+            </table>
+        </div>
+    </body>
+</html>	
+
+    

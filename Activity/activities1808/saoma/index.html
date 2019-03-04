@@ -1,0 +1,434 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>可口可乐开箱有礼</title>
+    <!-- <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" /> -->
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdkhttps.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <!-- <script type="text/javascript" src="js/vconsole.js"></script> -->
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="page1 swiper-slide swiper-no-swiping">
+                <!-- 第一页 -->
+                <div class="mains">
+                    <img class="button1" src="images/page1/anniu.png"></img>
+                    <img class="zhongxin" src="images/page1/gr.png"></img>
+                </div>
+            </div>
+            <!-- <div class="page2 swiper-slide swiper-no-swiping">
+            </div>
+            <div class="page3 swiper-slide swiper-no-swiping">
+            </div> -->
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="alertContent" style="display:none;">
+      <div class="show">
+        <img src="" alt="" class="item" id="item">
+        <div class="rules" id="rules" ></div>
+      </div>
+    </div>
+    <div class="alertContent0" style="display:none;">
+      <!-- <img src="images/page5/sq.png" alt="" class="tijiaobg">
+      <img class="button0" src="images/page3/hd.png"> -->
+        <div class="tijiaobg">
+            <img src="images/page5/sq.png" alt="" style="width: 100%">
+            <img src="images/page3/hd.png" class="button0">
+        </div>
+    </div>
+    
+    <div class="alertContent1" style="display:none;">
+        <div class="tijiaobg">
+            <img src="images/page3/bj.png" alt="" style="width: 100%">
+            <img class="zi" src="images/page3/zi.png" >
+            <input  type="text" id="name" class="buyer_name" placeholder="姓名"></input>
+            <input  type="tel" id="tel" class="buyer_phone" placeholder="手机号码"></input>
+            <input  type="text" id="identity" class="buyer_identity" placeholder="身份证号"></input>
+            <img class="button2" src="images/page3/anniu.png">
+        </div>
+    </div>
+    <div class="alertContent2" style="display:none;">
+        <div class="tijiaobg">
+            <img src="images/page4/x.png" class="x" alt="">
+            <img src="images/page4/bj.png" alt="" style="width: 100%">
+            <img src="images/page4/zi.png" class="zi">
+            <img class="button3" src="images/page4/qr.png">
+        </div>
+    </div>
+    <div class="couponList" style="display:none;">
+        <div class="content">
+            <img class="x1" src="images/page4/x.png"></img>
+            <div class="mainss">
+            </div>
+        </div>
+    </div>
+    <!-- <script src="js/swiper/js/swiper.min.js"></script>  -->
+    <div id="audio_btn" class="rotate">
+        <audio src="gongxi.mp3" id="myaudio" controls="controls" hidden="true">
+    </div>
+    
+</body>
+<script type="text/javascript">
+
+let this_url = window.location.href
+//let vConsole = new VConsole()
+if ($.trim(this_url).substr(0, 10) == "https://ab") {
+    var acmp_host = 'https://ab.aikaka.com.cn/AcmpCola/AcmpApi/';
+    var coupon_bag_host = 'https://ab.aikaka.com.cn/AcmpCola/CouponBagV2/';
+}else if ($.trim(this_url).substr(0, 22) == "https://acmp.aikaka.co") {
+    var acmp_host = 'https://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'https://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+}else if ($.trim(this_url).substr(0, 22) == "https://acmp.aikaka.cc") {
+    var acmp_host = 'https://acmp.aikaka.cc/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'https://acmp.aikaka.cc/cocacola/CouponBagV2/';
+}else if ($.trim(this_url).substr(0, 9) == "http://ab") {
+    var acmp_host = 'http://ab.aikaka.com.cn/AcmpCola/AcmpApi/';
+    var coupon_bag_host = 'http://ab.aikaka.com.cn/AcmpCola/CouponBagV2/';
+} else if ($.trim(this_url).substr(0, 21) == "http://acmp.aikaka.co") {
+    var acmp_host = 'http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+} else {
+    var acmp_host = 'http://acmp.aikaka.cc/cocacola/Acmp/AcmpApi/';
+    var coupon_bag_host = 'http://acmp.aikaka.com.cn/cocacola/CouponBagV2/';
+}
+var openid = urlGet()['openid']
+var ocode  = urlGet()['token']
+var GetSelect = ""
+var coupon_code = ""
+var zhongxin = true
+var starts = false
+//自动登录
+    //有卡券跳转到卡券页面
+    $("#loadingToast").show();
+    wx.ready(function () {
+        //隐藏右上角菜单禁用分享
+        wx.hideOptionMenu()
+
+        if (localStorage.music != 0) {
+            myAuto.play();
+        } else {
+            $('#audio_btn').toggleClass("rotate");
+        }
+                            
+        //微信授权获取地理位置信息
+        getUserLocation()
+    });
+    function getUserLocation() {
+        wx.getLocation({
+            success: function (res) {
+                let longitude = res.longitude
+                let latitude = res.latitude
+                $.ajax({
+                    type: "POST",
+                    url: acmp_host + "prize/preCheck",
+                    data: { 'openid': openid, 'code': ocode, 'latitude': latitude, 'longitude': longitude },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data)
+                        if (data.return_code == 200) {
+                            //code生效，可以开始抽奖了
+                            $("#loadingToast").hide();
+                            starts = true
+                        } else {
+                            $("#loadingToast").hide();
+                            my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function () { });
+                        }
+                    },
+                    error: function (data) {
+                        console.log('error')
+                    }
+                })
+            },
+            cancel: function (res) {
+                my_alert("confirm_error", "很抱歉", "无法进行抽奖！", "原因：我们无法获取您的地理位置", ["知道啦"], ["green"], function () { getUserLocation() });
+
+            }
+        })
+    }
+    //实例化翻页功能
+    // var mySwiper = new Swiper ('.swiper-container', {
+    //     direction : 'vertical',
+    //     effect : 'flip',
+    //     slidesPerView: 1,
+    //     centeredSlides : true,
+    //     noSwiping : true,
+    //     // noSwipingClass : 'stop-swiping',
+    //     navigation: {
+    //       nextEl: '.button',
+    //     }
+    // }) 
+
+    //点击弹出用户中心界面
+
+    $(".zhongxin").click(function () {
+        if (zhongxin) {
+            zhongxin = false
+            $.ajax({
+                type: "POST",
+                url: acmp_host + "prize/list",
+                data: { 'openid': openid, 'activity_id': 1228 },
+                dataType: "json",
+                success: function (data) {
+                    let coupon = data.data
+                    let strs = ""
+
+                    if (coupon.length > 0) {
+                        let keys = 1
+                        coupon.forEach(function (index, key, arr) {
+                            if (coupon[key]['coupon_id'] == 1999) {
+                                if (coupon[key]['consume_status'] == 10) {
+                                    strs += '<div class="item"><label class="labels">' + keys + '</label><img src="images/page6/4999.png" class="zi"><img src="images/page6/ylq.png" class="status"></div>'
+                                } else {
+                                    strs += '<div class="item"><label class="labels">' + keys + '</label><img src="images/page6/4999.png" class="zi"><img src="images/page6/dlq.png" data-coupon="' + coupon[key]['coupon_code'] + '" class="status tijiaos"></div>'
+                                }
+                                keys++
+                            } else if (coupon[key]['coupon_id'] == 2000) {
+                                strs += '<div class="item"><label class="labels">' + keys + '</label><img src="images/page6/1-88.png" class="zi"><img src="images/page6/ylq.png" class="status"></div>'
+                                keys++
+                            } else if (coupon[key]['coupon_id'] == 2001) {
+                                strs += '<div class="item"><label class="labels">' + keys + '</label><img src="images/page6/1.png" class="zi"><img src="images/page6/ylq.png" class="status"></div>'
+                                keys++
+                            }
+                        })
+                    } else {
+                        strs += "<p style='text-align:center'>空空如也~</p><p style='text-align:center'>您还没有抽过奖哦~</p>"
+                    }
+                    $(".mainss").children().remove()
+                    $(".mainss").append(strs)
+                    //弹出coupon列表层
+                    $('.couponList').show()
+                    zhongxin = true
+                }
+            })
+        }
+    })
+    //关闭coupon列表
+    $(".x1").click(function () {
+        $('.couponList').hide()
+    })
+    //关闭提交中奖信息之后的弹出
+    $(".x").click(function () {
+        $(".alertContent2").hide()
+    })
+    //点击列表中的按钮跳转提交信息页面
+    $('body').on("click", ".tijiaos", function () {
+        coupon_code = $(this).data('coupon')
+        //列表层隐藏
+        $('.couponList').hide()
+        //弹出对应的提交信息页面
+        $(".alertContent1").show();
+    })
+    var myAuto = document.getElementById('myaudio');
+
+    $('#audio_btn').click(function () {
+        $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
+        //控制背景音乐 播放或暂停            
+        if ($(this).hasClass("rotate")) {
+            localStorage.music = 1;
+            myAuto.play();
+        } else {
+            localStorage.music = 0;
+            myAuto.pause();
+        }
+    });
+    $(function () {
+        $('body,html').height(document.body.clientHeight);
+        $('.alertContent1').height(document.body.clientHeight);
+        $('.swiper-slide').height(document.body.clientHeight);
+        $(".page1").height(document.body.clientHeight);
+        //配置基础信息
+        var activity_id = urlGet()['activity_id']
+        var store_code = urlGet()['store_code']
+        // var coupon_code = ""
+        //点击开奖
+        $(".button1").click(function () {
+            if (!starts) return
+            //$(this).addClass("active")
+            $("#loadingToast").show();
+            let getData = {}
+            getData.openid = openid
+            getData.activity_id = activity_id
+            getData.store_code = store_code
+            getData.code = ocode
+            // getData.activity_item_id = $(this).data("index")
+            $.ajax({
+                type: "POST",
+                url: acmp_host + "prize/lottery",
+                data: getData,
+                dataType: "json",
+                success: function (data) {
+                    $("#loadingToast").hide()
+                    if (data.return_code != 200) {
+                        if (data.return_code == 10220014) {
+                            my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function () { });
+                        } else if (data.return_msg == "超出每人每天参与次数，欢迎明天继续参与") {
+                            my_alert("confirm_error", "很遗憾", "超出每人每天参与次数", "欢迎明天继续参与", ["知道啦"], ["green"], function () { });
+                        } else {
+                            my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function () { wx.closeWindow() });
+                        }
+                    } else {
+                        GetSelect = data.data.coupon.id; //从后台拿数据
+                        coupon_code = data.data.coupon_code;
+                        if (GetSelect == 1999) {
+                            //4999元购物卡
+                            $("#item").attr("src", "images/page2/1deng.png")
+                        } else if (GetSelect == 2000) {
+                            //1点88元红包
+                            $("#item").attr("src", "images/page2/1.8.png")
+                        } else if (GetSelect == 2001) {
+                            //1元红包
+                            $("#item").attr("src", "images/page2/1.png")
+                        } else if (GetSelect == 2003) {
+                            //谢谢参与
+                            $("#item").attr("src", "images/page2/xiexie.png")
+                        }
+                        $(".alertContent").show()
+                    }
+                }
+            })
+        })
+        //提交验证
+        $(".buyer_name").blur(function () {
+            let val = $(this).val()
+            if (!val) {
+                $(this).addClass("error")
+            } else {
+                $(this).removeClass("error")
+            }
+        });
+        $(".buyer_phone").blur(function () {
+            let val = $(this).val()
+            if (!val || val.length != 11) {
+                $(".buyer_phone").addClass("error")
+            } else {
+                $(".buyer_phone").removeClass("error")
+            }
+        });
+        $(".buyer_identity").blur(function () {
+            let val = $(".buyer_identity").val()
+            if (val.length < 15 || val.length > 18) {
+                $(".buyer_identity").addClass("error")
+            } else {
+                $(".buyer_identity").removeClass("error")
+            }
+        });
+        //点击提交信息
+        $(".button2").click(function () {
+            let buyer_name = $(".buyer_name").val()
+            let buyer_phone = $(".buyer_phone").val()
+            let buyer_identity = $(".buyer_identity").val()
+            if (!buyer_name) {
+                $(".buyer_name").addClass("error")
+                return
+            } else if (!buyer_phone || buyer_phone.length != 11) {
+                $(".buyer_phone").addClass("error")
+                return
+            } else if (!buyer_identity || buyer_identity.length < 15 || buyer_identity.length > 18) {
+                $(".buyer_identity").addClass("error")
+                return
+            }
+            let sub_data = {}
+            sub_data.buyer_name = buyer_name
+            sub_data.buyer_phone = buyer_phone
+            sub_data.buyer_addr = buyer_identity
+            sub_data.coupon_code = coupon_code
+            $.ajax({
+                type: "POST",
+                url: acmp_host + 'prize/updateUserInfo',
+                data: sub_data,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    if (data.return_code == 200) {
+                        //快速核销掉
+                        $.ajax({
+                            type: "POST",
+                            url: acmp_host + 'consume/scrape',
+                            data: sub_data,
+                            dataType: "json",
+                            success: function (datas) {
+                                console.log(datas)
+                                $("#loadingToast").hide();
+                                if (datas.return_code == 200) {
+                                    $(".alertContent1").hide()
+                                    $(".alertContent2").show()
+                                    return
+                                } else {
+                                    my_alert("confirm_error", "", datas.return_msg, "", ["知道啦"], ["green"], function () { });
+                                }
+                            }
+                        });
+                    } else {
+                        $("#loadingToast").hide()
+                        my_alert("confirm_error", "", data.return_msg, "", ["知道啦"], ["green"], function () { });
+                    }
+                }
+            })
+        })
+        // $(".rules1").click(function(){
+        //     $(".rulesItem").attr("src","images/wenzi1.png")
+        //     $(".alertContent1").show();
+        // })
+        // $(".x").click(function(){
+        //     $(".alertContent1").hide();
+        // })
+        $("#rules").click(function () {
+            if (GetSelect == 2000 || GetSelect == 2001) {
+                //中红包了
+                $(".alertContent").hide()
+                //提示中红包了
+                $(".alertContent0").show();
+            } else if (GetSelect == 1999) {
+                //中一等奖了
+                $(".alertContent").hide()
+                //提交信息弹窗
+                $(".alertContent1").show();
+            } else {
+                $(".alertContent").hide()
+            }
+
+        })
+        //点击中红包页面的好的按钮
+        $(".button0").click(function () {
+            wx.closeWindow();
+        })
+        $(".button3").click(function () {
+            wx.closeWindow();
+        })
+    });
+
+</script>
+</html>

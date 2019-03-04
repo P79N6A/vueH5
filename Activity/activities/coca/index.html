@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<script type="text/javascript" src="js/get_url.js" ></script>
+        <script type="text/javascript" src="js/jquery.cookie.js" ></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	var openid = urlGet()['openid'];
+	var activity_id = urlGet()['activity_id'];
+	var from_openid = urlGet()['from_openid'];
+	var getCouponList = {};
+	getCouponList.openid = openid;
+	$.ajax({
+        type: "POST",
+        url: "http://ab.aikaka.com.cn/Coupon/couponlist_info",
+        data: getCouponList,
+        dataType: "json",
+        success: function(data){
+            if(data.return_code!=200){
+                alert(data.return_msg);
+            }
+            else{
+            	if(data.data.count == 0){
+                    $.cookie('undo', 1);
+            		window.location.href = 'co1.html?activity_id='+activity_id+'&openid='+openid+'&from_openid='+from_openid;
+            	}
+                else{
+                    if(data.data.list[0].id == 512){
+                        window.location.href = 'co2.html?activity_id='+activity_id+'&openid='+openid;
+                    }else if(data.data.list[0].id == 513){
+                        window.location.href = 'co3.html?activity_id='+activity_id+'&openid='+openid;
+                    }else{
+                        $.cookie('undo', 1);
+                        window.location.href = 'co1.html?activity_id='+activity_id+'&openid='+openid+'&from_openid='+from_openid;
+                    }
+                    
+                	// var count1 = 0;
+                 //    var count2 = 0;
+                	// for(var i in data.data.list){
+                	// 	if(data.data.list[i].id == 512){// && data.data.list[i].record_status == 'CONSUMED'){
+                	// 		count1 ++;
+                	// 	}else if(data.data.list[i].id == 513){// && data.data.list[i].record_status == 'CONSUMED'){
+                	// 		count2 ++;
+                	// 	}
+                	// }
+                	// if(count2 >= 1){
+                	// 	window.location.href = 'co3.html?activity_id='+activity_id+'&openid='+openid;
+                	// }else if(count1 >= 1){
+                	// 	window.location.href = 'co2.html?activity_id='+activity_id+'&openid='+openid;
+                	// }else{
+                 //        $.cookie('undo', 1);
+                	// 	window.location.href = 'co1.html?activity_id='+activity_id+'&openid='+openid+'&from_openid='+from_openid;
+                	// }
+                }
+            }
+        }
+    });
+});
+</script>

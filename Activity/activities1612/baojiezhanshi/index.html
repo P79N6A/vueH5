@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>报表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="swiper/swiper.min.css" />
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="swiper/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/china.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				width: 100%;
+				height: 100%;
+			}
+			
+			body {
+				width: 90%;
+				height: 100%;
+				margin: 0 auto;
+				/*padding-top: 3%*/
+			}
+			
+			.swiper-container,
+			.swiper-wrapper,
+			.swiper-slide {
+				width: 100%;
+				height: 100%;
+				margin: 0 auto
+			}
+			.swiper-slide{
+				position: relative;
+			}
+			#container {
+				width: 85%;
+				height:70%;
+				float: left;
+				margin:  0 auto;
+				margin-left: 10%;
+				margin-top:12%;
+			}
+			
+			
+			#container-right {
+				width: 50%;
+				height: 70%;
+				float: left;
+				margin-top: 10%
+			}
+			#container-right-right{
+				width: 50%;
+				height: 95%;
+				float: left;
+			}
+			/*#container-sec-left {
+				width: 50%;
+				height: 100%;
+				float: left;
+			}
+			
+			#container-sec-right {
+				width: 50%;
+				height: 100%;
+				float: left;
+			}*/
+			
+			
+
+			#box {
+				width:70% !important;
+				float: left;
+				height:90%;
+				padding-top: 2%;
+				
+			}
+			#boxLeft{
+				width:30%;
+				height: 95%;
+				float: left;
+			}
+			#conterright {
+				width: 100%;
+				height: 90%;
+				float: left;
+			}
+			#numbc{
+				width:100%;
+				height:30%;
+			}
+			#numbb{
+				width:100%;
+				height: 70%;
+			}
+			#conter {
+				margin-top: 10%;
+				width: 55%;
+				height: 65%;
+				float: left;
+			}
+			#conterLeft{
+				margin-top: 10%;
+				float: left;
+				width:45%;
+				height: 75%;
+			}
+			#pn1{
+				width: 100%;
+				height: 60%
+			}
+			#numbc .pn{
+				width: 100% !important;
+				height: 60px !important;
+				font-size: 35px !important;
+				color:black !important;
+				font-family: "微软雅黑" !important;
+				font-weight:600 !important;
+				text-indent: 10%;
+				line-height: 60px;
+			}
+			#numbD{
+				width: 100%;
+				height:10%;
+			}
+			#numbD .pn{
+				width: 100% !important;
+				height: 60px !important;
+				font-size: 35px !important;
+				color:black !important;
+				font-family: "微软雅黑" !important;
+				font-weight:600 !important;
+				text-indent: 25%;
+				line-height: 60px;
+			}
+			.IMG{
+				width:72%;
+				height: 45%;
+				display: block;
+				border: 0;
+				margin: 0 auto;
+				margin-top: 5%;
+
+			}
+			.ii{
+				/*margin-top: 10%;*/
+			}
+			.ding{
+				position: absolute;
+				left: 0;
+				top:5%;
+				width:100%;
+				height: 80px;
+				background: url(img/11.png) no-repeat left center;
+				background-size:30% 100%;
+				font-size:45px;
+				color: white;
+				line-height: 80px;
+				font-weight: bolder; 
+				font-family: "微软雅黑";
+				border: 0;
+				text-indent: 5px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class='ding'>品牌关注度</div>
+					<div id='box'></div>
+					<div id='boxLeft'>
+						<div id='numbc'>
+							<p id='pn1'><p>
+							<p class='pn'>当前参与人数：<span class='n'></span></p>
+							<p class='pn'>最受关注的品牌：<span class='n'></span></p>
+							<p class='pn'>关注人数：<span class='n'></span></p>
+							<p class='pn'>女性用户占比：<span class='n'></span></p>
+						</div>
+						<div style="height: 10%"></div>
+						<div id='numbb'></div>
+					</div>
+					</div>
+				<div class="swiper-slide">
+					<div class='ding'>活动热度</div>
+					<div id='container'></div>
+				</div>
+				<div class="swiper-slide">
+					<div class='ding'>地域分布</div>
+					<div id='container-right'></div>
+					<div id='container-right-right'>
+						<img class='IMG ii' src="img/bjing.png" />
+						<img class='IMG' src="img/kaibin.png" />
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class='ding'>分时段兑换统计</div>
+					<div id='conter'></div>
+					<div id='conterLeft'>
+						<div id='numbD'>
+								<!-- <p id='pn2'><p> -->
+								<p class='pn'>当前领券人数：<span class='nn'></span></p>
+								<p class='pn'>已兑换人数：<span class='nn'></span></p>
+						</div>
+						<div id='conterright'></div>
+					</div>
+				</div>
+			</div>
+			<!-- 如果需要导航按钮 -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+			<!-- 如果需要滚动条 -->
+			<div class="swiper-scrollbar"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//var API_HOST = "http://192.168.2.2/gaoyuan/AcmpApi/";
+		var API_HOST = "http://ab.aikaka.com.cn/Acmp/AcmpApi/";
+		var atvid =  479//API全局变量
+		var atvidty = 479
+			//ajax请求数据
+			//函数执行区域
+		var imgsrc = [
+			{"name":"P&G","src":"image://img/pg.png"},
+			{"name":"飘柔","src":"image://img/piao.png"},
+			{"name":"碧浪","src":"image://img/bibi.png"},
+			{"name":"潘婷","src":"image://img/pan.png"},
+			{"name":"舒肤佳","src":"image://img/shu.png"},
+			{"name":"ambipur","src":"image://img/amb.png"},
+			{"name":"VS","src":"image://img/vs.png"},
+			{"name":"佳洁士","src":"image://img/jia.png"},
+			{"name":"汰渍","src":"image://img/tai.png"},
+			{"name":"海飞丝","src":"image://img/hai.png"},
+			{"name":"护舒宝","src":"image://img/hu.png"},
+			{"name":"OLAY","src":"image://img/OLAY.png"},
+			{"name":"帮宝适","src":"image://img/bang.png"}
+		]
+		getAjaxBarChart()
+		getAjaxLineChart()
+		getAjaxpieChart()
+		getAjaxmapChart()
+		getAjaxFullChart()
+		getAjaxDuChart()
+		getnum()
+		var time=setInterval(function(){
+			getAjaxBarChart()
+			getAjaxLineChart()
+			getAjaxpieChart()
+			getAjaxmapChart()
+			getAjaxFullChart()
+			getAjaxDuChart()
+		},10000)
+		swiper()
+		//轮播图
+		function swiper() {
+			var mySwiper = new Swiper('.swiper-container', {
+				speed: 1000,
+				pagination: '.swiper-pagination',
+				paginationElement: 'span',
+				paginationClickable: true,
+				autoplay :25000,
+				autoplayDisableOnInteraction:false,
+				// 如果需要前进后退按钮
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev'
+			})
+		}
+		var brandA = [
+			{"title":"P&G","count":30},
+			{"title":"飘柔","count":20},
+			{"title":"碧浪","count":50},
+			{"title":"潘婷","count":30},
+			{"title":"舒肤佳","count":90},
+			{"title":"ambipur","count":40},
+			{"title":"VS","count":50},
+			{"title":"佳洁士","count":36},
+			{"title":"汰渍","count":44},
+			{"title":"海飞丝","count":14},
+			{"title":"护舒宝","count":24},
+			{"title":"OLAY","count":45},
+			{"title":"帮宝适","count":20}
+		]
+		function getnum(){
+			var data = {
+				activity_id: atvid
+			}
+			$("#numb").empty()
+			$.ajax({
+				type:"post",
+				url: API_HOST + "stamp/people",
+				async: true,
+				data: data,
+				success:function(result){
+					console.log(result)
+					var result = result
+					var ad = ['P&G','飘柔','碧浪','潘婷','舒肤佳','ambipur','VS','佳洁士','汰渍','海飞丝','护舒宝','OLAY','帮宝适']
+					var colorList = [
+	                      '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+	                       '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+	                       '#D7504B','#C6E579','#F4E001'
+	                    ];
+					$(".n").eq(0).html(result.data.totol||"")
+					$(".n").eq(0).css("color","#35a4f9")
+					$(".n").eq(1).html(ad[result.data.top_stamp-1]||"")
+					$(".n").eq(1).css("color",colorList[result.data.top_stamp-1])
+					$(".n").eq(2).html(result.data.top_focus||"")
+					$(".n").eq(2).css("color",colorList[result.data.top_stamp-1])
+					$(".n").eq(3).html(result.data.female_per+"%"||"")
+					$(".n").eq(3).css("color","#35a4f9")
+				}
+			})
+		}
+		function getAjaxBarChart() {
+			var data = {
+				activity_id: atvid
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "stamp/countByStamp",
+				async: true,
+				data: data,
+				success: function(result) {
+					var a = $(".swiper-slide").height();
+					//console.log(a)
+					//console.log(result);
+					var arr = result.data;
+					var arrF = []
+					var arrS = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+					for (var i = 0; i < arr.length; i++) {
+						var index = i;
+						for (var j = 0; j < imgsrc.length; j++) {
+							if(imgsrc[j].name == arr[index].title){
+								arrS[j] = arr[index].count
+								break;
+							}
+						};
+					}
+					for (var i = 0; i < imgsrc.length; i++) {
+						arrF.push(imgsrc[i].name)
+					};
+					var srcArr =[]
+					var cc=[]
+					for (var i = 0; i < imgsrc.length; i++) {
+						var obj = {xAxis:i, y: a-190,name:"", symbolSize:[70,120],symbol:imgsrc[i].src}
+						cc.push(obj)
+					};
+					var dom = document.getElementById("box")
+					var myChart = echarts.init(dom);
+					var option = {
+					    tooltip: {
+					        trigger: 'item'
+					    },
+					    calculable: true,
+					    grid: {
+					        borderWidth: 0,
+					        y: 80,
+					        y2: 60
+					    },
+					    xAxis: 
+					        {
+					            type: 'category',
+					            show: false,
+					            data: arrF,
+					        },
+					       
+					    yAxis: 
+					        {
+					            type: '',
+					            show: false,
+					           minInterval:10
+					        },
+					    series: [
+					        {
+					            name: '品牌关注度',
+					            type: 'bar',
+					            itemStyle: {
+					                normal: {
+					                    color: function(params) {
+					                        // build a color map as your need.
+					                        var colorList = [
+					                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+					                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+					                           '#D7504B','#C6E579','#F4E001'
+					                        ];
+					                        return colorList[params.dataIndex]
+					                    },
+					                    label: {
+					                        show: true,
+					                        position: 'top',
+					                        formatter: '{b}\n{c}',
+					                        textStyle:{
+									        	fontSize:15,
+									        	fontWeight:500,
+									        	color:["#000000"]
+									        }
+					                    }
+					                }
+					            },
+					            data: arrS,
+					            markPoint: {
+					                tooltip: {
+					                   trigger: 'item',
+					                   backgroundColor: 'rgba(255,0,0,0)',
+					                    
+					                },
+					                data: cc
+					            }
+					        }
+					    ]
+					};
+					//console.log(option)
+					myChart.setOption(option);
+				},
+				error: function() {
+
+				}
+			});
+		}
+
+		function getAjaxLineChart() {
+			var data = {
+				activity_id: atvid
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "stamp/countJoinByTime",
+				async: true,
+				data: data,
+				success: function(result) {
+					console.log(result)
+					var arr = result.data;
+					var arrF = [];
+					var arrS = [];
+					for (var i = 0; i < arr.length; i++) {
+						arrF.push(arr[i].time)
+						arrS.push(arr[i].count)
+					}
+					//console.log(arrF)
+					var t =  ['07:00~08:00','08:00~09:00','09:00~10:00','10:00~11:00','11:00~12:00','12:00~13:00','13:00~14:00','14:00~15:00','15:00~16:00','16:00~17:00','17:00~18:00','18:00~19:00','19:00~20:00','20:00~21:00','21:00~22:00']
+					var st = []
+					for (var i = 0; i < t.length; i++) {
+						var a;
+						var index = i;
+						for (var j = 0; j < arrF.length; j++) {
+							if(t[index] == arrF[j]){
+								a = arrS[j];
+								break;
+							}else{
+								a = 0
+							}
+							
+						};
+						st.push(a)
+					};
+					var dom = document.getElementById("container");
+					var myChart = echarts.init(dom);
+					option = {
+							title:{
+								text:"分时段参与人数",
+								left: 'center',
+								textStyle:{
+									fontSize:30,
+									fontWeight:900,
+									
+								},
+
+							},
+						    tooltip: {
+						        trigger: 'axis',
+						        text: '',
+						    },
+						    legend: {
+						        data:[""]
+						    },
+						    textStyle:{
+							        	fontSize:20,
+							        	fontWeight:900
+							        } ,
+						    xAxis: 
+						        {
+						            type: 'category',
+						            data: t,
+						            axisLabel: {
+										rotate: 30,
+										interval:0,  
+                                        textStyle:{
+                                        	fontWeight:900,
+                                        	fontSize:14
+                                        }
+									},
+
+						        },
+						    yAxis: [
+						        {
+						            type: 'value',
+						            name: '人数',
+
+						            axisLabel: {
+						                formatter: '{value}',
+						                 textStyle:{
+                                        	fontWeight:900,
+                                        	fontSize:14
+                                        }
+						            },
+						            minInterval:1
+						        }
+						    ],
+						    series: [
+						        {
+						            name:'',
+						            type:'line',
+						            data:st,
+						            "smooth":true,  //这句就是让曲线变平滑的 
+						            textStyle:{
+							        	fontSize:15,
+							        	fontWeight:500,
+
+							        },
+							        axisLine:{
+										lineStyle:{
+											width:10
+										}
+									}
+						        }
+						    ]
+						};
+					myChart.setOption(option);
+				},
+				error: function() {
+
+				}
+			});
+		}
+
+		function getAjaxpieChart() {
+			var data = {
+				activity_id: atvid
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "stamp/countJoinBySex",
+				async: true,
+				data: data,
+				success: function(result) {
+					//console.log(result)
+					var arr = result.data;
+					var arrF = [];
+					var arrS = [];
+					for (var i = 0; i < arr.length; i++) {
+						var sex = ''
+						if(arr[i].sex == "male"){
+							sex = "男性："+arr[i].count
+						}if(arr[i].sex == "female"){
+							sex = "女性："+arr[i].count
+						}if(arr[i].sex == "unknown"){
+							sex = "未知："+arr[i].count
+						}
+						arrF.push(arrF.push(sex))
+						var obj = {
+							"value": arr[i].count,
+							"name": sex
+						}
+						arrS.push(obj)
+					}
+					var dom = document.getElementById("numbb");
+					var myChart = echarts.init(dom);
+					var option = {
+						tooltip: {
+							trigger: 'item',
+							formatter: "{a} <br/>{b}: {c} ({d}%)"
+						},
+						// title: {
+						// 	text: '性别比例',
+						// 	x: 'center',
+						// 	 textStyle:{
+					 //        	fontSize:15,
+					 //        	fontWeight:500
+					 //        }
+						// },
+						textStyle: {
+							fontSize: 15
+						},
+						// legend: {
+						// 	orient: 'vertical',
+						// 	x: 'left',
+						// 	data: arrF
+						// },
+						series: [{
+							name: '',
+							type: 'pie',
+							selectedMode: 'single',
+							radius: [0, '30%'],
+
+							label: {
+								normal: {
+									position: 'inner'
+								}
+							},
+							labelLine: {
+								normal: {
+									show: false
+								}
+							},
+                
+						}, {
+							name: '',
+							type: 'pie',
+							radius: ['40%', '55%'],
+							data: arrS
+						}],
+						color:["#ccc","#27727B","#D7504B"]
+						
+					};
+					myChart.setOption(option);
+				},
+				error: function() {
+
+				}
+			});
+		}
+
+		function getAjaxmapChart() {
+			var data = {
+				activity_id: atvid
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "stamp/countJoinByArea",
+				async: true,
+				data: data,
+				success: function(result) {
+					//console.log(result)
+					var arr = [];
+					var a = result.data
+					for (var i = 0; i < a.length; i++) {
+						var p =''
+						if (a[i].province.indexOf("市") != -1) {
+							p = a[i].province.replace("市","")
+						}else{
+							p = a[i].province
+						}
+						var obj = {
+							"name": p,
+							"value": a[i].count,
+							"selected":true
+						}
+						arr.push(obj)
+					}
+					console.log(arr)
+					var dom = document.getElementById("container-right");
+
+					function randomData() {
+						return Math.round(Math.random() * 1000);
+					}
+					var myChart = echarts.init(dom);
+					var option = {
+						// title: {
+						// 	text: '地域分布',
+						// 	left: 'center',
+						// 	 textStyle:{
+					 //        	fontSize:20,
+					 //        	fontWeight:900
+					 //        }
+						// },
+						textStyle: {
+							fontSize: 10
+						},
+						tooltip: {
+							trigger: 'item'
+						},
+						// visualMap: {
+						// 	min: 0,
+							
+						// 	left: 'left',
+						// 	top: 'bottom',
+						// 	text: ['高', '低'], // 文本，默认为数值文本
+						// 	calculable: true,
+						// 	color: ['#4bc9ea', '#3eaf35'],
+						// 	show:false
+						// },
+						// toolbox: {
+						// 	show: true,
+						// 	orient: 'vertical',
+						// 	left: 'right',
+						// 	top: 'center',
+						// 	feature: {
+						// 		dataView: {
+						// 			readOnly: false
+						// 		},
+						// 		restore: {},
+						// 		saveAsImage: {}
+						// 	}
+						// },
+						series: [{
+								name: '地域分布',
+								type: 'map',
+								mapType: 'china',
+								roam: false,
+								label: {
+									normal: {
+										show: true
+									},
+									emphasis: {
+										show: true
+									}
+								},
+								data: arr
+							},
+
+						],
+					};
+					myChart.setOption(option);
+				},
+				error: function() {
+
+				}
+			});
+		}
+
+		function getAjaxDuChart() {
+			var data = {
+				activity_id: atvidty
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "consumeReport/activityConsumeInfo",
+				async: true,
+				data: data,
+				success: function(result) {
+					console.log(result)
+					$(".nn").eq(0).html(result.data.totol.totol)
+					$(".nn").eq(0).css("color","#35a4f9")
+					$(".nn").eq(1).html(result.data.totol.consumed)
+					$(".nn").eq(1).css("color","#35a4f9")
+					var dom = document.getElementById("conterright")
+					var myChart = echarts.init(dom);
+					var dd = result.data;
+					var arr = []
+					var arrS = []
+					for (var i = 0; i < dd.consumed.length; i++) {
+						arr.push(dd.consumed[i].coupon_title);
+						var obj = {
+							"value": dd.consumed[i].count,
+							"name": dd.consumed[i].coupon_title+"："+dd.consumed[i].count
+						}
+						arrS.push(obj)
+					};
+					var sum = 0 ;
+					for (var i = 0; i < dd.not_consumed.length; i++) {
+						sum += dd.not_consumed[i].count;
+					};
+					var arg = {
+						"value": sum,
+						"name": "未核销："+sum
+					}
+					arr.push("未核销");
+					arrS.push(arg)
+					var option = {
+						tooltip: {
+							trigger: 'item',
+							formatter: "{a} <br/>{b}: {c} ({d}%)"
+						},
+						// title: {
+						// 	text: '卡券兑换率',
+						// 	x: 'center',
+						// 	textStyle:{
+					 //        	fontSize:15,
+					 //        	fontWeight:500
+					 //        }
+						// },
+						textStyle: {
+							fontSize: 15
+						},
+						// legend: {
+						// 	orient: 'vertical',
+						// 	x: 'center',
+						// 	y:"top",
+						// 	data: arr
+						// },
+						series: [{
+							name: '',
+							type: 'pie',
+							selectedMode: 'single',
+							radius: [0, '30%'],
+
+							label: {
+								normal: {
+									position: 'inner'
+								}
+							},
+							labelLine: {
+								normal: {
+									show: false
+								}
+							},
+                
+						}, {
+							name: '',
+							type: 'pie',
+							radius: ['40%', '55%'],
+							data: arrS
+						}],
+						color:["#d4d053","#009b97","#e04474","#ee7944","#ccc"]
+					};
+					myChart.setOption(option);
+
+				},
+				error: function() {
+
+				}
+			});
+		}
+
+		function getAjaxFullChart() {
+			var data = {
+				activity_id: atvidty
+			};
+			$.ajax({
+				type: "post",
+				url: API_HOST + "consumeReport/activityExchange",
+				async: true,
+				data: data,
+				success: function(result) {
+					//console.log(result)
+					var arrName = []
+					var timeArr = []
+					var data = []
+					var t =  ['7:00~8:00','8:00~9:00','9:00~10:00','10:00~11:00','11:00~12:00','12:00~13:00','13:00~14:00','14:00~15:00','15:00~16:00','16:00~17:00','17:00~18:00','18:00~19:00','19:00~20:00','20:00~21:00','21:00~22:00']
+					var rep = result.data
+					for (var key in rep) {
+						arrName.push(key)
+					}
+					for (var key in rep[arrName[0]]) {
+						timeArr.push(key);
+					}
+					for (var key in rep) {
+						var arri = []
+						
+							//arri.push(rep[key][k])
+							var kname = key
+							
+							for (var i = 0; i < t.length; i++) {
+								var b = 0
+								var ina = i
+								for(var k in rep[kname]){
+									if(t[ina] == k){
+										b = rep[kname][k];
+										break;
+									}else{
+										b = 0;
+									}
+								}
+								arri.push(b)
+							};
+							
+						
+						data.push(arri)
+					}
+					//console.log(data)
+					var sum = [];
+					for (var i = 0; i < t.length; i++) {
+						sum.push(0)
+					}
+					for (var i = 0; i < data.length; i++) {
+						var index = i;
+						for (var j = 0; j < data[index].length; j++) {
+							sum[j] += data[index][j]
+						}
+					}
+					
+					//console.log(data)
+
+					var DD = [];
+					// for (var i = 0; i < data.length; i++) {
+					// 	var obj = {
+					// 		"name": arrName[i],
+					// 		"type": "bar",
+					// 		"data": data[i]
+					// 	}
+					// 	DD.push(obj)
+					// }
+					var a = {
+						"name": "总数",
+						"type": "line",
+						
+						"data": sum,
+						"smooth":true,  //这句就是让曲线变平滑的  
+					}
+					DD.push(a)
+					console.log(DD)
+					var dom = document.getElementById("conter")
+					var myChartOne = echarts.init(dom);
+					var optionOne = {
+						title: {
+							text: '分时段核销数量',
+							x: 'center',
+							 textStyle:{
+					        	fontSize:30,
+					        	fontWeight:900
+					        }
+						},
+						tooltip: {
+							trigger: 'axis'
+						},
+						textStyle: {
+							fontSize: 20,
+							fontWeight:900
+						},
+						legend: {
+							data: arrName,
+							right:"right"
+						},
+						xAxis: [{
+							type: '',
+							data: t,
+							axisLabel: {
+								textStyle: {
+									
+						        	fontSize:15,
+						        	fontWeight:900,						       
+								},
+								rotate: 30,
+								interval:0   
+							},
+						}],
+						yAxis: [{
+							type: 'value',
+							name: '总数',
+							textStyle: {
+									
+						        	fontSize:15,
+						        	fontWeight:900,						       
+								},
+							axisLabel: {
+								formatter: '{value}',
+								
+							}
+						}],
+						series: DD,
+						color:["#e04474","#ee7944","#81d696","#8781d6","#0036ff"]
+					};
+					myChartOne.setOption(optionOne);
+					//console.log(optionOne)
+				},
+				error: function() {
+
+				}
+			});
+		}
+	</script>
+		
+</html>

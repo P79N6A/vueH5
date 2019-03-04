@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=yes, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+	<title>孟伟-爱咔咔</title>
+	<style type="text/css">
+		body {
+			display: inline;
+			margin: 0px;
+			background: url("image/bg.png") no-repeat;
+			-webkit-background-size: 100% 100%;
+			background-size: 100% 100%;
+		}
+		#container {
+			font-size: 0px;
+		}
+		#card {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var screenHeight = $(window).height();
+			$('#container').css({'min-height':screenHeight});
+			
+			var screenWidth = $(window).width();
+			$('#card').css({'padding-top': "25px", 'width':screenWidth});
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<img id="card" src="image/mengwei.png">
+	</div>
+</body>
+</html>

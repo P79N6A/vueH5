@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>雅培全安素，健康小问答</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+</head>
+<body class="bg">
+<img class="logo" src="images/logo.png">
+<img class="title" src="images/title.png">
+<div class="product w30"><img src="images/product.png"></div>
+<a class="hdgz" href="rule.html">活动规则 >> </a>
+<div class="h15"></div>
+<a class="btn" href="ask.html">参与答题</a>
+<img class="bottom" src="images/bottom.png">
+
+
+<!-- 遮罩层 -->
+<div class="FixBg"></div>
+<section class="FixMain client">
+<div class="clientBar">
+<p>请问您之前购买过雅培全安素的产品吗？</p>
+<div class="clientBarBtn">
+<a class="btnYes" href="animation.html" target="_self">是</a>
+<a class="btnNo" href="javascript:void(0)" target="_self">否</a>
+</div>
+</div>
+</section>
+
+
+<script>
+function hide(){
+  $(".FixBg,.client").fadeOut(300)
+}
+$(".btnYes").click(function(){
+		hide()	
+})
+$(".btnNo").click(function(){
+		hide()	
+})
+
+$.cookie('openid', urlGet()['openid']);
+$.cookie('activity_id', urlGet()['activity_id']);
+
+function urlGet()
+{
+    var aQuery = window.location.href.split("?");//取得Get参数
+    var aGET = new Array();
+    if(aQuery.length > 1)
+    {
+        var aBuf = aQuery[1].split("&");
+        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+        {
+            var aTmp = aBuf[i].split("=");//分离key与Value
+            aGET[aTmp[0]] = aTmp[1];
+        }
+    }
+    return aGET;
+}
+</script>
+
+
+
+</body>
+</html>

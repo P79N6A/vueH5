@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>瑞雨智能淋浴系统</title>
+</head>
+<style type="text/css">
+body {                                
+
+        overflow: hidden;
+
+        position: fixed;
+
+        width:100%;
+
+        height:100%;
+
+        background: url("./images/bg1.png") no-repeat;
+
+        background-size:cover;
+}                  
+</style>
+<body>
+<div style="width: 100%">
+    <img src="./images/logo.png" style="margin-left: 3%;margin-top: 3%;width: 26%" class="logo">
+</div>
+<div style="width: 100%">
+    <img src="./images/title1.png" style="margin-left: 5%;margin-top: 26%;width: 73%">
+</div>
+
+<a href="menu.html"><div style="margin-left: 35%;margin-top: 40%;width: 250pt;height: 450pt;z-index: 99" id="hua"></div></a>
+</body>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+// $("body").on("touchmove", function(e) {
+//     var _touch = e.originalEvent.targetTouches[0];
+//     var _x= _touch.pageX;
+//     var _y= _touch.pageY;
+
+//     w = $(window).width();
+//     h = $(window).height();
+
+//     if(_x/w<0.6&&_x/w>0.4&&_y/h>0.7){
+//         window.open("menu.html");
+//     }
+
+    
+// });
+
+</script>
+<script type="text/javascript">
+document.querySelector('body').addEventListener('touchmove', function(e) {
+    e.preventDefault();
+});
+</script>
+</html>

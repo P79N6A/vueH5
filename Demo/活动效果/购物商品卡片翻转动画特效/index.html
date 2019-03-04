@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS3带动画效果的购物商品卡片设计</title>
+
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css" /><!--CSS RESET-->
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<style type="text/css">
+body{
+	background: #494A5F;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+}
+.product-grid{
+	border: 1px solid rgba(0,0,0,0.2);
+	text-align: center;
+	border-radius: 10px;
+	transition:all 0.5s;
+	background: #fff;
+	margin-top:100px;
+}
+.product-grid:hover{box-shadow: 0 8px 10px -5px rgba(0,0,0,0.5);}
+.product-grid .product-image{
+	position: relative;
+	perspective: 1500px;
+	margin: 10px;
+	overflow: hidden;
+}
+.product-grid .product-image img{
+	width: 100%;
+	height: auto;
+}
+.product-image .pic-1{
+	opacity: 1;
+	transform: rotateY(0);
+	transform-origin: center;
+	backface-visibility: hidden;
+	transition: transform 0.5s, opacity 0.2s;
+}
+.product-grid:hover .product-image .pic-1{
+	transform :rotateY(-70deg);
+	opacity: 0;
+}
+.product-image .pic-2{
+	width: 100%;
+	height: 100%;
+	transform-origin: center;
+	transform: rotateY(70deg);
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transition: transform 0.5s, opacity 0.2s;
+}
+.product-grid:hover .product-image .pic-2{
+	transform: rotateY(0deg);
+	opacity: 1;
+}
+.product-grid .social{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	z-index: 1;
+}
+.product-grid .social li{
+	display: block;
+	margin: 0 0 10px;
+	transform: translateX(-100px) rotate(-720deg);
+	transition: all 0.7s;
+}
+.product-grid:hover .social li{transform: translateX(0) rotate(0);}
+.product-grid .social li a{
+	display:block;
+	background: #f44242;
+	height:40px;
+	width: 40px;
+	border-radius: 50%;
+	line-height: 40px;
+	color: #fff;
+	font-size: 20px;
+	transition:all 0.3s ease 0s;
+}
+.product-grid .social li a:hover{
+	background: #fff;
+	color: #f44242;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5) inset;
+}
+.product-grid .product-content{
+	padding:10px 10px 30px;
+}
+.product-grid .title{
+	margin:0 0 10px;
+	font-size: 20px;
+	color: #303030;
+	text-transform: capitalize;
+}
+.product-grid .rating{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+}
+.product-grid .rating li{
+	display: inline-block;
+	font-size: 13px;
+	color: #909090;
+}
+.product-grid .price{
+	display: block;
+	font-size: 17px;
+	font-weight: 600;
+	text-align: right;
+	color: #303030;
+	margin-top: -15px;
+}
+.product-grid .add-to-cart{
+	display: inline-block;
+	height: 55px;
+	width: 55px;
+	line-height: 47px;
+	font-size: 18px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -25px;
+	background-color: #f44242;
+	color: #fff;
+	border: 5px solid #e7e7e7;
+	transition: all 0.3s;
+}
+.product-grid .add-to-cart:hover{
+	background-color: #fff;
+	color: #f44242;
+}
+@media screen and (max-width:990px){
+	.product-grid{
+	  margin-bottom: 60px;
+	}
+	.product-grid .add-to-cart{
+	  bottom: 0;
+	}
+}
+@media screen and (max-width:767px){
+	.product-grid .add-to-cart{
+	  bottom: -25px;
+	}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-sm-6">
+			<div class="product-grid">
+				<div class="product-image">
+					<img class="pic-1" src="images/img-1.jpg">
+					<img class="pic-2" src="images/img-2.jpg">
+					<ul class="social">
+						<li><a href=""><i class="fa fa-search"></i></a></li>
+						<li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
+					</ul>
+				</div>
+				<div class="product-content">
+					<h3 class="title">Shorts</h3>
+					<ul class="rating">
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+					</ul>
+					<span class="price">$1199.99</span>
+					<a href="" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="product-grid">
+				<div class="product-image">
+					<img class="pic-1" src="images/img-3.jpg">
+					<img class="pic-2" src="images/img-4.jpg">
+					<ul class="social">
+						<li><a href=""><i class="fa fa-search"></i></a></li>
+						<li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
+					</ul>
+				</div>
+				<div class="product-content">
+					<h3 class="title">Men's Suit</h3>
+					<ul class="rating">
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+					</ul>
+					<span class="price">$1499.99</span>
+					<a href="" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="product-grid">
+				<div class="product-image">
+					<img class="pic-1" src="images/img-7.jpg">
+					<img class="pic-2" src="images/img-8.jpg">
+					<ul class="social">
+						<li><a href=""><i class="fa fa-search"></i></a></li>
+						<li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
+					</ul>
+				</div>
+				<div class="product-content">
+					<h3 class="title">Women's Blazer</h3>
+					<ul class="rating">
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+					</ul>
+					<span class="price">$1599.99</span>
+					<a href="" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="product-grid">
+				<div class="product-image">
+					<img class="pic-1" src="images/img-5.jpg">
+					<img class="pic-2" src="images/img-6.jpg">
+					<ul class="social">
+						<li><a href=""><i class="fa fa-search"></i></a></li>
+						<li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
+					</ul>
+				</div>
+				<div class="product-content">
+					<h3 class="title">Jeans</h3>
+					<ul class="rating">
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+						<li class="fa fa-star"></li>
+					</ul>
+					<span class="price">$899.99</span>
+					<a href="" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

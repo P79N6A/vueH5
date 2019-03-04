@@ -1,0 +1,11 @@
+﻿case02： 九宫格
+case03： 转盘抽奖
+case04： 砸金蛋
+case05: 画中画
+case06: 微信对话
+case07: 720°全景
+case08: 好友砍价
+case09: 拆礼包
+case10: 集五福
+case11: 翻牌
+case12: 抽签

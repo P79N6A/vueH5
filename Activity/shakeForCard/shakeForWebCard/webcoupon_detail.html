@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+	<title>
+        <?php switch($coupon["card_type"]){
+            case "CASH": echo "代金券"; break;
+            case "DISCOUNT": echo "折扣券"; break;
+            case "GIFT": echo "礼品券"; break;
+            default: echo "优惠券"; break;
+
+        }?>
+    </title>
+	
+	<link rel="stylesheet" href="css/style.css">
+    <script src="http://ab.aikaka.com.cn/PublicService/Weixin/js/forbidShare.js"></script>
+	<body>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+                <td width="10"></td>
+                <td class="coupon_title">
+                    <?php switch($coupon["card_type"]){
+                        case "CASH": echo "代金券"; break;
+                        case "DISCOUNT": echo "折扣券"; break;
+                        case "GIFT": echo "礼品券"; break;
+                        default: echo "优惠券"; break;
+
+                    }?>详情</td>
+				<td width="10"></td>
+            </tr>
+			<tr class="a_table">
+                <td width="10"></td>
+                <td class="coupon_manage"><?php echo $coupon['description']?></td>
+				<td width="10"></td>
+            </tr>
+        </table>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+                <td width="10"></td>
+                <td class="coupon_title">使用须知</td>
+				<td width="10"></td>
+            </tr>
+			<tr class="a_table">
+                <td width="10"></td>
+                <td class="coupon_manage">
+                	<?php echo $coupon['notice']?>
+                </td>
+				<td width="10"></td>
+            </tr>
+        </table>
+		<table border="0" cellpadding="0" cellspacing="0" class="a_table">
+			<tr>
+                <td width="10"></td>
+                <td class="coupon_manage">客服</td>
+                <td width="100"><?php echo $coupon['service_phone']?></td>
+				<td width="10"></td>
+            </tr>
+        </table>
+</body>
+</html>

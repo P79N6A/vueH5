@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>绿箭</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/rem.js" ></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top_sing">
+				<img  src="img/sing.png"/>
+			</div>
+			<div class="text">
+				<div class="act_1">
+					<p>活动时间：</p>
+					<p>参与方式：</p>
+				</div>
+				<div class="act_2">
+					<p>2016年7月3日~2016年9月13日</p>
+					<p>买绿箭产品满16元(含绿箭原味40粒瓶装)，即可参与抽奖</p>
+				</div>
+			</div>
+			<div class="prize">
+				<div class="prize_li">
+					<div class="prize_div1">
+						<p class="p1">一等奖</p>
+						<p class="p2">飞利浦蓝牙音箱1个价值399元</p>
+					</div>
+					<div class="prize_div2">
+						<p class="p1">二等奖</p>
+						<p class="p2">绿箭礼品铁罐1个价值8元</p>
+					</div>
+				</div>
+				<div class="prize_tex">100%中奖！数量有限抽完为止！</div>
+			</div>
+			<div class="prize_list">
+				
+			</div>
+			<div class="btn">
+				<p>点我抽奖</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+function urlGet()
+{
+    var aQuery = window.location.href.split("?");//取得Get参数
+    var aGET = new Array();
+    if(aQuery.length > 1)
+    {
+        var aBuf = aQuery[1].split("&");
+        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+        {
+            var aTmp = aBuf[i].split("=");//分离key与Value
+            aGET[aTmp[0]] = aTmp[1];
+        }
+    }
+    return aGET;
+}
+
+var getCoupon = {};
+getCoupon.openid = urlGet()['openid'];
+getCoupon.activity_id = urlGet()['activity_id'];
+
+$('.btn').click(function(){
+    $.ajax({
+	    type: "POST",
+	    url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/lottery",
+	    data: getCoupon,
+	    dataType: "json",
+	    success: function(data){
+	        if(data.return_code!=200){
+	            alert(data.return_msg);
+	        }
+	        else{
+	        	$.cookie('coupon_code', data.data.coupon_code);
+	        	$.cookie('activity_id', getCoupon.activity_id);
+	        	$.cookie('openid', getCoupon.openid);
+	        	if(data.data.coupon_code == 166){
+	        		location.href="first_prize.html";
+	        	}else if (data.data.coupon_code == 167){
+	        		location.href="second_prize.html";
+	        	}else{
+	        		alert('小伙伴们太热情，奖品已派发完毕，欢迎参与下次活动');
+	        	}
+	        }
+	    },
+	    error :function(data){
+	    	alert('运气不佳');
+	    }
+    });
+});
+</script>

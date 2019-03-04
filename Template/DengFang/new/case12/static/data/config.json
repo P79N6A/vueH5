@@ -1,0 +1,31 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "home_bg_image": "./static/data/images/home-bg.jpg",
+    "bamboo_sticks_box": "./static/data/images/bamboo-sticks-box.png",
+    "bamboo_sticks": [
+      {
+        "item_id": 1,
+        "url": "./static/data/images/bamboo-stick01.png"
+      },
+      {
+        "item_id": 2,
+        "url": "./static/data/images/bamboo-stick02.png"
+      }
+    ]
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次参加机会"
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/",
+  "title": "抽签",
+  "gameTime": 60
+}
+
+
+
+
+

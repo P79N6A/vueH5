@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>京客隆京源店摇一摇</title>
+        <link rel="stylesheet" href="css/global.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+        <meta name="viewport" content="width = device-width,target-densitydpi = high-dpi,initial-scale = 1.0,maxium = 1.0,user-scalable = no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+    </head>
+    <body>
+        <div id="wrap2">
+            <div id="over">
+              <img src="img/over.png">
+            </div>
+            <div class="text mt_15">
+                <h4>本次抽奖机会已用完</h4>
+		<br />
+		<h4>活动时间:7月26日至8月2日</h4>
+		<h4><b style = "color:red">每天</b></h4>
+		<h4>12:00~14:00,18:00~20:00</h4>
+		<br />
+		<h4>下次记得还要来哦</h4>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            
+            window.onload = function(){
+                screenHeight = $(window).height();
+                cardHeight = screenHeight*0.8;
+                imgHeight = screenHeight*0.4;
+                $("#wrap2").css("height", $(window).height());
+                $('#card-main').css('height',cardHeight);
+                $('img').css('max-height',imgHeight);
+            };
+            
+            window.onresize = function(){
+                screenHeight = $(window).height();
+                cardHeight = screenHeight*0.8;
+                imgHeight = screenHeight*0.4;
+                $("#wrap2").css("height", $(window).height());
+                $('#card-main').css('height',cardHeight);
+                $('img').css('max-height',imgHeight);
+            };
+        </script>
+    </body>
+</html>

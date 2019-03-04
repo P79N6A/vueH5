@@ -1,0 +1,431 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 14pt;
+}
+input::-ms-input-placeholder{text-align: center;}
+input::-webkit-input-placeholder{text-align: center;}
+input{
+    width: 82%;
+    height: 25pt;
+    border-color: #e1041b;
+    border-width: 1pt;
+    border-radius: 12pt;
+    margin-bottom: 4%;
+    left: 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: hsl(0, 157, 42);
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+} 
+
+.swiper-slide{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: #d21520;
+    color:#fff;
+}
+/*第一页*/
+.shutiao{
+    position: absolute;
+    height: 100%;
+    right: 0px;
+}
+.coverage1{
+    height:100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.coverage1 .cocacola{
+    position: absolute;
+    top: 3%;
+    left: 4%;
+    width: 20%;
+}
+.coverage1 .dazhong{
+    position: absolute;
+    top: 3%;
+    right: 4%;
+    width: 22%;
+}
+.coverage1 .zi{
+    position: absolute;
+    top: 12%;
+    left: 5%; 
+    right: 5%;
+    width: 90%;
+}
+
+.coverage1 .zuqiu{
+    position: absolute;
+    top: 36%;
+    left: 18%;
+    right: 18%;
+    width: 64%;
+}
+.coverage1 .anniu1{
+    position: absolute;
+    top: 80%;
+    left: 32%; 
+    right: 32%;
+    width: 36%;
+}
+.coverage1 .huodong{
+    position: absolute;
+    top: 89%;
+    left: 42%; 
+    right: 40%;
+    width: 18%;
+    color: #fff;
+}
+/*弹窗*/
+.show_box1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+.show_100 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+    background: black;
+}
+
+.show_box1 .alert_gift_box1 {
+    width: 87%;
+    height: 78%;
+    top: 6%;
+    border-style:solid;
+    border-color: white;
+    border-width: 1.5pt;
+    padding: 2%;
+    position: absolute;
+    left: 4%;
+    font-size: 10pt;
+    line-height: 16pt;
+    color: white;
+    background-color: #e1041b;
+    border-radius: 1%;
+    overflow:scroll;
+}
+
+/*第二页*/
+.banqiu{
+    position: absolute;
+    top: 44%;
+    right: 0%;
+    width: 36%;
+}
+.anniu2{
+    position: absolute;
+    top: 82%;
+    left: 33%; 
+    right: 33%;
+    width: 34%;
+}
+.subject{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 50%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ques{
+    width: 88%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.radio{
+    width:0.32rem;
+    height: 0.32rem;
+    display:inline-block;
+    margin-right: 0.16rem;
+    float: left;
+    margin-top: 0.03rem;
+    background-image: url(images/page2/n.png);
+    background-repeat:no-repeat;
+    background-position:top;
+    background-size: cover;
+}
+.option-item{
+    height: 0.32rem;
+    display:inline-block;
+    font-size: 0.28rem;
+}
+/*第三页*/
+.logo3{
+    position: absolute;
+    bottom: 0px;
+    left: 7%; 
+    right: 7%;
+    width: 86%;
+}
+.gongxi{
+    position: absolute;
+    top:12%;
+    left: 18%; 
+    right: 18%;
+    width: 64%;
+}
+.libao{
+    position: absolute;
+    top:40%;
+    left: 32%; 
+    right: 32%;
+    width: 36%;
+}
+.anniu3{
+    position: absolute;
+    top: 72%;
+    left: 33%; 
+    right: 33%;
+    width: 34%;
+}
+.tishi{
+    position: absolute;
+    top: 80%;
+    left: 25%;
+    right: 25%;
+    width: 50%;
+    text-align: center;
+}
+/*详情弹窗*/
+.show_box2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+
+.show_box2 .alert_gift_box2 {
+    width: 76%;
+    height: 34%;
+    top: 26%;
+    border-style:solid;
+    border-color: white;
+    border-width: 1.5pt;
+    padding: 2%;
+    position: absolute;
+    left: 10%;
+    font-size: 10pt;
+    line-height: 16pt;
+    color: white;
+    background-color: #e1041b;
+    border-radius: 1%;
+    overflow:scroll;
+}
+/*弹窗*/
+.show_box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    display: none;
+}
+
+.show_box .show_100 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.7;
+    background: black;
+}
+
+.show_box .alert_gift_box {
+    width: 7rem;
+    height: 9.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    margin-top: -10%;
+}
+
+.get_coupon {
+    width: 2.34rem;
+    height: 0.64rem;
+    position: absolute;
+    bottom: 16.44%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    background-image: url(images/page3/button.png);
+    background-size: 100% 100%;
+}
+.shuoming{
+    position: relative;
+    top: 94%;
+    left: 40%;
+    width: 20%;
+    text-align: center;
+    color: red;
+    text-decoration: underline;
+}
+/*第四页*/
+.cuowu{
+    position: absolute;
+    top:26%;
+    left: 10%; 
+    right: 10%;
+    width: 80%;
+}
+.anniu4{
+    position: absolute;
+    top: 60%;
+    left: 33%; 
+    right: 33%;
+    width: 34%;
+}
+/*第五页*/
+.xinxi{
+    position: absolute;
+    top:30%;
+    left: 10%; 
+    right: 10%;
+    width: 76%;
+}
+.buyer_name{
+    position: absolute;
+    top:46%;
+    left: 20%; 
+    right: 20%;
+    width: 60%;
+}
+.buyer_phone{
+    position: absolute;
+    top:54%;
+    left: 20%; 
+    right: 20%;
+    width: 60%;
+}
+.buyer_addr{
+    position: absolute;
+    top:62%;
+    left: 20%; 
+    right: 20%;
+    width: 60%;
+}
+.anniu5{
+    position: absolute;
+    top: 70%;
+    left: 20%; 
+    right: 20%;
+    height: 25pt;
+    background-color: #f4d923;
+    border-radius: 12pt;
+    color: red;
+    font-size: 12pt;
+    text-align: center;
+    line-height: 24pt;
+}
+.logo5{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>css3鼠标经过突出显示详情特效</title>
+
+<style>
+html{font-family: 'Noto Sans' , serif;}
+.blocks{
+	margin:80px auto 0 auto;
+	max-width: 1070px;
+	padding: 0;
+}
+.blocks li{
+	color: #fff;
+	background-color: #2196F3;
+	cursor: default;
+	float: left;
+	list-style: none;
+	margin: 1%;
+	padding: 60px 0;
+	position: relative;
+	text-align: center;
+	-webkit-transition: .3s cubic-bezier(.3,0,0,1.3);
+	transition: .3s cubic-bezier(.3,0,0,1.3);
+	width: 31%;
+	border-radius: 4px;
+	font-weight: bold;
+}
+.blocks li:hover{
+	-webkit-transform: scale(.7);
+	-ms-transform: scale(.7);
+	transform: scale(.7);
+	z-index: 3000;
+}
+.popup{
+	background-color: inherit;
+	color: #fff;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	padding: 15px;
+	border-radius: 4px;
+	-webkit-transition: .3s cubic-bezier(.3,0,0,1.37);
+	transition: .3s cubic-bezier(.3,0,0,1.37);
+}
+.popup span{
+	font-size: 12px;
+	font-weight: normal;
+	left: 0;
+	padding: 15px 25px;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.popup h3{
+	font-size: 13px;
+	margin: 0 0 5px;
+	padding: 0;
+}
+.blocks li:hover .popup{
+	opacity: 1;
+	-webkit-transform: scale(2);
+	-ms-transform: scale(2);
+	transform: scale(2);
+	box-shadow: 0 0 10px 2px rgba(0,0,0,.4);
+}
+</style>
+
+</head>
+<body>
+
+<ul class="blocks">
+	<li>
+		Vakmanschap en ambacht
+		<div class="popup">
+			<span>
+				<h3>Vakmanschap en ambacht</h3>
+				Ervaring is niet te koop, het is een kwestie van veel doen. Met aandacht en passie.
+				Dat staat bij ons centraal.
+			</span>
+		</div>
+	</li>
+	<li>
+		Begeleiding op het werk
+		<div class="popup">
+			<span>
+				<h3>Begeleiding op het werk</h3>
+				Scholing of diploma’s vormen de basis voor onze collega’s. Het bewijs wordt echter
+				geleverd in de praktijk. Vandaar dat wij onze mensen ook begeleiden tijdens hun
+				werkzaamheden. Zo houden we elkaar scherp en maken we optimaal gebruik van onze
+				kennis, ervaring en talenten.
+			</span>
+		</div>
+	</li>
+	<li>
+		Leren van elkaar
+		<div class="popup">
+			<span>
+				<h3>Leren van elkaar</h3>
+				Kennis en ervaring delen en vermenigvuldigen houdt ons scherp en slim. Mensen vinden
+				het leuk om ‘weetjes’ te delen, wij stimuleren onze mensen dit te doen, je bent
+				immers nooit te ervaren om te leren.
+			</span>
+		</div>
+	</li>
+	<li>
+		Vaste ploeg
+		<div class="popup">
+			<span>
+				<h3>Vaste ploeg</h3>
+				Op elk object werken we met vaste collega’s en ploegen. Ze kennen het pand, de omgeving
+				en de mensen, en kunnen daardoor ‘onzichtbaar’ hun werk doen. Bovendien geeft het
+				uw mensen een vertrouwd gevoel dat er een bekende aan het werk is, die ze ook met
+				een incidenteel verzoek kunnen benaderen.
+			</span>
+		</div>
+	</li>
+	<li>
+		RI&E
+		<div class="popup">
+			<span>
+				<h3>RI&E </h3>
+				Welzijn, vitaliteit en veiligheid van onze en uw mensen staan centraal. Bij aanvang
+				van ieder nieuw project voeren we samen met onze opdrachtgever een RI&E uit. Daarmee
+				brengen we alle risico’s in kaart, opdat we ons werk veilig en goed kunnen doen.
+				Desgewenst brengen wij advies uit over verbeterpunten, zodat er volgens de regels
+				gewerkt kan worden.
+			</span>
+		</div>
+	</li>
+	<li>
+		Direct contact
+		<div class="popup">
+			<span>
+				<h3>Direct contact</h3>
+				Glas&Rein is een platte organisatie met korte lijnen. Zowel met onze opdrachtgevers
+				als met onze mensen op locatie. We zijn erop ingesteld om snel in te kunnen spelen
+				op wijzigende omstandigheden en aanvragen. Ons belang is en blijft iedereen tevreden
+				en actief te houden.
+			</span>
+		</div>
+	</li>
+</ul>
+
+</body>
+</html>

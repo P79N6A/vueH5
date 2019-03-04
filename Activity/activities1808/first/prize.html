@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>百乐达斯城二期设施开幕</title>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+</head>
+<style type="text/css">
+    img{
+        padding: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    body{
+        margin: 0;
+    }
+    .card{
+        width: 100%;
+        height: auto;
+    }
+    .qr{
+        left: 53%;
+        top: 33%;
+        width: 20%;
+        height: auto;
+        position: absolute;
+        display: none;
+    }
+</style>
+<body>
+    <div id="0" style="position: relative">
+        <img src="img/0.jpg" class="card">
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    for(var i = 1; i < 10; i ++){
+        $('body').append('<div id="'+i+'" style="position: relative"><img src="img/'+i+'.jpg" class="card"><img src="img/qr'+i+'.jpg" class="qr" id="qr'+i+'"></div>');
+    }
+
+    $("body>*").bind("touchstart",function(){});
+    $(document).on('touchstart', 'div', function(e){
+        var this_id = $(this).attr('id')
+        $('#qr'+this_id).show();
+    });
+    $(document).on('touchend', 'div', function(e){
+        $('.qr').each(function(){
+            $(this).hide();
+        });
+    });
+    $(document).on('touchcancel', 'div', function(e){
+        $('.qr').each(function(){
+            $(this).hide();
+        });
+    });
+    wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+});
+</script>

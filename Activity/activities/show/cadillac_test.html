@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>测试检测设备</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="/PublicService/Weixin/js/wxjssdk.js"></script>
+    <style type="text/css">
+    a {
+        text-decoration: none;
+        font-family: "微软雅黑";
+        color: #DFFDDD;
+        vertical-align: bottom;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html {
+        width: 100%;
+        height: 100%;
+    }
+    iframe{
+      border: none;
+      
+    }
+    </style>
+</head>
+
+<body style="width:100%;height:100%;">
+    <div style="height:100%;width:100%;">
+        <iframe id="iFrame" style="width:100%;height:100%"></iframe>
+    </div>
+
+</body>
+<script type="text/javascript">
+var flag=true;
+var iFrame = document.getElementById("iFrame");
+var device_list = [];
+var device_count=[];
+var way = [];
+var global_device=[];
+var openid;
+openid=urlGet()['openid'];
+var page_id;
+page_id=urlGet()['page_id'];
+var mast;
+
+var timer;
+if(page_id==2){
+       iFrame.src="http://ab.aikaka.com.cn/shakeApp/activities/show/c2.html";     
+ }else if(page_id==1){
+       iFrame.src="http://ab.aikaka.com.cn/shakeApp/activities/show/c1.html";  
+ } 
+ 
+wx.ready(function(){
+   var normal;
+   wx.startSearchBeacons({
+        ticket: urlGet()['ticket'],
+        complete: function(argv) {
+            wx.onSearchBeacons({
+                complete: function(data) {
+                    var device;
+                    var accuracy = 100;
+                    for (var i in data.beacons) {
+                        if ((data.beacons[i].accuracy < accuracy)&&(data.beacons[i].rssi != 0)) {        
+                            accuracy = data.beacons[i].accuracy;
+                            device = data.beacons[i].minor;
+                            if (device_list.indexOf(device) == -1) {
+                                device_list.push(device);
+                                global_device.push(accuracy);
+                            };
+                            if (way.length == 0 || device_list.indexOf(device) + 1 != way[way.length - 1]) {
+                                way.push(device_list.indexOf(device) + 1);
+                            };
+                        };
+                    };
+
+                    device_count[device_count.length]=device;
+                    if(device_count.length>5){
+                            var array = device_count.slice(0,5);
+                            var count = 1;  
+                            var yuansu= new Array();//存放数组array的不重复的元素比如{4,5,7,8,2,67,89,}  
+                            var sum = new Array(); //存放数组array中每个不同元素的出现的次数  
+                            for (var i = 0; i < array.length; i++) {   
+                                for(var j=i+1;j<array.length;j++)  
+                                {  
+                                    if (array[i] == array[j]) {  
+                                        count++;//用来计算与当前这个元素相同的个数  
+                                        array.splice(j, 1); //没找到一个相同的元素，就要把它移除掉，  
+                                        j--;   
+                                    }  
+                                }  
+                                yuansu[i] = array[i];//将当前的元素存入到yuansu数组中  
+                                sum[i] = count;  //并且将有多少个当前这样的元素的个数存入sum数组中  
+                                count =1;  //再将count重新赋值，进入下一个元素的判断  
+                            }   
+                           //算出array数组中出现次数最多的两个元素  
+                           var newsum = new Array(); //  sum;  
+                           for (var item in sum) {  
+                               newsum[item] = sum[item];  
+                           }  
+                           newsum.sort();  
+                           //document.write(sum.toString()+"<br/>");  
+                           //document.write(newsum.toString() + "<br/>");  
+                           var first = ''; //存放出现次数最多的元素，以及个数   
+                           var fcount = 1; //计算出现次数最多的元素总共有多少个  
+                           //算出出现次数最多的元素及个数   
+                           for (var i = 0; i < sum.length; i++) {  
+                               if (sum[i] == newsum[newsum.length - 1]) {  
+                                   //document.write("出现次数最多的元素是：" + yuansu[i] + "次数为：" + sum[i] + "<br/>");  
+                                   first +=  yuansu[i]  
+                                   fcount++;  
+                               }  
+                           }  
+                           mast=first;
+                           if(mast==device){
+                               if(normal!=device){
+                                   normal=device;
+                                    if(first==43658){//A
+                                        page_id=1;
+                                        iFrame.src="http://ab.aikaka.com.cn/shakeApp/activities/show/c1.html";                                                                   
+                                    }else if(first==44813){//B
+                                        page_id=2;
+                                        iFrame.src="http://ab.aikaka.com.cn/shakeApp/activities/show/c2.html";
+                                        
+                                    }                        
+                               }    
+                           }
+                           device_count.shift();
+                            
+                    }  
+
+                }
+            });          
+        }
+    }); 
+});
+
+
+function urlGet() {
+    var aQuery = window.location.href.split("?"); //取得Get参数
+    var aGET = new Array();
+    if (aQuery.length > 1) {
+        var aBuf = aQuery[1].split("&");
+        for (var i = 0, iLoop = aBuf.length; i < iLoop; i++) {
+            var aTmp = aBuf[i].split("="); //分离key与Value
+            aGET[aTmp[0]] = aTmp[1];
+        }
+    }
+    return aGET;
+}
+</script>
+
+</html>

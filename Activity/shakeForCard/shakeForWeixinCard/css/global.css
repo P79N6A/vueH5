@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+html, body, dl, dd, dt,ul, ol, li,h1, h2, h3, h4, h5, h6, pre, code,form, fieldset, legend, input, textarea, optgroup,p, blockquote, figure, hr, menu, dir,thead, tbody, tfoot, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma,arial,"Hiragino Sans GB",宋体,sans-serif;
+}
+
+/* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
+html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video{
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/**
+* 非大面积文字排版网站通常不需要列表项，如果需要可单独设置
+*/
+ul, ol {
+    list-style-type: none;
+    list-style-image: none;
+}
+
+
+/**
+ * 去除链接默认的下划线，提高文字可读性
+ */
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+/**
+* 图标对其文字
+*/
+.ic{
+    vertical-align:middle;
+    text-indent:-3000px;
+}
+
+.ict_1{
+    vertical-align:middle;
+    text-indent:-3000px;
+    position:relative;
+    top:-1px;
+}
+
+/**
+* 去掉 IE 10+ 点击链接时的灰色背景
+*/
+a:active {
+    background-color: transparent;
+}
+
+/**
+ * 去掉点击时的焦点框，同时保证使用键盘可以显示焦点框
+ */
+a:active,
+a:hover {
+    outline: 0 none;
+}
+
+/**
+ * 合并单元格边框
+ */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/**
+ * 修复 IE 中 th 不能继承 text-align 的问题并统一左对齐
+ * http://jsbin.com/evoxif/2/edit
+ */
+th {
+    text-align: left;
+}
+
+/**
+ * 中文小于 12px 可读性很差
+ * 1. 统一 IE 6-7 中字体大小
+ * 2. 统一 Firefox 4+，Safari 5 和 Chrome 中「section」和「article」内的字体大小
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+i,big,em,dfn{font-style:normal;}
+
+/**
+ * 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
+ * 2. 修正 IE8 图片消失bug
+ * 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形
+      http://jsbin.com/aJoTUca/2
+ * 4. 让图片支持响应式
+ * 5. 去除现代浏览器图片底部的空隙
+ * 6. 修复 IE7 图片缩放失真
+ */
+img {
+    border: 0 none; /* 1 */
+    width: auto\9; /* 2 */
+    height: auto; /* 3 */
+    max-width: 100%; /* 4 */
+    vertical-align: top;/* 5 */
+    -ms-interpolation-mode: bicubic; /* 6 */
+}
+
+/**
+* 闭合浮动
+* @Author: 一丝
+* @Doc: http://nicolasgallagher.com/micro-clearfix-hack/
+*/
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1; /* IE6-7 触发 hasLayout */
+}
+
+.cl-white{
+    color: #ffffff;
+}
+
+.cl-black{
+    color: #000;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.mt10{margin-top:10px;}
+
+.mt20{margin-top:20px;}
+
+.pt10{padding-top:10px}
+
+.pt20{padding-top:20px}
+
+.yahei{
+    font-family: "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1";
+}
+
+.tc{
+    display: table-cell;
+    vertical-align: middle;
+}

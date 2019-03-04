@@ -1,0 +1,70 @@
+#list{
+    width: 100%;
+    margin-top: 100px;
+    padding-bottom: 180px;
+    position: relative;
+    .title{
+        width:100%;
+        .title-bg{
+            width: 100%;
+        }
+        .lable{
+            position: absolute;
+            top:18px;
+            left: 40px;
+            font-size: 22px;
+            color: #fff;
+        }
+    }
+    .content{
+        width: 100%;
+        .lable{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start; 
+            color:#fff;
+            font-size: 16px;
+            background-color: #292a43;
+            .item{
+                width: 33%;
+                height: 40px;
+                line-height: 40px;
+                display: flex;
+                justify-content: center;
+                color:#29cbaa;
+                font-size: 16px;
+                flex-shrink:0;
+            }
+            .item1{
+                flex-shrink:1 !important;
+
+            }
+        }
+        .show{
+            width: 100%;
+            line-height: 30px;
+            display: flex;
+            justify-content: flex-start;
+            .item{
+                width: 33%;
+                line-height: 30px;
+                flex-shrink:0;
+                color:#29cbaa;
+                font-size: 16px;
+            }
+            .item1{
+                flex-shrink:1 !important;
+                
+            }
+        }
+        .even{
+            background-color: #292a43;
+        }
+        .odd{
+            background-color: #323352;
+        }
+    }
+}

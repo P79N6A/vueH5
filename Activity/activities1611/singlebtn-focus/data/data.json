@@ -1,0 +1,16 @@
+
+{
+  "bg_src":"http://img.zcool.cn/community/01dcf055dc291332f875a1323ad0e0.jpg",
+  "btn":{
+     "src":"http://pic.58pic.com/58pic/15/55/67/83k58PICQjw_1024.png",
+     "width":"611",
+     "height":"100",
+     "bottom":"10"
+  },
+  "activity_msg":{
+    "item_id":444,  
+	"third_party_name":"jushihui",  
+	"ajax_url":"http://ab.aikaka.com.cn/AcmpBeta/AcmpApi/shakeFor/drawCoupon",
+  "ajax_url_qr":"http://ab.aikaka.com.cn/AcmpBeta/AcmpApi/shakeFor/guideQr"  
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "images": {
+    "music_image": "./static/data/images/music.png",
+    "silk_bag_image": "./static/data/images/silk-bag.png",
+    "illustrate_image": "./static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "item_id": 1,
+        "prize_img": "./static/data/images/prize01.png"
+      },
+      {
+        "item_id": 2,
+        "prize_img": "./static/data/images/prize02.png"
+      },
+      {
+        "item_id": 3,
+        "prize_img": "./static/data/images/prize03.png"
+      },
+      {
+        "item_id": 4,
+        "prize_img": "./static/data/images/prize04.png"
+      }
+    ],
+    "poster_img_box": [
+      {
+        "imgW": "750",
+        "imgH": "1206",
+        "link": "./static/data/images/01.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "375",
+        "areaH": "603",
+        "areaL": "1379",
+        "areaT": "103",
+        "link": "./static/data/images/02.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "152",
+        "areaH": "244",
+        "areaL": "791",
+        "areaT": "1193",
+        "link": "./static/data/images/03.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "282",
+        "areaH": "454",
+        "areaL": "857",
+        "areaT": "413",
+        "link": "./static/data/images/04.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "232",
+        "areaH": "372",
+        "areaL": "388",
+        "areaT": "844",
+        "link": "./static/data/images/05.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "187",
+        "areaH": "300",
+        "areaL": "359",
+        "areaT": "1226",
+        "link": "./static/data/images/10.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "778",
+        "areaH": "1251",
+        "areaL": "133",
+        "areaT": "856",
+        "link": "./static/data/images/06.jpg"
+      },
+      {
+        "imgW": "1875",
+        "imgH": "3015",
+        "areaW": "278",
+        "areaH": "446",
+        "areaL": "794",
+        "areaT": "783",
+        "link": "./static/data/images/07.jpg"
+      }
+    ],
+    "poster_button": "./static/data/images/poster-button.png",
+    "activity_bg": "./static/data/images/activity-bg.png"
+  },
+  "music": "./static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

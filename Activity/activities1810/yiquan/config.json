@@ -1,0 +1,252 @@
+{
+    "title":"怡泉",
+    "turnplate":{
+        "restaraunts": [
+            "北京杜莎夫人蜡像馆&大城小像||两馆联票20元优惠券",
+            "怡泉||买一赠一",
+            "大城小像||免费门票1张",
+            "北京杜莎夫人蜡像馆&大城小像||两馆联票20元优惠券",
+            "怡泉||买一赠一",
+            "大城小像||免费门票1张"],
+        "colors": [
+            "#fcc800",
+            "#fc9d00",
+            "#fcc800",
+            "#fc9d00",
+            "#fcc800",
+            "#fc9d00"],
+        "fontSize":[
+            "bold 8pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 8pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei",
+            "bold 14pt Microsoft YaHei"
+        ],
+        "fontColor": [
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff",
+            "#ffffff||#ffffff"],
+        "canvasLength": 440,
+        "outsideRadius": 200,
+        "textRadius": 154,
+        "insideRadius": 70,
+        "startAngle": 0,
+        "bRotate": false,
+        "pointer": "images/page2/zz.png",
+        "turnplate": "images/page2/zhuanpan.png"
+    },
+    "trunplateCss":{
+        "position":"absolute",
+        "top":"0px",
+        "left":"0px"
+    },
+    "prize":{
+        "2031": {
+            "prize":3,
+            "src":"images/page2/mfmp.png",
+            "url":"coupon"
+        },
+        "2032": {
+            "prize": 1,
+            "src": "images/page2/yhq.png",
+            "url":""
+        },
+        "2033": {
+            "prize": 2,
+            "src": "images/page2/m1z1.png",
+            "url":"coupon"
+        }
+    },
+    "sessionKey":"yiquan_coupon_code",
+    "pages": {
+        "page1":{
+            "background": {
+                "type": "color",
+                "color": "black"
+            },
+            "images":[{
+                "src":"images/page1/ren.png",
+                "css":{
+                    "width":"100vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"3vw",
+                    "left":"0vw"
+                },
+                "class":[
+                    "animated",
+                    "bounceInRight",
+                    "slow"
+                ]
+            },{
+                "src":"images/page1/1.png",
+                "css":{
+                    "width":"18vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"6vw",
+                    "left":"28vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/2.png",
+                "css":{
+                    "width":"14vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"61vw",
+                    "left":"6vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/3.png",
+                "css":{
+                    "width":"10vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"130vw",
+                    "left":"0vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/4.png",
+                "css":{
+                    "width":"32vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"86vw",
+                    "right":"0vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/2.png",
+                "css":{
+                    "width":"20vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"150vw",
+                    "right":"20vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/dsfr.png",
+                "css":{
+                    "width":"25vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"120vw",
+                    "left":"10vw"
+                }
+            },{
+                "src":"images/page1/dcxx.png",
+                "css":{
+                    "width":"20vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"115vw",
+                    "right":"10vw"
+                }
+            },{
+                "src":"images/page1/anniu.png",
+                "css":{
+                    "width":"60vw",
+                    "position":"absolute",
+                    "top":"130vw",
+                    "right":"20vw"
+                },
+                "class":[
+                    "button1"
+                ]
+            },{
+                "src":"images/page1/chanpin.png",
+                "css":{
+                    "width":"24vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"25vw",
+                    "left":"10vw"
+                },
+                "class":[
+                    "animated",
+                    "bounceInRight",
+                    "slow"
+                ]
+            }]
+        },
+        "page2":{
+            "background": {
+                "type": "color",
+                "color": "black"
+            },
+            "images":[{
+                "src":"images/page2/chanpin.png",
+                "css":{
+                    "width":"100vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"5vw",
+                    "left":"0vw"
+                },
+                "class":[
+                    "animated",
+                    "bounceInRight",
+                    "slow"
+                ]
+            },{
+                "src":"images/page1/1.png",
+                "css":{
+                    "width":"18vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"3vw",
+                    "left":"14vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/2.png",
+                "css":{
+                    "width":"14vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"31vw",
+                    "left":"3vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/3.png",
+                "css":{
+                    "width":"10vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"120vw",
+                    "left":"0vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/4.png",
+                "css":{
+                    "width":"32vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "top":"40vw",
+                    "right":"0vw",
+                    "z-index":"-10"
+                }
+            },{
+                "src":"images/page1/chanpin.png",
+                "css":{
+                    "width":"15vw",
+                    "pointer-events": "none",
+                    "position":"absolute",
+                    "bottom":"3vw",
+                    "right":"3vw",
+                    "z-index":"-10"
+                }
+            }]
+        }
+    }
+}

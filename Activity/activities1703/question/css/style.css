@@ -1,0 +1,182 @@
+
+/* CSS Document */
+body, button, select, textarea, input, label, option, fieldset, legend,p,div {
+  font-family: "微软雅黑";
+  font-size: 12px;
+   }
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: none; }
+
+html {
+	width: 100%;
+	height: 100%;
+  }
+  
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+.clear {
+  height: 1px;
+  overflow: hidden;
+  clear: both; }
+
+a, img {
+  border: 0; }
+
+a {
+  color: #666;
+  text-decoration: none; }
+  a:hover {
+    color: #0053a6; }
+
+li {
+  list-style-type: none; }
+  
+.wrap{
+	box-sizing: border-box;
+	position: relative;
+	width: 7.5rem;
+	height: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.bgimg{width: 100%;
+height: 100%;}
+
+.img_ping{
+    width:3.88rem ;
+	height: 30.59%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:55.05%;
+	z-index: 6;
+}
+.ques_btn{
+	width:3.4rem ;
+	height: 0.68rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:87.56%;
+}
+.bgimg_ques{
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.logo{
+	width:1.38rem ;
+	height: 1.48rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:1.9%;
+}
+.logo_text{
+	width:3.7rem ;
+	height: 0.41rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:16.67%;
+}
+.ques_one{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:24.70%;
+	color:#ffffff; font-size: 0.32rem;width:100%;
+	text-align: center;
+}
+.ques_two{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top:42.95%;
+	color:#ffffff;font-size: 0.32rem;width:100%;
+	text-align: center;
+}
+.option{
+	margin-top: 3.6%;font-size: 0.20rem;
+	text-align: left;
+}
+.left{
+	position: absolute;
+	left: 1.56rem; 
+}
+.right{
+	position: absolute;
+	left: 4.35rem; 
+}
+.margin_top_32{
+	margin-top: 3.15%;
+}
+.show_box{
+	width:100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 999;display:none;
+}
+.show_100{
+	width:100%;height: 100%;position: fixed;left: 0;top: 0;opacity: 0.5;
+	background-image: url(../img/mask.png);
+	background-size: 100% 100%; 
+
+}
+.alert_gift_box{
+  width: 6.32rem;
+  height: 64.10%;
+  position: absolute;
+  top: 7.96%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-image: url(../img/Popup.png);
+	background-size: 100% 100%; 
+}
+.get_coupon{
+	width: 3.53rem;
+	height: 0.66rem;
+	position: absolute;
+	bottom: 7.76%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	border:none;
+	background: none;
+	background-image: url(../img/button.png);
+	background-size: 100% 100%; 
+}
+.coupon_img{
+	width: 4.10rem;
+	height: 25.10%;
+	position: absolute;
+	bottom: 23.28%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	border:none;
+}
+#loadingToast{
+	font-size: 12px;
+}
+/*activity*/

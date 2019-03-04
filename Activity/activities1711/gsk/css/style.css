@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* CSS Document */
+body, button, select, textarea, input, label, option, fieldset, legend,p,div {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  line-height: 18px;
+   }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: none; }
+
+html {
+	width: 100%;
+	height: 100%;
+  }
+  
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+.clear {
+  height: 1px;
+  overflow: hidden;
+  clear: both; }
+
+a, img {
+  border: 0; }
+
+a {
+  color: #666;
+  text-decoration: none; }
+  a:hover {
+    color: #0053a6; }
+
+li {
+  list-style-type: none; }
+  
+.wrap{
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.bgimg{
+  width: 100%;
+  height: 100%;
+}
+button{
+  background: none;
+  border-radius: 0;
+}
+#btn{
+  width:3.04rem ;
+  height: 1.58rem;
+  position: absolute;
+  bottom:10%;
+  left: 7%;
+  border: none;
+  background: none;
+}
+#btn1{
+  width:3.04rem ;
+  height: 1.58rem;
+  position: absolute;
+  bottom: 10%;
+  right:7%;
+  border: none;
+  background: none;  
+}
+#logo{
+  width:88px ;
+  height: 47px;
+  position: absolute;
+  top:3%;
+  left:5%;
+  border: none;
+  background: none;  
+}
+#lanse{
+  width:100%;
+  height:100%;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  border: none;
+  background: none;  
+}
+#xiangji{
+  width:35%;
+  position: absolute;
+  top: 15%;
+  left: 32.5%;
+  border: none;
+  background: none;  
+}
+#tijiao{
+  width:80%;
+  border: none;
+  background: none;
+  margin-top: 20%;
+  margin-left: 10%;  
+}
+#sub{
+  width:146px;
+  height: 200px;
+  position: absolute;
+  top:62%;
+  border: none;
+  background: none;
+  left:50%;
+  margin-left: -73px;
+}

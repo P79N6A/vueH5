@@ -1,0 +1,70 @@
+{
+  "images": {
+    "bg_image": "static/data/images/bg.png",
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "item_id": 1,
+        "logo": "./static/data/images/prize01.png",
+        "title": "可口可乐01",
+        "coupon_url": "http://baidu.com",
+        "prize_img": "./static/data/images/prize01.png"
+      },
+      {
+        "item_id": 2,
+        "logo": "./static/data/images/prize02.png",
+        "title": "可口可乐02",
+        "coupon_url": "http://baidu.com",
+        "prize_img": "./static/data/images/prize02.png"
+      },
+      {
+        "item_id": 3,
+        "logo": "./static/data/images/prize03.png",
+        "title": "可口可乐03",
+        "coupon_url": "http://baidu.com",
+        "prize_img": "./static/data/images/prize03.png"
+      },
+      {
+        "item_id": 4,
+        "logo": "./static/data/images/prize04.png",
+        "title": "可口可乐04",
+        "coupon_url": "http://baidu.com",
+        "prize_img": "./static/data/images/prize04.png"
+      }
+    ],
+    "poster_img_box": [
+      {
+        "poster_name": "poster01",
+        "positionX": "330",
+        "positionY": "820",
+        "poster_img": "./static/data/images/poster01.png"
+      },
+      {
+        "poster_name": "poster02",
+        "positionX": "230",
+        "positionY": "620",
+        "poster_img": "./static/data/images/poster02.png"
+      },
+      {
+        "poster_name": "poster03",
+        "positionX": "-1",
+        "positionY": "-1",
+        "poster_img": "./static/data/images/poster03.png"
+      }
+    ],
+    "poster_button": "./static/data/images/poster-button.png",
+    "activity_bg": "./static/data/images/activity-bg.png"
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次抽奖机会"
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

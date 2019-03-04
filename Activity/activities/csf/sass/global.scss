@@ -1,0 +1,124 @@
+@import "compass/typography";
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1; 
+}
+
+.row {
+  width: 100%;
+	@extend .clearfix;
+}
+
+img {
+    border: 0 none; 
+    width: auto\9; 
+    height: auto; 
+    max-width: 100%; 
+    vertical-align: top;
+    -ms-interpolation-mode: bicubic;
+}
+
+button {
+    border: none;
+}
+
+table {
+  	width: 100%;
+  	max-width: 100%;
+  	table-layout: fixed;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+}
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline();
+
+h1{
+	 @include adjust-font-size-to(48px);
+}
+
+body {
+	 @include adjust-font-size-to(16px);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.icon {
+	 display: inline-block;
+}
+
+/* 
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right, left, top
+*/
+@mixin triangle($direction, $size: 6px, $color: #222, $left: 0, $top: 0){
+    content: '';
+    display: block;
+    position: absolute;
+    height: 0; 
+    width: 0;
+    left: $left;
+    top: $top;
+    @if ($direction == 'up'){
+      border-bottom: $size solid $color;
+      border-left: 1/2*$size solid transparent;
+      border-right: 1/2*$size solid transparent;
+    }
+    @else if ($direction == 'down'){
+      border-top: $size solid $color;
+      border-left: 1/2*$size solid transparent;
+      border-right: 1/2*$size solid transparent;
+    }
+    @else if ($direction == 'left'){
+      border-top: 1/2*$size solid transparent;
+      border-bottom: 1/2*$size solid transparent;
+      border-right: $size solid $color;
+    }
+    @else if ($direction == 'right'){
+      border-top: 1/2*$size solid transparent;
+      border-bottom: 1/2*$size solid transparent;
+      border-left: $size solid $color;
+    }
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+

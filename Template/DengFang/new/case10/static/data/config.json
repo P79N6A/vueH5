@@ -1,0 +1,67 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "home_bg_image": "./static/data/images/home-bg.png",
+    "join_btn": "./static/data/images/join-btn.png",
+    "list_bg": "static/data/images/list-bg.png",
+    "share_image": "./static/data/images/prize01.png",
+    "synthesis": "./static/data/images/synthesis.png",
+    "luck_card": [
+      {
+        "item_id": 0,
+        "big_light": "./static/data/images/luck-card-big-light01.png",
+        "big_gray": "./static/data/images/luck-card-big-gray01.png",
+        "sm_light": "./static/data/images/luck-card-sm-light01.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray01.png"
+      },
+      {
+        "item_id": 1,
+        "big_light": "./static/data/images/luck-card-big-light02.png",
+        "big_gray": "./static/data/images/luck-card-big-gray02.png",
+        "sm_light": "./static/data/images/luck-card-sm-light02.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray02.png"
+      },
+      {
+        "item_id": 2,
+        "big_light": "./static/data/images/luck-card-big-light03.png",
+        "big_gray": "./static/data/images/luck-card-big-gray03.png",
+        "sm_light": "./static/data/images/luck-card-sm-light03.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray03.png"
+      },
+      {
+        "item_id": 3,
+        "big_light": "./static/data/images/luck-card-big-light04.png",
+        "big_gray": "./static/data/images/luck-card-big-gray04.png",
+        "sm_light": "./static/data/images/luck-card-sm-light04.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray04.png"
+      },
+      {
+        "item_id": 4,
+        "big_light": "./static/data/images/luck-card-big-light05.png",
+        "big_gray": "./static/data/images/luck-card-big-gray05.png",
+        "sm_light": "./static/data/images/luck-card-sm-light05.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray05.png"
+      },
+      {
+        "item_id": 5,
+        "big_light": "./static/data/images/luck-card-big-light06.png",
+        "big_gray": "./static/data/images/luck-card-big-gray06.png",
+        "sm_light": "./static/data/images/luck-card-sm-light06.png",
+        "sm_gray": "./static/data/images/luck-card-sm-gray06.png"
+      }
+    ],
+    "tooltip": "static/data/images/tooltip.png"
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次参加机会"
+  },
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

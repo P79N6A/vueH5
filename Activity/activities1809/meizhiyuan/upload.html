@@ -1,0 +1,183 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>美汁源</title>
+    <link href="upload.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/vconsole.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="page1 swiper-slide swiper-no-swiping">
+                <!-- 第一页 -->
+                <img src="images/page1/logo1.png" alt="" class="logo">
+                <img src="images/page2/logo.png" alt="" class="title">
+                <img class="zi" src="images/page3/zi.png" />
+                <div class="myTable">
+                    <input type="text" class="checkinput buyer_name" style="font-size: 12pt;" placeholder="姓名">
+                    <input type="tel" class="checkinput buyer_phone" style="font-size: 12pt;" placeholder="手机号码" >
+                    <input type="text" class="checkinput buyer_idcard" style="font-size: 12pt;" placeholder="身份证号" >
+                    <img src="images/page1/yl.png" class="yl" />
+                    <img src="images/page3/anniu.png" class="anniu5" id="button2" />
+                </div>
+            </div>
+
+            <div class="page2 swiper-slide swiper-no-swiping">
+            </div>
+            <div class="page3 swiper-slide swiper-no-swiping">
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+    <div class="alertContent" style="display:none;">
+      <div class="show">
+        <img src="images/page3/tc.png" alt="" class="item" id="item">
+      </div>
+    </div>
+    <script src="js/swiper/js/swiper.min.js"></script>    
+</body>
+<script type="text/javascript">
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+//实例化翻页功能
+var mySwiper = new Swiper ('.swiper-container', {
+    direction : 'vertical',
+    effect : 'flip',
+    slidesPerView: 1,
+    centeredSlides : true,
+    noSwiping : true,
+    // noSwipingClass : 'stop-swiping',
+    navigation: {
+      nextEl: '.button',
+    }
+}) 
+$(function(){
+    $('body,html').height(document.body.clientHeight);
+    var my_url = getHTUrl()
+    var acmp_host = my_url.acmp_host
+    var activity_id = urlGet()['activity_id']
+    var store_code = urlGet()['store_code']
+    var openid = urlGet()['openid']
+    //提交验证
+    $(".checkinput").blur(function(){
+        let val = $(this).val()
+        if (!val || val.length > 18) {
+            $(this).addClass("error")
+        }else{
+            $(this).removeClass("error")
+        }
+    });
+    $(".buyer_phone").blur(function(){
+        let val = $(this).val()
+        if (!val || val.length != 11) {
+            $(".buyer_phone").addClass("error")
+        }else{
+            $(".buyer_phone").removeClass("error")
+        }
+    });
+    $(".buyer_idcard").blur(function(){
+        let val = $(".buyer_idcard").val()
+        if (val.length < 15 || val.length > 18) {
+            $(".buyer_idcard").addClass("error")
+        }else{
+            $(".buyer_idcard").removeClass("error")
+        }
+    });
+    //点击提交信息
+    $("#button2").click(function(){
+        let buyer_name = $(".buyer_name").val()
+        let buyer_phone = $(".buyer_phone").val()
+        let buyer_idcard = $(".buyer_idcard").val()
+        let coupon_code = localStorage['yocha_coupon_code']
+        if(!coupon_code){
+            my_alert("confirm_error", "很遗憾", "没有检测到卡券ID", "请重新抽奖", ["知道啦"], ["green"], function () {});
+            return
+        }
+        if (!buyer_name) {
+          $(".buyer_name").addClass("error")
+          return
+        }else if (!buyer_phone || buyer_phone.length != 11) {
+          $(".buyer_phone").addClass("error")
+          return
+        }else if (!buyer_idcard || buyer_idcard.length < 15 || buyer_idcard.length > 18) {
+          $(".buyer_idcard").addClass("error")
+          return
+        }
+        let sub_data ={}
+        sub_data.buyer_name = buyer_name
+        sub_data.buyer_phone = buyer_phone
+        sub_data.buyer_addr = buyer_idcard
+        sub_data.coupon_code = coupon_code
+        $.ajax({
+            type: "POST",
+            url: acmp_host + 'prize/updateUserInfo',
+            data: sub_data,
+            dataType: "json",
+            success: function(data) {
+                if(data.return_code == 200){
+                    //快速核销掉
+                    $.ajax({
+                        type: "POST",
+                        url: acmp_host + 'consume/scrape',
+                        data: sub_data,
+                        dataType: "json",
+                        success: function(datas) {
+                            console.log(datas)
+                            $("#loadingToast").hide();
+                            if(datas.return_code == 200){
+                                $('.alertContent').show()
+                                return
+                            }else{
+                                my_alert("confirm_error", "",datas.return_msg,"",["知道啦"],["green"],function(){$('.alert').show()});
+                            }
+                        }
+                    })
+                }else{
+                    $("#loadingToast").hide()
+                    my_alert("confirm_error", "",data.return_msg,"",["知道啦"],["green"],function(){});
+                }
+            }
+        })
+    })
+    $("#item").click(function(){
+        wx.closeWindow()
+    })
+})
+</script>
+</html>

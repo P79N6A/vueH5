@@ -1,0 +1,89 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+html,body{
+  margin: 0;
+  padding: 0;
+  height:auto;
+  background-color: rgba(21,28,53,1);
+}
+@font-face{
+    font-family: siyuan;
+    src: url('http://acmp.aikaka.com.cn/cocacola/shakeApp/statics/fonts/siyuan.ttf');
+}
+#app {
+  //font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family:siyuan;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  perspective: 800px;
+  background-color: rgba(21,28,53,1);
+}
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+    will-change: transform;
+    transition: all .4s;
+    position: absolute;
+    width:100%;
+    left:0;
+}
+.slide-right-enter {
+    transform: translateX(-100%);
+}
+.slide-right-leave-active {
+    transform: translateX(100%);
+}
+.slide-left-enter {
+    transform: translateX(100%);
+}
+.slide-left-leave-active {
+    transform: translateX(-100%);
+}
+
+// .slide-right-enter-active,
+// .slide-left-enter-active {
+//     will-change: transform;
+//     transition: all .5s;
+//     transition-delay:.4s;
+//     position: absolute;
+//     width:100%;
+//     left:0;
+//     backface-visibility: hidden;
+//     transform: rotateY(0deg);
+// }
+// .slide-right-leave-active,
+// .slide-left-leave-active {
+//     will-change: transform;
+//     transition: all .5s;
+//     position: absolute;
+//     width:100%;
+//     left:0;
+//     backface-visibility: hidden;
+//     transform: rotateY(0deg);
+// }
+// .slide-right-enter {
+//     transform: rotateY(90deg);
+// }
+// .slide-right-leave-active {
+//     transform: rotateY(90deg);
+// }
+// .slide-left-enter {
+//     transform: rotateY(90deg);
+// }
+// .slide-left-leave-active {
+//     transform: rotateY(90deg);
+// }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Flipping Circle Slideshow</title>
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/component.css">
+	<script src="js/modernizr.custom.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div id="fc-slideshow" class="fc-slideshow">
+			<ul class="fc-slides">
+				<li>
+					<img src="images/1.jpg" />
+					<h3>Hot</h3>
+				</li>
+				<li>
+					<img src="images/2.jpg" />
+					<h3>Cold</h3>
+				</li>
+				<li>
+					<img src="images/3.jpg" />
+					<h3>Light</h3>
+				</li>
+				<li>
+					<img src="images/4.jpg" />
+					<h3>Dark</h3>
+				</li>
+				<li>
+					<img src="images/5.jpg" />
+					<h3>Soft</h3>
+				</li>
+				<li>
+					<img src="images/6.jpg" />
+					<h3>Hard</h3>
+				</li>
+				<li>
+					<img src="images/7.jpg" />
+					<h3>Smooth</h3>
+				</li>
+				<li>
+					<img src="images/8.jpg" />
+					<h3>Rough</h3>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.flipshow.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#fc-slideshow").flipshow()
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试检测设备</title>
+	<script type="text/javascript" src = "http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<script type="text/javascript" src = "http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<script type="text/javascript" src = "/PublicService/Weixin/js/wxjssdk.js"></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			font-family:"微软雅黑";
+			color:#DFFDDD;
+			vertical-align:bottom;
+		}
+	</style>
+</head>
+<body style="font-size:90px;">
+<div style="height:500px">
+	当前设备：
+	<div style="width:90%;height:50%;background-color:#FF8C69;text-align:center;padding-top:10%;margin:5% 5% 5% 5%;border-radius: 20px;font-size:180px" class="show">
+			</div>
+</div>
+
+<div style="height:900px">
+	轨迹：
+	<div style="width:90%;height:50%;background-color:#7CCD7C;text-align:center;padding-top:10%;margin:5% 5% 5% 5%;border-radius: 20px;word-wrap: break-word;" class="showRoad">
+			</div>
+</div>
+<button class="begin" style="height:100px;width:200px">开始</button>
+<button class="stop" style="height:100px;width:200px">结束</button>
+</body>
+<script type="text/javascript">
+var device_list = [];
+var way = [];
+wx.ready(function(){
+		wx.startSearchBeacons({
+		   ticket:urlGet()['ticket'],
+		   complete:function(argv){
+		   		wx.onSearchBeacons({
+				   complete:function(data){
+				   		var device;
+				   		var accuracy = 100;
+				   		for(var i in data.beacons){
+				   			if(data.beacons[i].accuracy < accuracy){
+				   				device = data.beacons[i].minor;
+				   				accuracy = data.beacons[i].accuracy;
+				   				if(device_list.indexOf(device) == -1){
+				   					device_list.push(device);
+				   				}
+				   				if(way.length == 0 || device_list.indexOf(device)+1 != way[way.length-1]){
+				   					way.push(device_list.indexOf(device)+1);
+				   				}
+				   			}
+				   		}
+
+				   		$('.show').html(device_list.indexOf(device)+1);
+				   		$('.showRoad').html(way);
+
+				   }
+				});
+		    }
+		});
+});
+		
+	$('.stop').click(function(){
+		wx.stopSearchBeacons({
+		   complete:function(res){
+		   //回调函数
+		   }
+		});
+
+	});
+function urlGet() {
+  var aQuery = window.location.href.split("?"); //取得Get参数
+  var aGET = new Array();
+  if (aQuery.length > 1) {
+    var aBuf = aQuery[1].split("&");
+    for (var i = 0, iLoop = aBuf.length; i < iLoop; i++) {
+      var aTmp = aBuf[i].split("="); //分离key与Value
+      aGET[aTmp[0]] = aTmp[1];
+    }
+  }
+  return aGET;
+}
+</script>
+</html>

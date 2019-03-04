@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>相约三月天 幸福女人节</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+ </head>
+ <body>
+ 	<div class="container over">
+ 	</div>
+ </body>
+<script src="js/zepto.min.js"></script>
+<script>
+$(function(){
+	var screenH = window.innerHeight;
+	$('.container').css({'height': screenH + "px",'overflow':'hidden'});
+	$('.btn-wrap').css({'bottom': realityH(256, 1136) + "px",'overflow':'hidden'});
+
+	function realityH(oriP, oriH) {
+	    var out;
+	    out = screenH*(oriP/oriH);
+	    return out;
+	}
+});
+
+
+</script>
+</html>

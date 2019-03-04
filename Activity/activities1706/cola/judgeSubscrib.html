@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后畅爽就喝可口可乐</title>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/weui.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <img src="img/move.gif" class="title_move">
+    </div>
+</body>
+<script type="text/javascript">
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+var judge_url = window.location.href;
+var openid, activity_id, third_party_openid;
+third_party_openid = urlGet()['third_party_openid'];
+openid = urlGet()['openid'];
+activity_id = urlGet()['activity_id'];
+if (typeof(third_party_openid) == "undefined") {
+    var new_url = "http://ab.aikaka.com.cn/PublicService/Weixin/oauth/base?app_id=wxbd1b32f7dd733666&callback_url=" + encodeURIComponent(judge_url);
+    window.location.href = new_url;
+} else {
+    window.location.href = "http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe?app_id=wxbd1b32f7dd733666&callback_url=" + encodeURIComponent(judgeUrl + "?openid=" + openid + "&activity_id=" + activity_id + "&entry=SHAKE"+"&fromstore="+urlGet()['fromstore']) + "&subscribe_url=" + encodeURIComponent(subscribe_url+"?fromstore="+urlGet()['fromstore'])
+}
+</script>
+
+</html>

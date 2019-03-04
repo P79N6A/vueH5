@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>绿箭</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/rem.js" ></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="prize_logo">
+				<img src="img/prize_logo.png" />
+			</div>
+			<div class="prize_bg first_prize_bg">
+				<div class="prize_input">
+					<div class="name">
+						<span class="prize_icon1"></span><span>顾客姓名</span>
+						<input type="text" class="buyer_name" />
+					</div>
+					<div class="phone">
+						<span class="prize_icon2"></span><span>联系电话</span>
+						<input type="text" class="buyer_phone" />
+					</div>
+					<div class="address">
+						<span class="prize_icon3"></span><span>收货地址</span>
+						<input type="text" class="buyer_addr" />
+					</div>
+				</div>
+			</div>
+			<div class="btn">
+				<p>点我领取</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+	$('.btn').click(function(){
+		var getCoupon = {};
+	    getCoupon.activity_item_id = $.cookie('coupon_code');
+	    getCoupon.activity_id = $.cookie('activity_id');
+	    getCoupon.openid = $.cookie('openid');
+	    getCoupon.name = $('.buyer_name').val();
+	    getCoupon.phone = $('.buyer_phone').val();
+	    getCoupon.buyer_addr = $('.buyer_addr').val();
+	    if(getCoupon.name == '' || getCoupon.phone == '' || getCoupon.buyer_addr == ''){
+	    	alert('请填写信息后提交');
+	    	return false;
+	    }
+	    else{
+		    $.ajax({
+		        type: "POST",
+		        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+		        data: getCoupon,
+		        dataType: "json",
+		        success: function(data){
+		            if(data.return_code!=200){
+		                alert('请通过摇一摇重新进入');
+		            }
+		            else{
+		            	$.cookie('coupon_code', '');
+		            	$(".correct,.FixBg").fadeIn(300).delay(1000).fadeOut(300);
+		                var coupon_url = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+		                location.href = 'http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe' + "?callback_url=" + encodeURIComponent(coupon_url) + "&subscribe_url=" +
+		                            encodeURIComponent('http://mp.weixin.qq.com/s?__biz=MzIzNTE0OTc1OA==&mid=402036324&idx=1&sn=55f4b5d2c5413e5207c8a3fec85b0d71#rd') + "&app_id=wx7ac53bee6ee222ba";
+		            }
+		      }
+		  });
+
+	    }
+	});
+	
+</script>

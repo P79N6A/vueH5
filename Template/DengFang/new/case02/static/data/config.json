@@ -1,0 +1,48 @@
+{
+  "images": {
+    "bg_image": "./static/data/images/bg.png",
+    "music_image": "./static/data/images/music.png",
+    "silk_bag_image": "./static/data/images/silk-bag.png",
+    "illustrate_image": "./static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "item_id": 1077,
+        "prize_img": "./static/data/images/first-prize.png"
+      },
+      {
+        "item_id": 1078,
+        "prize_img": "./static/data/images/second-prize.png"
+      },
+      {
+        "item_id": 1077,
+        "prize_img": "./static/data/images/first-prize.png"
+      },
+      {
+        "item_id": -1,
+        "prize_img": "./static/data/images/no-prize.png"
+      },
+      {
+        "item_id": 1078,
+        "prize_img": "./static/data/images/second-prize.png"
+      },
+      {
+        "item_id": 1077,
+        "prize_img": "./static/data/images/first-prize.png"
+      },
+      {
+        "item_id": 1078,
+        "prize_img": "./static/data/images/second-prize.png"
+      },
+      {
+        "item_id": -1,
+        "prize_img": "./static/data/images/no-prize.png"
+      }
+    ],
+    "prize_draw": "./static/data/images/prize-draw.png"
+  },
+  "tooltips": {
+    "prize_draw_number": "您今天还有{n}次抽奖机会"
+  },
+  "music": "./static/data/test.mp3",
+  "host":"http://192.168.2.2/gaoyuan/AcmpApi/"
+}

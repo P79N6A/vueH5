@@ -1,0 +1,58 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "item_id": 1,
+        "prize_img": "./static/data/images/prize01.png"
+      },
+      {
+        "item_id": 2,
+        "prize_img": "./static/data/images/prize02.png"
+      },
+      {
+        "item_id": 3,
+        "prize_img": "./static/data/images/prize03.png"
+      },
+      {
+        "item_id": 4,
+        "prize_img": "./static/data/images/prize04.png"
+      }
+    ],
+    "activity_bg": "./static/data/images/activity-bg.png"
+  },
+  "dialog_list": [
+    {
+      "type": "default",
+      "content": "出门看到喜欢的就买，网上看到喜欢的就下单。"
+    },
+    {
+      "type": "user",
+      "content": "......"
+    },
+    {
+      "type": "default",
+      "content": "你说这可怎么办呀，钱包都空了。"
+    },
+    {
+      "type": "default",
+      "content": "我觉得需要有什么来封印一下这股强大的力量。"
+    },
+    {
+      "type": "user",
+      "content": "宝贝想要什么，直说"
+    },
+    {
+      "type": "default",
+      "content": "我想买最近很红的爆款包包么么哒！！！"
+    },
+    {
+      "type": "user",
+      "content": ".... 走过最长的路就是你的套路，链接给我...."
+    }
+  ],
+  "music": "./static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}

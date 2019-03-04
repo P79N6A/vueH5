@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>课后尽享畅爽</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+</head>
+
+
+<body>
+    <div class="wrap js_container">
+        <img class="bgimg" src="img/none.png">
+        <div class="btn_gift">
+            <img src="img/btn_gift_disable.png" class="get_gift">
+        </div>
+        <div class="btn_share">
+            <img src="img/share.png" class="gift">
+        </div>
+        <img src="img/show_share.png" class="show_share">
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">卡券领取中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/common.js">
+
+</script>
+<script type="text/javascript" src="js/orient.js"></script>
+<script>
+//显示分享图层
+$('.gift').click(function() {
+    $('.show_share').css("display", "block")
+});
+
+//关闭分享图层
+$('.show_share').click(function() {
+    $('.show_share').css("display", "none")
+});
+
+var bg_img = [
+    'img/none.png',
+    'img/once.png',
+    'img/twice.png',
+    'img/thrice.png'
+];
+
+//检查碎片数量
+$.ajax({
+    type: "GET",
+    url: acmp_host + "AcmpApi/couponRecord/piecesCount",
+    data: {
+        'openid': localStorage.openid,
+        'coupon_id': localStorage.coupon_id,
+        '_t': Math.random()
+    },
+    dataType: "json",
+    success: function(data) {
+        if (data.return_code != 200) {
+
+        } else {
+            $('.bgimg').attr('src', bg_img[data.data.collected]);
+            if (data.data.collected >= data.data.required) {
+                $(".get_gift").attr('src', 'img/btn_gift.png');
+                $(".btn_gift").click(function(){
+                    getGift();
+                });
+            }else if(data.data.composed.length > 0){
+                $(".get_gift").attr('src', 'img/btn_gift.png');
+                $(".btn_gift").click(function(){
+                    viewGift(data.data.composed[0]);
+                });
+            }
+        }
+    }
+});
+
+//领取礼品
+var getGift = function() {
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "AcmpApi/couponRecord/compose",
+        data: {
+            'openid': localStorage.openid,
+            'activity_id': localStorage.activity_id,
+            'activity_item_id': localStorage.activity_item_id
+        },
+        dataType: "json",
+        success: function(data) {
+            if (data.return_code != 200) {
+
+            } else {
+                //打开卡券
+                $coupon_url = coupon_bag_host + 'show_webcoupon?coupon_code=' + data.data.coupon_code + '&openid=' + localStorage.openid;
+                window.location.href = $coupon_url;
+            }
+        }
+    });
+};
+
+//查看礼品
+var viewGift = function(coupon_code) {
+    //打开卡券
+    $coupon_url = coupon_bag_host + 'show_webcoupon?coupon_code=' + coupon_code + '&openid=' + localStorage.openid;
+    window.location.href = $coupon_url;
+}
+</script>
+
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = '进度查询';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+
+</html>

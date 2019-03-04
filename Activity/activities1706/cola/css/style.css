@@ -1,0 +1,616 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+}
+
+body {
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+.wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-size: 100%;
+}
+
+#loadingToast {
+    font-size: 12px;
+}
+
+.title {
+    width: 4.3rem;
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 2.11rem;
+    height: 0.65rem;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.sub_logo {
+    width: 1.66rem;
+    height: 2.32rem;
+    position: absolute;
+    bottom: 0.42rem;
+    right: 0.58rem;
+}
+
+.text {
+    width: 4.3rem;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.text_qr {
+    font-size: 0.44rem;
+    line-height: 0.6rem;
+    width: 5.7rem;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    top: 20.8%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.title_move {
+    width: 1.6rem;
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.title_question {
+    width: 5.76rem;
+    height: 24.7%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10.9%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.logo_question {
+    width: 2.06rem;
+    height: 0.63rem;
+    position: absolute;
+    left: 0.28rem;
+    top: 0.46rem;
+}
+
+.cou_bottom_question {
+    width: 7.5rem;
+    height: 49.41%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.cup_question {
+    width: 1.77rem;
+    height: 32%;
+    position: absolute;
+    top: 51.87%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+}
+.cup_question img{
+    width: 100%;
+    height: 100%;
+}
+
+.time_limit_question {
+    width: 7.5rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    top: 38.8%;
+}
+
+.btn__question {
+    outline: none;
+    width: 3.13rem;
+    height: 1.2rem;
+    position: absolute;
+    top: 86.5%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: none;
+    border-radius: 0;
+    border: none;
+    background-image: url(../img/btn_question.png);
+    background-size: 100% 100%;
+    z-index: 9;
+}
+
+.ques_tex {
+    position: absolute;
+    top: 43.87%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ques_tex div {
+    display: inline-block;
+    font-size: 0.30rem;
+    color: #ffffff;
+    text-indent: 0.4rem;
+}
+
+.ques_1 {
+    display: inline-block;
+    width: 0.36rem;
+    height: 0.36rem;
+    background-image: url(../img/n.png);
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.03rem;
+}
+
+.ques_2 {
+    display: inline-block;
+}
+
+.ques_box {
+    width: 25%;
+    float: left;
+    text-align: center;
+    position: relative;
+    z-index: 99;
+}
+
+
+/* share */
+
+.share_wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-size: 100%;
+    background-image: url(../img/share_bg.jpg);
+}
+
+#loadingToast {
+    font-size: 12px;
+}
+
+.share_btn_ {
+    outline: none;
+    width: 3.13rem;
+    height: 1.2rem;
+    position: absolute;
+    bottom: 2.9%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: none;
+    border-radius: 0;
+    border: none;
+    background-image: url(../img/share_btn.png);
+    background-size: 100% 100%;
+    z-index: 9;
+}
+
+.share_desc {
+    width: 7.5rem;
+    height: 5.91rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.share_logo {
+    width: 7.5rem;
+    height: 2.03rem;
+    position: absolute;
+    top: 2.9%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+
+/* stamp */
+
+.stamp_wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    background-image: url(../img/stamp_bg.jpg);
+}
+
+.stamp_logo {
+    width: 1.68rem;
+    height: 0.52rem;
+    position: absolute;
+    top: 0.29rem;
+    left: 0.38rem;
+    right: 0;
+}
+
+.stamp_title {
+    width: 6.59rem;
+    height: 17.4%;
+    position: absolute;
+    top: 0.6rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.stamp_desc1 {
+    width: 100%;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    font-size: 0.28rem;
+    position: absolute;
+    top: 23.3%;
+    left: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.stamp_desc2 {
+    width: 100%;
+    line-height: 0.4rem;
+    font-size: 0.3rem;
+    position: absolute;
+    top: 69.3%;
+    left: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.stamp_coupon {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.small_stamp {
+    width: 1.16rem;
+    height: 11.4%;
+    position: absolute;
+    top: 81.9%;
+    display: none;
+}
+
+.stamp_1 {
+    left: 4.1%;
+}
+
+.stamp_2 {
+    left: 18.1%;
+}
+
+.stamp_3 {
+    left: 32.1%;
+}
+
+.stamp_4 {
+    left: 46.1%;
+}
+
+.stamp_5 {
+    left: 60.1%;
+}
+
+
+/* 印章弹出框 */
+
+.show_100 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    background: black;
+}
+
+.alert_gift_box {
+    width: 7.5rem;
+    height: 73.88%;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url(../img/stamp_popup.png);
+    background-size: 100% 100%;
+}
+
+.buttom_left {
+    position: absolute;
+    font-size: 0.34rem;
+    color: #ffffff;
+    width: 31.5%;
+    bottom: 0;
+    left: 18.5%;
+    height: 0.92rem;
+    line-height: 0.92rem;
+    background: none;
+    border: none;
+}
+
+.buttom_right {
+    position: absolute;
+    color: #ffffff;
+    font-size: 0.34rem;
+    width: 31.5%;
+    bottom: 0;
+    right: 18.5%;
+    height: 0.92rem;
+    line-height: 0.92rem;
+    background: none;
+    border: none;
+}
+
+.count_point {
+    width: 7.5rem;
+    height: 0.48rem;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 0.32rem;
+    color: #ffffff;
+    line-height: 0.40rem;
+    text-align: center;
+}
+
+.this_point {
+    width: 7.5rem;
+    height: 0.48rem;
+    position: absolute;
+    top: 53.1%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 0.36rem;
+    line-height: 0.44rem;
+    color: #f6c30b;
+    text-align: center;
+    font-weight: 600;
+}
+
+.buttom_cup {
+    position: absolute;
+    font-size: 0.34rem;
+    color: #ffffff;
+    width: 63%;
+    bottom: 0;
+    left: 18.5%;
+    height: 0.92rem;
+    line-height: 0.92rem;
+    background: none;
+    border: none;
+}
+
+.alert_gift_box_cup {
+    width: 7.5rem;
+    height: 73.88%;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url(../img/cup_popup.png);
+    background-size: 100% 100%;
+}
+
+.show_cup {
+    display: none;
+}
+
+.show_stamp {
+    display: none;
+}
+
+.shared {
+    display: none;
+}
+
+
+/* gift */
+
+.cup_wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    background-image: url(../img/gift_bg.jpg);
+}
+
+.cup_cup {
+    width: 3.11rem;
+    height: 25.12%;
+    position: absolute;
+    top: 24.6%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.cup_desc {
+    width: 100%;
+    line-height: 0.4rem;
+    font-size: 0.3rem;
+    position: absolute;
+    top: 47.6%;
+    left: 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.gift_coupon {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    top: 59%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/* share */
+
+.share_box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+}
+.share_box img{
+    width:100%;height:100%;
+}
+.small_stamp_move{
+    width: 2rem;
+    height: 2rem;
+    top: 40%;
+}
+.small_gift_move{
+    width: 2rem;
+    height: 2rem;
+    top: 67%;
+}
+/* 介绍页 */
+.intr_bottom{
+    position: absolute;
+    bottom: 0;
+    width: 7.5rem;
+    left: 0;
+    height: 31.3%;
+}
+.intr_tex{
+    width: 100%;
+    line-height: 0.44rem;
+    font-size: 0.28rem;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    color: #ffffff;
+}
+.intr_cup_desc1{
+top: 25.5%;
+}
+.intr_cup_desc2{
+top: 45%;
+}
+.intr_cup_desc3{
+top: 66.5%;
+}

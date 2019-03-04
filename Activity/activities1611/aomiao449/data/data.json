@@ -1,0 +1,15 @@
+
+{
+  "bg_src":"http://ab.aikaka.com.cn/shakeApp/activities1610/aomiao/img/bg.jpg",
+  "btn":{
+     "src":"http://ab.aikaka.com.cn/shakeApp/activities1610/aomiao/img/btn.png",
+     "width":"3",
+     "height":"0.9",
+     "bottom":"20"
+  },
+  "activity_msg":{
+    "item_id":514,  
+  	"third_party_name":"jushihui",  
+  	"ajax_url":"http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/drawCoupon"
+  }
+}

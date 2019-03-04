@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>开箱扫码抢购物卡</title>
+    <script type="text/javascript" src="../scan/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdkhttps.js"></script>
+    <style type="text/css">
+        html body{
+            background-color: #e92e29;
+            margin: 0;
+            padding: 0;
+        }
+        .noticeContainer{
+            width: 98%;
+            height: 40vh;
+            color: white;
+            overflow: auto;
+            overflow-y:scroll;
+            float: right;
+            position: relative;
+        }
+        .noticeNext{
+            width: 98%;
+            height: 96%;
+            top: 2%;
+            overflow: auto;
+            position: absolute;
+        }
+        .noticeNext p{
+            width: 98%;
+            margin: 2%;
+            font-size: 10pt;
+        }
+        .noticeNext::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 5pt;     /*高宽分别对应横竖滚动条的尺寸*/
+        }
+        .noticeNext::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 10pt;
+            width: 5pt;
+            background: white;
+        }
+        .noticeNext::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            border-radius: 5pt;
+            width: 5pt;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%;height: auto;float: right;">
+    <img src="./top.jpg" style="width: 100%;height: auto;">
+</div>
+<div class="noticeContainer">
+    <div class="noticeNext">
+        <p><b>“开箱扫码抢购物卡”有奖包装促销</b></p>
+        <p><b>一、活动介绍</b></p>
+        <p>2018年12月15日至2019年3月31日期间，购买带有<b>“开箱扫码抢购物卡”</b>促销标志的整箱；整箱2升（1*6瓶/ 2升）[可口可乐]汽水饮料；整箱2升（1*6瓶/ 2升）[雪碧]汽水饮料；整箱330毫升（1*24瓶/ 300毫升）[可口可乐]汽水饮料；整箱330毫升（1*24瓶/ 330毫升）[雪碧]汽水饮料；整箱330毫升（1*24瓶/ 330毫升）[芬达]汽水饮料；整箱330毫升（1*24瓶/ 500毫升）[零度可乐]汽水饮料，整箱1.25升（1*12瓶/ 1.25毫升）[美汁源]橙汁饮料沿虚线剪下贴纸区域，用智能手机微信扫描背面二维码参与抽奖，有机会赢取奖品。本促销活动仅限通过正规零售渠道购买本产品用于生活消费而非以营利为目的的消费者参加和兑奖。</p>
+        <p><b>二、活动主办方及销售区域</b></p>
+        <p>本次促销活动（以下简称“本促销活动”）由中粮可口可乐饮料（北京）有限公司主办，以下简称“主办方”。</p>
+        <p>本次促销活动区域为北京市（以下简称“本地区”）。</p>
+        <p>促销活动相关咨询，请拨打活动咨询电话010-61190200[话费自理] [热线接听-国家法定工作日10:00到18:00整] 。</p>
+        <p><b>三、参加促销活动的促销产品</b></p>
+        <p>带有<b>“开箱扫码抢购物卡”</b>促销标志的以下整箱包装产品为参加本地区本促销装产品（以下简称“促销装产品”）</p>
+        <p>整箱2升（1*6瓶/ 2升）[可口可乐]汽水饮料；</p>
+        <p>整箱2升（1*6瓶/ 2升）[雪碧]汽水饮料；</p>
+        <p>整箱1.25升（1*12瓶/ 1.25毫升）[美汁源]橙汁饮料；</p>
+        <p>整箱330毫升（1*24瓶/ 300毫升）[可口可乐]汽水饮料；</p>
+        <p>整箱330毫升（1*24瓶/ 330毫升）[雪碧]汽水饮料；</p>
+        <p>整箱330毫升（1*24瓶/ 330毫升）[芬达]汽水饮料；</p>
+        <p>整箱330毫升（1*24瓶/ 500毫升）[零度可乐]汽水饮料；</p>
+        <p><b>四、奖项设置、中奖率</b></p>
+        <p>1.一等奖：价值人民币4999元购物卡一张，领取奖品时缴纳20%个人所得税给主办方，由主办方代缴，本地区本促销活动共投放一等奖20个，中奖率0.003%;</p>
+        <p>2.二等奖：价值人民币888元微信红包一个，本地区本促销活动共投放二等奖88个，中奖率0.01%；</p>
+        <p>3.三等奖：价值人民币1.88元微信红包一个，本地区本促销活动共投放三等奖888个，中奖率0.11%；</p>
+        <p>3.四等奖：价值人民币1元微信红包一个，本地区本促销活动共投放四等奖599,004个，中奖率74.88%;</p>
+        <p>本促销活动促销装产品总数共800,000箱，综合中奖率为75%。</p>
+        <p><b>五、活动方式、抽奖方式、兑奖方式及奖品查看</b></p>
+        <p><b>1.活动方式：</b></p>
+        <p>整箱2升（1*6瓶/ 2升）[可口可乐]汽水饮料；整箱2升（1*6瓶/ 2升）[雪碧]汽水饮料；整箱330毫升（1*24瓶/ 300毫升）[可口可乐]汽水饮料；整箱330毫升（1*24瓶/ 330毫升）[雪碧]汽水饮料；整箱330毫升（1*24瓶/ 330毫升）[芬达]汽水饮料；整箱330毫升（1*24瓶/ 500毫升）[零度可乐]汽水饮料，整箱1.25升（1*12瓶/ 1.25毫升）[美汁源]橙汁饮料沿虚线剪下贴纸区域，用智能手机微信扫描背面二维码参与抽奖，有机会赢取奖品。</p>
+        <p><b>2.抽奖方式：</b></p>
+        <p>1)  抽奖方式：2018年12月15日至2019年3月31日；</p>
+        <p>2)  抽奖平台：微信平台 </p>
+        <p>3)  抽奖流程： </p>
+        <p>第一步：购买本促销装产品，剪下贴纸区域；</p>
+        <p>第二步：用智能手机微信扫描贴纸区背面二维码；</p>
+        <p>第三步：进入活动页面，按照提示确认是否中奖；</p>
+        <p><b>3. 兑奖方式及奖品查看：</b></p>
+        <p>1)  兑奖方式：</p>
+        <p>•   一等奖中奖者须按页面提示填写个人信息，于2019年3月31日24时前携带中奖二维码、中奖者身份证原件（以下简称“兑奖凭证”）到活动主办方所在地 [中粮可口可乐饮料（北京）有限公司:北京市亦庄经济技术开发区荣京东街9号]进行中奖登记，活动主办方在核实上述兑奖凭证及兑奖者资格的真实性和有效性，中奖者签署《中奖者声明》后方可领取一等奖奖品。一等奖中奖者若未满18周岁，除按照本条兑奖规定外，还需其法定监护人持监护人身份证、证明亲属或监护关系的凭证（如户口簿等）陪同该中奖者前往兑奖，并由中奖者和其法定监护人共同签署《中奖者声明》后方可领取一等奖奖品。</p>
+        <p>•   二等奖、三等奖中奖者，退出活动页面后，通过微信推送的服务通知领取。</p>
+        <p>兑奖截止日期：一等奖兑奖截止时间为2019年3月31日24时。逾期不兑奖，作自动放弃处理，活动主办方不予以补偿。</p>
+        <p>2）奖品查看：消费者可以在扫描二维码进入活动页面后，在“个人中心”中查看历史中奖记录；</p>
+        <p><b>六、本促销活动注意事项</b></p>
+        <p>1.本促销活动仅限不以营利为目的通过本促销活动正规零售渠道直接购买促销装产品的</p>
+        <p>用户。若不符合上述情形，则不具备参加本促销活动及进一步兑奖的资格，活动主办方</p>
+        <p>在视为必要时保留要求中奖者在兑换产品前证明其符合上述兑奖资格的权利。</p>
+        <p>2.活动主办方对中奖者资格、中奖二维码、中奖信息的真实性和有效性拥有查验权和决定权。中奖者应符合上述第六条第1款的要求。任何不符合上述中奖资格的中奖者，一经发现，活动主办方有权取消其参加本促销活动的资格。任何伪造、变造、复制、作价销售的促销二维码及不符合相关要求的操作一律无效。</p>
+        <p>3.如发现有消费者使用任何不正当手段参加本促销活动，包括但不限于以下情况，活动主办方有权在不事先通知的前提下取消其参加活动的资格和获奖资格：</p>
+        <p>a．有任何违背活动目的和宗旨；</p>
+        <p>b．不遵守本促销活动规则；</p>
+        <p>c．影响活动正常有序进行；</p>
+        <p>d．损害活动主办及相关实体的合法权益和声誉；</p>
+        <p>e．在活动参与过程中提供非真实的数据和信息；</p>
+        <p>f．以不正当、不公平或作弊等带有欺骗性质手段参与活动；</p>
+        <p>h．活动主办方有证据认为的其他不正当手段或情形。</p>
+        <p>4.本促销活动奖品不得兑换现金或作价销售，一经发现活动主办方有权取消其中奖资格。奖品金额符合《中华人民共和国反不正当竞争法》的有关规定。5.消费者在参与本促销活动和兑奖过程中发生的一切费用，包括但不限于上网费、电话费、交通费等均由消费者自行承担，主办方不予负责。</p>
+        <p>6.对于中奖者在领取和使用奖品过程中发生的任何伤害和损失，如该等伤害和损失非由活动主办方之过错导致，活动主办方不承担任何责任。</p>
+        <p>7.一等奖奖品如遇质量问题，消费者应与该奖品的生产商或其指定的经销商联系，按照其正常的退换货和维修规则办理相关事宜，活动主办方不承担任何责任。</p>
+        <p>8.本促销活动如按法律规定须缴纳奖品个人所得税，则该部分个人所得税为奖品价值20%的金额由消费者承担，领取奖品时缴纳给主办方，由主办方代缴。</p>
+        <p>活动主办方、本促销活动的代理公司、广告公司、印刷商和相关合作企业之员工、家属，不可参加本促销活动，以示公允。</p>
+        <p>9.消费者如对本促销规则有任何疑问，活动主办方将会在法律允许的范围内对本促销活动规则予以说明和解释。如遇不可抗力因素，活动主办方拥有取消本促销活动的权利。</p>
+    </div>
+</div>
+<div style="width: 100%;height: auto;float: right;position: relative;">
+    <a href="javascript:close();">
+        <img src="./x.png" style="width: 40%;height: auto;left: 30%;position: absolute;margin-top: 5%;">
+    </a>
+</div>
+</body>
+<script type="text/javascript">
+    wx.ready(function () {
+        //配置分享
+        var shareMessageData = {
+            title: '开箱扫码',
+            desc: '抢购物卡',
+            link: 'https://acmp.aikaka.com.cn/cocacola/shakeApp/activities1812/share/index.html',
+            imgUrl: 'http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/uploads_temp/img/2018-11-28/5bfdfc6381e821543371875.png'
+        };
+        var shareTimelineData = {
+            title: '开箱扫码',
+            desc: '抢购物卡',
+            link: 'https://acmp.aikaka.com.cn/cocacola/shakeApp/activities1812/share/index.html',
+            imgUrl: 'http://acmp.aikaka.com.cn/cocacola/Acmp/AcmpApi/uploads_temp/img/2018-11-28/5bfdfc6381e821543371875.png'
+        };
+        wx.onMenuShareAppMessage(shareMessageData);
+        wx.onMenuShareTimeline(shareTimelineData);
+    });
+    function close() {
+        if(window.location.href.indexOf('AS') != -1){
+            window.history.go(-1);
+        }else{
+            wx.ready(function () {
+                wx.closeWindow();
+            });
+        }
+    }
+</script>
+</html>

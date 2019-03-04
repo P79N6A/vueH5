@@ -1,0 +1,12 @@
+@import "compass/utilities/sprites"; 
+
+/* 宽高设置 */
+$icons-sprite-dimensions: true; 
+
+/* sprities布局:horizontal/smart
+ * $icon-layout: smart;
+ */
+
+@import "icons/*.png";
+
+@include all-icons-sprites();

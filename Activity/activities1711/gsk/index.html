@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>舒适达买赠活动</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/geturl.js"></script>
+    <script type="text/javascript" src="js/orient.js"></script>
+    <script type="text/javascript" src="js/alert.js"></script>
+    <script src='http://res.wx.qq.com/open/js/jweixin-1.1.0.js'></script>
+    <style type="text/css">
+    .rule {
+        text-align: center;
+        position: absolute;
+        font-family: "微软雅黑";
+        font-weight: 600;
+        width: 23%;
+        height: 0.5rem;
+        font-size: 0.24rem;
+        line-height: 0.5rem;
+        right: -2px;
+        top: 1.5%;
+        border-top-left-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+        color: #ffffff;
+        background: #ff51a6;
+    }
+
+    .show_ruleall {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        display: none;
+    }
+
+    .show_rule {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+    .mm {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="bgimg" id="bgimg" src="pic/1/background.jpg">
+        <img src="pic/1/logo.png" id="logo">
+        <img src="pic/1/lanse.png" id="lanse">
+        <button id="btn" disabled="disabled">
+            <img class=" gift" data-activity_item="1612" src="pic/1/button1.png">
+        </button>
+        <button id="btn1" disabled="disabled">
+            <img class=" gift" data-activity_item="1613" src="pic/1/button2.png">
+        </button>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+    <div class="show_ruleall">
+        <div class="mm"></div>
+        <div class="show_rule"><img class="rule_img"></div>
+    </div>
+</body>
+<script type="text/javascript">
+var third_party_openid, index_url, from, activity_id, openid, _imgUrl, _title, _desc;
+var aquery = window.location.href.split("?");
+third_party_openid = urlGet()['xjj_openId'];
+activity_id = 1191;
+openid = urlGet()['openid'];
+from = urlGet()['from'];
+if (typeof(from) == "undefined") {
+    from = 0;
+}
+index_url = aquery[0];
+if (typeof(third_party_openid) == "undefined" && 1==0) {
+    var _url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8794fd4ba5b3da63&redirect_uri=http://www.szhyweb.com/MMGWEB/OauthServlet&response_type=code&scope=snsapi_base&state=" + index_url + "QwechatQ30000019QwechatQactivity_id=" + urlGet()['activity_id'] + "QwechatQopenid=" + urlGet()['openid'] + "QwechatQfrom=" + from + "QwechatQstore_code=" + urlGet()['store_code'] + "#wechat_redirect";
+    window.location.href = _url;
+} else {
+   
+    var beacon_msg = {};
+    var this_url = window.location.href;
+    if ($.trim(this_url).substr(0, 19) == "http://ab.aikaka.cc") {
+        //设置全局变量（Beta）
+        beacon_msg.ajax_url = 'http://ab.aikaka.cc/Acmp/AcmpApi/shakeFor/gift';
+        beacon_msg.ajax_qr_url = 'http://ab.aikaka.cc/Acmp/AcmpApi/shakeFor/guideQr';
+    } else if ($.trim(this_url).substr(0, 32) == "http://ab.aikaka.com.cn/AcmpBeta") {
+        //设置全局变量（测试）
+        beacon_msg.ajax_url = 'http://ab.aikaka.com.cn/AcmpBeta/AcmpApi/shakeFor/gift';
+        beacon_msg.ajax_qr_url = 'http://ab.aikaka.com.cn/AcmpBeta/AcmpApi/shakeFor/guideQr';
+    } else if ($.trim(this_url).substr(0, 9) == "http://ab") {
+        //设置全局变量（正式）
+        beacon_msg.ajax_url = 'http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift';
+        beacon_msg.ajax_qr_url = 'http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/guideQr';
+    } else {
+        beacon_msg.ajax_url = 'http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift';
+        beacon_msg.ajax_qr_url = 'http://192.168.2.2/gaoyuan/AcmpApi/shakeFor/guideQr';
+    }
+    var host_;
+    host_ = beacon_msg.ajax_url.split("AcmpApi")[0];
+    localStorage.setItem('search_host', host_ + "AcmpApi/");
+    if (from == "scan") {
+        document.write("<script src='js/search.js'>" + "<" + "/script>");
+        document.write("<script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'>" + "<" + "/script>");
+    } else {
+        $("#btn").removeAttr("disabled");
+        $("#btn1").removeAttr("disabled");
+        document.write("<script src='http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js'>" + "<" + "/script>");
+    }
+
+    $('.gift').click(function() {
+        if (activity_id == "undefined" || openid == "undefined" || typeof(activity_id) == "undefined" || typeof(openid) == "undefined") {
+            my_alert("confirm", "提示", '请到现场', "通过“摇一摇”参与活动", ["知道啦"], ["black"], function() {
+                WeixinJSBridge.call('closeWindow');
+            })
+            return false
+        }
+        var getCoupon = {};
+        if (sessionStorage.major && sessionStorage.minor) {
+            getCoupon.major = sessionStorage.major;
+            getCoupon.minor = sessionStorage.minor;
+        }
+        sessionStorage.activity_item_id = $(this).data('activity_item');
+        sessionStorage.activity_id = activity_id;
+        sessionStorage.third_party_openid = '';
+        sessionStorage.openid = urlGet()['openid'];
+        sessionStorage.store_code = urlGet()['store_code'];
+        window.location.href = 'upload.html';
+    });
+    wx.ready(function() {
+        wx.hideOptionMenu();
+    });
+}
+</script>
+
+</html>

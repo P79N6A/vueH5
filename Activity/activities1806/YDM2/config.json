@@ -1,0 +1,88 @@
+{
+    "title":"高音男",
+    "turnplate":{
+        "restaraunts": [
+            "牛肉饼||一个",
+            "免费饮料||一份",
+            "85折优惠券",
+            "生韩牛||一份",
+            "牛肉饼||一份",
+            "免费饮料||一份",
+            "85折优惠券",
+            "生韩牛||一份"],
+        "colors": [
+            "#AA3627",
+            "#DEAF39",
+            "#AA3627",
+            "#DEAF39",
+            "#AA3627",
+            "#DEAF39",
+            "#AA3627",
+            "#DEAF39"],
+        "fontColor": [
+            "#ffffff",
+            "#ffffff",
+            "#ffffff",
+            "#ffffff",
+            "#ffffff",
+            "#ffffff",
+            "#ffffff",
+            "#ffffff"],
+        "canvasLength": 440,
+        "outsideRadius": 210,
+        "textRadius": 154,
+        "insideRadius": 70,
+        "startAngle": 0,
+        "bRotate": false
+    },
+    "trunplateCss":{
+        "position":"absolute",
+        "top":"0px",
+        "left":"0px"
+    },
+    "prize":[
+        {
+            "index":1989,
+            "prize":3,
+            "src":"images/85.png",
+            "name":"85折优惠券"
+        },{
+            "index": 1990,
+            "prize": 4,
+            "src": "images/niu.png",
+            "name": "生韩牛"
+        },{
+            "index": 1991,
+            "prize": 1,
+            "src": "images/roubing.png",
+            "name": "牛肉饼"
+        },{
+            "index": 1992,
+            "prize": 2,
+            "src": "images/yinliao.png",
+            "name": "饮料"
+        }
+    ],
+    "sessionKey":"ydm2_coupon_code",
+    "images":[{
+        "src":"images/logo.png",
+        "class":"logo",
+        "css":{
+            "width":"30%;",
+            "pointer-events": "none;",
+            "position":"absolute",
+            "top":"5%",
+            "left":"10%"
+        }
+    },{
+        "src":"images/zi.png",
+        "class":"zi",
+        "css":{
+            "width":"50%",
+            "pointer-events": "none",
+            "position":"absolute",
+            "top":"5%",
+            "left":"45%"
+        }
+    }]
+}

@@ -1,0 +1,133 @@
+#template {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  /*加载动画*/
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -2.5rem;
+      margin-top: -2.5rem;
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  /*背景图片*/
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  /*音乐组件*/
+  .music-image {
+    position: fixed;
+    top: 1.4rem;
+    left: 1rem;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  .music-active {
+    animation: active 1s linear infinite;
+    @keyframes active {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  /*锦囊*/
+  .silk-bag-icon {
+    position: fixed;
+    top: .5rem;
+    right: .5rem;
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  /*奖品*/
+  .prize-area {
+    position: absolute;
+    bottom: 9.25rem;
+    left: 50%;
+    z-index: 2;
+    margin-left: -8.125rem;
+    width: 16.25rem;
+    height: 5.25rem;
+    .prize-hammer {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      width: 4rem;
+      height: 2rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .prize-hammer-action {
+      display: block;
+      transform-origin: 4rem 1rem;
+      animation: hammer-action .5s ease-in 1 normal;
+      -webkit-animation-fill-mode: forwards;
+      @keyframes hammer-action {
+        0% {
+
+        }
+        50% {
+          -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+        }
+        100% {
+          -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+        }
+      }
+    }
+    .prize {
+      display: none;
+      position: absolute;
+      width: 4rem;
+      height: 5.5rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    }
+    .prize-action {
+      transition: transform 0.1s;
+    }
+  }
+
+  /*剩余次数*/
+  .prize-draw-number-text {
+    position: absolute;
+    bottom: 4.5rem;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    font-size: .8rem;
+    color: orange;
+  }
+}

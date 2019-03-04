@@ -1,0 +1,389 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>转盘抽奖</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="weui.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/geturl.js" ></script>
+<script type="text/javascript" src="js/orient.js"></script>
+
+<script type="text/javascript">
+
+    var host="http://ab.aikaka.com.cn/Acmp/";
+    var othus='http://ab.aikaka.com.cn/PublicService/Weixin/oauth/subscribe?callback_url=';
+    var focus_url="http://ab.aikaka.com.cn/shakeApp/activities1612/focus/index.html";//引导关注页的地址
+    var aQuery_1 = window.location.href.split("?")
+    var page_url=aQuery_1[0];
+    localStorage.setItem('unionid', urlGet()['unionid']);
+    localStorage.setItem('activity_id', urlGet()['activity_id']);
+	var turnplate={
+			restaraunts:[],				//大转盘奖品名称
+			colors:[],					//大转盘奖品区块对应背景颜色
+			outsideRadius:192,			//大转盘外圆的半径
+			textRadius:155,				//大转盘奖品位置距离圆心的距离
+			insideRadius:68,			//大转盘内圆的半径
+			startAngle:0,				//开始角度
+			bRotate:false				//false:停止;ture:旋转
+	};
+    var openid,activity_id;
+    openid=urlGet()['openid'];
+    activity_id=urlGet()['activity_id'];
+$(document).ready(function(){
+	//动态添加大转盘的奖品与奖品区域背景颜色
+	turnplate.restaraunts = ["12.29元聚什惠","谢谢参与","1.29元伊利","谢谢参与","1.29元酩悦轩尼诗","谢谢参与","1.29元百威","1.29元亨氏"];
+	turnplate.colors = ["#fe686b","#fe7576","#fe686b","#fe7576","#fe686b","#fe7576","#fe686b","#fe7576"];
+
+	var rotateTimeOut = function (){
+		$('#wheelcanvas').rotate({
+			angle:0,
+			animateTo:2160,
+			duration:8000,
+			callback:function (){
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+	};
+    // 存次数
+     var d = new Date();
+     var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+      if (localStorage[str]) {
+      	   $('.time_num').html(localStorage[str])
+        } else {
+            localStorage[str] = 3;
+           $('.time_num').html(localStorage[str])
+        }
+
+	//旋转转盘 item:奖品位置; txt：提示语;
+	var rotateFn = function (item, onFinish){
+		var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
+		if(angles<270){
+			angles = 270 - angles; 
+		}else{
+			angles = 360 - angles + 270;
+		}
+		$('#wheelcanvas').stopRotate();
+		$('#wheelcanvas').rotate({
+			angle:0,
+			animateTo:angles+1800,
+			duration:8000,
+			callback:function (){
+				turnplate.bRotate = !turnplate.bRotate;
+				onFinish();
+			}
+		});
+	};
+
+	$('.pointer').click(function (){
+		if(turnplate.bRotate)return;
+		$("#loadingToast").show();
+	    //请求后台数据拿到奖品
+		var getCoupon = {};
+		getCoupon.activity_id = activity_id;
+        getCoupon.openid = openid;
+	     $.ajax({
+	          type: "POST",
+	          url:host+ "AcmpApi/shakeFor/drawCoupon",
+	          data: getCoupon,
+	          dataType: "json",
+	          success: function(data) {
+	          	    var selected="谢谢参与";
+	          	    $("#loadingToast").hide();
+		            if(data.return_code=="200"){
+		                
+		                 	 if(data.data.red_pack=="1.29"){
+                                 var random = Math.floor(Math.random()*3+1);
+                                 if(random=="1"){
+                                     selected="1.29元伊利";
+                                 }else if(random=="2"){
+                                     selected="1.29元酩悦轩尼诗";
+                                 }else{
+                                     selected="1.29元百威";  
+                                 }
+                                 
+		                 	 }else if(data.data.red_pack=="12.29"){
+                                 selected="12.29元聚什惠";
+		                 	 }else if(data.data.red_pack=="0"){
+                                 selected="谢谢参与";
+		                 	 }else{
+		                 	 	 selected="谢谢参与";
+		                 	 }
+		                 	 turnplate.bRotate = !turnplate.bRotate;
+				             //获取奖品
+				             var item = turnplate.restaraunts.indexOf(selected) + 1;
+				             if(item=="2"){
+                                  var random_1 = Math.floor(Math.random()*3+1);
+                                  if(random_1=="1"){
+                                    item=2
+                                  }else if(random_1=="2"){
+                                    item=4
+                                  }else{
+                                    item=6
+                                  }
+				             }
+				             rotateFn(item, function() {
+				             	   var lift_time=localStorage[str];
+				             	   lift_time--;
+				             	   if(lift_time<0){
+				             	   	  localStorage[str]="0";
+				             	   }else{
+				             	   	 localStorage[str]=lift_time;
+				             	   }
+				             	   
+				                   if(item=="1"){
+				                   	    get_title(selected)
+					            	}else if(item=="2"){
+					            		$(".alert_box_sorry").css("display","block");
+					            	}else if(item=="3"){
+					            		get_title(selected)
+					            	}else if(item=="4"){
+					            		$(".alert_box_sorry").css("display","block");
+					            	}else if(item=="5"){
+					            		get_title(selected)
+					            	}else if(item=="6"){
+					            		$(".alert_box_sorry").css("display","block");
+					            	}else if(item=="7"){
+					            		get_title(selected)
+					            	}else if(item=="8"){
+					            		get_title(selected)
+					            	}	
+				             });
+		                
+		            }else{
+		               if(data.return_msg=="超出每人每天参与次数，欢迎明天继续参与"){
+                           $(".alert_box_timeout").css("display","block");
+		               }else{
+		               	 alert(data.return_msg)
+		               }
+		               
+		            };
+	          },
+	          error:function(data){
+	          	 $("#loadingToast").hide();
+	          	 alert("网络错误，无法抽奖")
+	          }
+	     });
+        
+	});
+    
+    function get_title(selected){
+    	var arrey_box=selected.split("元")
+		$(".alert_box_yes").css("display","block");
+        $(".red_name").html(arrey_box[1]);
+        $(".red_num").html(arrey_box[0]);
+    }
+    $(".close_page").click(function(){
+         $(".alert_box_timeout").css("display","none");
+         $('.time_num').html(localStorage[str])  
+    })
+    $(".time_agin").click(function(){
+         $(".alert_box_sorry").css("display","none");
+         $('.time_num').html(localStorage[str])
+    })
+    $(".get_red").click(function(){
+    	location.href = othus+ encodeURIComponent(window.location.href) + "&subscribe_url=" +encodeURIComponent(focus_url);
+         $(".alert_box_yes").css("display","none");
+         $('.time_num').html(localStorage[str])
+    })
+    $(".shequ_a").click(function(){
+         window.open("next.html")
+    })
+	
+});
+    
+	function rnd(n, m){
+		var random = Math.floor(Math.random()*(m-n+1)+n);
+		return random;	
+	}
+	
+	//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
+	window.onload=function(){
+		drawRouletteWheel();
+	};
+	
+	function drawRouletteWheel() {    
+	  var canvas = document.getElementById("wheelcanvas");    
+	  if (canvas.getContext) {
+		  //根据奖品个数计算圆周角度
+		  var arc = Math.PI / (turnplate.restaraunts.length/2);
+		  var ctx = canvas.getContext("2d");
+		  //在给定矩形内清空一个矩形
+		  ctx.clearRect(0,0,422,422);
+		  //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
+		  ctx.strokeStyle = "#FFBE04";
+		  //font 属性设置或返回画布上文本内容的当前字体属性
+		  ctx.font = 'bold 28px Microsoft YaHei';      
+		  for(var i = 0; i < turnplate.restaraunts.length; i++) {       
+			  var angle = turnplate.startAngle + i * arc;
+			  ctx.fillStyle = turnplate.colors[i];
+			  ctx.beginPath();
+			  //arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
+			  ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);    
+			  ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+			  ctx.stroke();  
+			  ctx.fill();
+			  //锁画布(为了保存之前的画布状态)
+			  ctx.save();   
+			  
+			  //----绘制奖品开始----
+			  ctx.fillStyle = "#ffe161";
+			  var text = turnplate.restaraunts[i];
+			  var line_height = 26;
+			  //translate方法重新映射画布上的 (0,0) 位置
+			  ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+			  
+			  //rotate方法旋转当前的绘图
+			  ctx.rotate(angle + arc / 2 + Math.PI / 2);
+			  
+			  /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
+			  if(text.indexOf("元")>0){//流量包
+				  var texts = text.split("元");
+				  for(var j = 0; j<texts.length; j++){
+					  ctx.font = j == 0?'bold 24px Microsoft YaHei':'bold 20px Microsoft YaHei';
+					  if(j == 0){
+						  ctx.fillText(texts[j]+"元", -ctx.measureText(texts[j]+"元").width / 2, j * line_height);
+						  ctx.fillStyle="#ffe161";
+					  }else{
+						  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+						  ctx.fillStyle="#ffe161";
+					  }
+				  }
+			  }else if(text.indexOf("M") == -1 && text.length>5){//奖品名称长度超过一定范围 
+				  text = text.substring(0,5)+"||"+text.substring(5,9)+"||"+text.substring(9);
+				  var texts = text.split("||");
+				  for(var j = 0; j<texts.length; j++){
+					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }else if(text.indexOf("谢谢参与")>=0){//奖品名称长度超过一定范围 
+                  var texts = text.split("谢谢");
+				  for(var j = 0; j<texts.length; j++){
+					  ctx.font = j == 0?'bold 22px Microsoft YaHei':'bold 22px Microsoft YaHei';
+					  if(j == 0){
+						  ctx.fillText(texts[j]+"", -ctx.measureText(texts[j]+"").width / 2, j * line_height);
+						  ctx.fillStyle="#ffffff";
+					  }else{
+						  ctx.fillText("谢谢"+texts[j], -ctx.measureText("谢谢"+texts[j]).width / 2, j * line_height);
+						  ctx.fillStyle="#ffffff";
+					  }
+				  }
+			  }else{
+				  //在画布上绘制填色的文本。文本的默认颜色是黑色
+				  //measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
+				  ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+			  }
+			  
+			  //把当前画布返回（调整）到上一个save()状态之前 
+			  ctx.restore();
+			  //----绘制奖品结束----
+		  }     
+	  } 
+	}
+
+</script>
+</head>
+<body >
+	<div class="wrap">
+		<div class="tex">
+			<img src="images/tex.png">
+		</div>
+	    <div>
+			<div class="start_circle">
+			    <img src="images/2.png" id="sorry-img" style="display:none;" />
+				<div class="banner">
+					<div class="turnplate" style="background-image:url(images/turnplate-bg.png);background-size:100% 100%;">
+						<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+						<img class="pointer" src="images/turnplate-pointer.png"/>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div class="times">您还有&nbsp;<span class="time_num"></span>&nbsp;次抽奖机会</div>
+	    <div class="but1">
+			<img src="images/but1.png">
+		</div>
+		<div class="shequ_a">
+			社区推广大使计划，定期领取专属好礼&nbsp;详情>>
+		</div>
+		<div class="but2">
+			<img src="images/but2.png">
+		</div>
+	    
+	    <div class="alert_box_yes" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+	    	<div class="alert_box_a" style="background-image:url(images/yes.png)">
+	    		<div class="red_tex"><span class="red_name"></span>提供的红包</div>
+	    		<div class="red_box">
+	    			<p><span class="red_num"></span>元</p>
+	    		</div>
+	    		<button class="alert_btn get_red">领取</button>
+	    	</div>
+	    </div>
+	    <div class="alert_box_sorry" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+	    	<div class="alert_box_a" style="background-image:url(images/no.png)">
+	    		<div class="red_tex_no">亲，你没有抽中哦！</div>
+	    		<button class="alert_btn_no time_agin">再试一次</button>
+	    	</div>
+	    </div>
+	    <div class="alert_box_timeout" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+	    	<div class="alert_box_a" style="background-image:url(images/no.png)">
+	    		<div class="red_tex_no">亲，很遗憾，3次机会已<br>经用完，明天再来吧！</div>
+	    		<button class="alert_btn_no close_page">关闭</button>
+	    	</div>
+	    </div>
+	</div>
+	<div class="wrap_next">
+		
+	</div>
+	<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = 'cny转盘活动首页';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+</html>

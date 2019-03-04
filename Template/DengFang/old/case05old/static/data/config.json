@@ -1,0 +1,62 @@
+{
+  "images": {
+    "music_image": "static/data/images/music.png",
+    "silk_bag_image": "static/data/images/silk-bag.png",
+    "illustrate_image": "static/data/images/illustrate.png",
+    "prize_img_box": [
+      {
+        "item_id": 1,
+        "prize_img": "./static/data/images/prize01.png"
+      },
+      {
+        "item_id": 2,
+        "prize_img": "./static/data/images/prize02.png"
+      },
+      {
+        "item_id": 3,
+        "prize_img": "./static/data/images/prize03.png"
+      },
+      {
+        "item_id": 4,
+        "prize_img": "./static/data/images/prize04.png"
+      }
+    ],
+    "poster_img_box": [
+      {
+        "poster_name": "poster01",
+        "positionX": "330",
+        "positionY": "820",
+        "poster_img": "./static/data/images/poster01.png"
+      },
+      {
+        "poster_name": "poster02",
+        "positionX": "230",
+        "positionY": "620",
+        "poster_img": "./static/data/images/poster02.png"
+      },
+      {
+        "poster_name": "poster03",
+        "positionX": "200",
+        "positionY": "200",
+        "poster_img": "./static/data/images/poster03.png"
+      },
+      {
+        "poster_name": "poster04",
+        "positionX": "0",
+        "positionY": "0",
+        "poster_img": "./static/data/images/poster01.png"
+      }
+
+    ],
+    "poster_button": "./static/data/images/poster-button.png",
+    "activity_bg": "./static/data/images/activity-bg.png"
+  },
+  "intervals": "200",
+  "music": "static/data/test.mp3",
+  "host": "http://192.168.2.2/gaoyuan/AcmpApi/"
+}
+
+
+
+
+

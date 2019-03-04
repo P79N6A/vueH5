@@ -1,0 +1,238 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 14pt;
+}
+input::-ms-input-placeholder{text-align: center;}
+input::-webkit-input-placeholder{text-align: center;}
+input{
+    width: 82%;
+    height: 25pt;
+    border-color: #e1041b;
+    border-width: 1pt;
+    border-radius: 12pt;
+    margin-bottom: 4%;
+    left: 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: hsl(0, 157, 42);
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+} 
+
+.swiper-slide{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-repeat:no-repeat;
+    background-position:top;
+    background-size: cover;
+    color:#fff;
+}
+/*第一页*/
+.page1{
+    background-image: url('images/bj.jpg');
+    width: 100vw;
+}
+
+.page1 .mains{
+    position: relative;
+    top:82vh;
+    width: 34vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.page1 .mains .button1{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.page1 .mains .rules{
+    color: red !important;
+    /*text-decoration-line: underline !important;*/
+    font-size: 0.24rem;
+    text-align: center;
+}
+
+/*第二页*/
+.page2{
+    background-image: url('images/beijing2.png');
+    width: 100vw;
+}
+.page2 .myTable{
+    position: absolute;
+    top: 45%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+.page2 .myTable input{
+    width:70vw;
+    height:30px;
+    line-height: 30px;
+    border-style: none;
+    outline: none;
+    /*box-shadow: insert 0 1px 1px rgba(102,175,233 .6);*/
+    border-radius: 15px;
+    text-align:center;
+    margin-bottom: 20px;
+}
+.page2 .myTable .error{
+    background-color:rgba(255, 1, 1, 0.5);
+}
+.page2 .myTable .anniu5{
+    width:70vw;
+    height:34px;
+    line-height: 34px;
+    border-radius: 17px;
+    text-align:center;
+    background-color:red;
+    color:#fff;
+    margin-top:20px;
+}
+/*第三页*/
+.page3{
+    background-image: url('images/beijing3.png');
+    width: 100vw;
+}
+/*弹窗奖品*/
+.alertContent{
+    height: 100vh;
+    width: 100vw;
+    z-index: 990;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color:rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center; 
+}
+.alertContent .show{
+    position: absolute;
+    top:0px;
+    left: 5vw;
+    width:90vw;
+    border-radius:4px;
+    overflow:auto;
+    ::-webkit-scrollbar-thumb:vertical{background-color:#fff;border-radius:5px}
+}
+.alertContent .show .item{
+    width:100%;
+}
+.alertContent .show .rules{
+    height: 30px;
+    width:24vw;
+    position: relative;
+    top: -35px;
+    left:32vw;
+    background-color: rgba(0, 0, 0, 0);
+}
+/*规则的弹窗*/
+.alertContent1{
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color:rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.alertContent1 .show{
+    max-height: 70vh;
+    position: relative;
+    left: 9vw;
+    width:82vw;
+    border:2px solid #fff;
+    border-radius:4px;
+    background-color:red;
+    overflow: scroll;
+}
+.alertContent1 .show .rulesItem{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width:100%;
+}
+.alertContent1 .x{
+    position:relative;
+    left: 45vw;
+    height:10vw;
+    width: 10vw;
+    margin-top: 20px;
+    text-align: center;
+}

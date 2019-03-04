@@ -1,0 +1,97 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>快乐双旦 欢喜大年</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="https://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdkhttps.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <img src="images/top.png" class="top">
+        <img src="images/middle.png" class="middle">
+        <img src="images/button.png" class="button pointer">
+        <div class="notice">活动须知</div>
+        <div class="prize">个人中心</div>
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <img class="prizePic" style="position:absolute;height:auto;width:70%;right:15%;top:40%;">
+            </div>
+        </div>
+        <div class="show_box1">
+            <div class="show_100"></div>
+            <div class="okAndClose">
+                <img src="images/tan.png">
+            </div>
+        </div>
+        <div class="myPrize">
+            <div class="show_100"></div>
+            <div class="myPrizeAlet">
+                <div class="myPrizeList">
+                    
+                </div>
+                <div class="myPrizeClose">关闭</div>
+            </div>
+        </div>
+        <div class="myNotice">
+            <div class="show_100"></div>
+            <div class="noticeContainer">
+                <div class="noticeNext">
+                    <p>活动细则:</p>
+                    <p>1、抽奖卡扫码兑奖时间：2018年12月17日-2019年1月1日&2019年1月21日-2019年2月5日（以参与门店公布的具体时间为准）。</p>
+                    <p>2、消费者在参与本次活动的餐饮门店点购可口可乐公司任意产品，或点购含可口可乐公司产品的外卖套餐，即可获赠抽奖卡一张，扫码参与抽奖活动，即有机会赢取微信红包。本次促销活动主办方在北京地区指定餐饮渠道投放抽奖卡总计15万份，综合中奖率47%。</p>
+                    <p>3、本次促销活动区域及奖品设置：仅限北京地区指定餐饮门店，综合中奖率47%。</p>
+                    <p>一等奖：微信88元现金红包壹个，本次促销活动共设500个，中奖率0.33%。</p>
+                    <p>二等奖：微信5元现金红包壹个，本次促销活动共设10,000个，中奖率6.67%。</p>
+                    <p>三等奖：微信1元现金红包壹个，本次促销活动共设60,000个，中奖率40%。</p>
+                    <p>4、奖品兑换</p>
+                    <p>微信红包奖，抽中微信红包的消费者，当时即可收到中奖金额的红包</p>
+                    <p>微信红包领取流程演示：</p>
+                    <p>消费者在抽中现金红包后，点击马上领取按钮后，提示消费者红包已经通过系统消息发送，消费者退出活动页面后，即可收到微信推送的红包消息，点击消息后跳转到红包领取页面，点击领取红包后，拆开红包后到账，具体流程如下图所示：</p>
+                    <img src="images/demo.png">
+                    <p>5、温馨提示：因参与活动产生的信息费、交通费、个人所得税（<b>注：个人所得税由消费者承担，消费者兑奖时交由活动主办方代缴</b>）等费用由参与者自理。</p>
+                    <p>6、本次促销活动的所有奖项、奖品均不以任何形式销售，不予兑换现金。请中奖者在本活动规定的时间兑换，逾期未兑奖，视为自动放弃，主办方不予补偿。</p>
+                    <p>7、对于中奖者在领取和使用各奖项过程中发生的任何伤害和损失，如该等伤害和损失非由主办方之过错导致，主办方不承担任何责任。</p>
+                    <p>8、本次促销活动由中粮可口可乐饮料（北京）有限公司主办[以下简称“活动主办方”]。若对本次促销活动有任何疑问，请拨打活动主办方咨询电话400-898-9000。</p>
+                    <p> [咨询时间： 除周六、日及法定节假日外工作日10:00到18:00整，话费自理]，活动主办方拥有对本次促销活动在法律允许范围内的解释权。</p>
+                </div>
+            </div>
+            <div class="noticeClose">
+                <img src="images/close.png">
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+</html>

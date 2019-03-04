@@ -1,0 +1,186 @@
+#template {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  /*加载动画*/
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -2.5rem;
+      margin-top: -2.5rem;
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  /*背景图片*/
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  /*音乐组件*/
+  .music-image {
+    position: fixed;
+    top: 1.4rem;
+    left: 1rem;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  .music-active {
+    animation: active 1s linear infinite;
+    @keyframes active {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  /*锦囊*/
+  .silk-bag-icon {
+    position: fixed;
+    top: .5rem;
+    right: .5rem;
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  .bargain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    #home {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      background-size: cover;
+      background-repeat: no-repeat;
+      .helper-list {
+        position: absolute;
+        left: 50%;
+        bottom: 3.5rem;
+        margin-left: -8.5rem;
+        height: 13rem;
+        width: 17rem;
+        font-size: 0;
+        text-align: center;
+        .helper {
+          display: inline-block;
+          vertical-align: middle;
+          margin: .3rem 1.2rem;
+          width: 3rem;
+          height: 4.5rem;
+          .head-image {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .8);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          .head-image-action {
+            -webkit-transform: rotateX(360deg);
+            transform: rotateY(360deg);
+            transition: transform .5s;
+          }
+          .helper-name {
+            margin-top: .5rem;
+            font-size: .7rem;
+            color: #fff;
+            word-break: break-all;
+          }
+        }
+      }
+
+      /*剩余次数*/
+      .prize-draw-number-text {
+        position: absolute;
+        left: 50%;
+        bottom: 2rem;
+        padding: .3rem 0;
+        margin-left: -3.5rem;
+        box-sizing: border-box;
+        width: 7rem;
+        background: #cf2a37;
+        text-align: center;
+        font-size: .8rem;
+        color: orange;
+      }
+      .prize_draw {
+        position: absolute;
+        left: 50%;
+        bottom: 2rem;
+        margin-left: -5.25rem;
+        width: 10.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .prize-draw-over {
+        position: absolute;
+        left: 50%;
+        bottom: 2rem;
+        margin-left: -5.25rem;
+        width: 10.5rem;
+        height: 1.5rem;
+        border-radius: .9rem;
+        font-size: .8rem;
+        color: #fff;
+        text-align: center;
+        line-height: 1.5rem;
+        background: #cccccc;
+        border: 2px solid gold;
+      }
+    }
+    #friend {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      .try {
+        position: absolute;
+        left: 50%;
+        bottom: 2.25rem;
+        -webkit-transform: translateX(-5.625rem);
+        transform: translateX(-5.625rem);
+        width: 11.25rem;
+        height: 1.75rem;
+        font-size: .7rem;
+        color: #fff;
+        background: #64a737;
+        text-align: center;
+        line-height: 1.75rem;
+      }
+    }
+  }
+}

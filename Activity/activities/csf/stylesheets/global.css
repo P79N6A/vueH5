@@ -1,0 +1,110 @@
+/* line 3, ../sass/global.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 9, ../sass/global.scss */
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 16, ../sass/global.scss */
+.clearfix:before, .row:before,
+.clearfix:after,
+.row:after {
+  content: "";
+  display: table;
+}
+
+/* line 22, ../sass/global.scss */
+.clearfix:after, .row:after {
+  clear: both;
+}
+
+/* line 26, ../sass/global.scss */
+.clearfix, .row {
+  *zoom: 1;
+}
+
+/* line 30, ../sass/global.scss */
+.row {
+  width: 100%;
+}
+
+/* line 35, ../sass/global.scss */
+img {
+  border: 0 none;
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 44, ../sass/global.scss */
+button {
+  border: none;
+}
+
+/* line 48, ../sass/global.scss */
+table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+/* line 54, ../sass/global.scss */
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+}
+
+/* line 106, C:/Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 69, ../sass/global.scss */
+h1 {
+  font-size: 3em;
+  line-height: 1.5em;
+}
+
+/* line 73, ../sass/global.scss */
+body {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* line 77, ../sass/global.scss */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 82, ../sass/global.scss */
+.icon {
+  display: inline-block;
+}
+
+/* 
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right, left, top
+*/
+/* line 120, ../sass/global.scss */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}

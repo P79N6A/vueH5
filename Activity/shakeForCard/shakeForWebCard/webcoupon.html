@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<?php 
+$color = "";
+switch($coupon['color']){
+   case "Color010": $color="#63b359";break;  
+   case "Color020": $color="#2c9f67";break;  
+   case "Color030": $color="#509fc9";break;  
+   case "Color040": $color="#5885cf";break;  
+   case "Color050": $color="#9062c0";break;  
+   case "Color060": $color="#d09a45";break;  
+   case "Color070": $color="#e4b138";break;  
+   case "Color080": $color="#ee903c";break;  
+   case "Color081": $color="#f08500";break;  
+   case "Color082": $color="#a9d92d";break;  
+   case "Color090": $color="#dd6549";break;  
+   case "Color100": $color="#cc463d";break;  
+   case "Color101": $color="#cf3e36";break;  
+   case "Color102": $color="#5E6671";break; 
+}?>
+<html lang="zh-CN">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection"content="telephone=no, email=no" />
+	<title>
+        <?php switch($coupon["card_type"]){
+            case "CASH": echo "代金券"; break;
+            case "DISCOUNT": echo "折扣券"; break;
+            case "GIFT": echo "礼品券"; break;
+            default: echo "优惠券"; break;
+
+        }?>
+    </title>
+	
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="http://ab.aikaka.com.cn/PublicService/Weixin/js/forbidShare.js"></script>
+    <script>
+        $(document).ready(function(){
+            var coupon_status = <?php echo $coupon['coupon_status']?>;
+            if(coupon_status==0){
+                //显示二维码
+                $('#qrcode img').attr("src","../phpqrcode/code.php?cardNumber=<?php echo $consume_url;?>");
+                $('#qrcode').show();
+            }
+            $('.p_button').click(function() {
+                //隐藏领取按钮 
+                $(this).remove();
+                $.ajax({
+                    url:"../coupon/setApplyRecord",
+                    data:{
+                        user_id:"<?php echo $openid?>",
+                        coupon_id:"<?php echo $coupon['coupon_id']?>",
+                        coupon_code:"<?php echo $coupon['coupon_code']?>"
+                    },
+                    type:"POST",
+                    dataType:"json",
+                    success:function(result){
+                        //显示二维码
+                        $('#qrcode img').attr("src","../phpqrcode/code.php?cardNumber=<?php echo $consume_url;?>");
+                        $('#qrcode').show();
+                        //状态显示为已领取
+                        $("#card_status").text("已领取");
+                    }
+                });
+            });
+        })
+    </script>
+	<body>
+        <div class="container">
+            <table border="0" cellpadding="0" cellspacing="0" class="main_table" style="background:<?php echo $color;?>">
+                <tr>
+                    <td width="40">
+                        <p class="p_img">
+                            <img src="<?php echo $coupon['logo_url']?>" width="100%" height="100%" id="brandLogo">
+                        </p>
+                    </td>
+                    <td valign="center">
+                        <p class="line_height_25 color_f"><?php echo $coupon['brand_name']?></p>
+                    </td>
+                    <td>
+                        
+                        <p id="card_status" class="p_used">
+                            <?php switch($coupon['coupon_status']){
+                                case "-1": echo "未领取"; break;
+                                case "0": echo "已领取"; break;
+                                case "1": echo "已使用"; break;
+                                case "2": echo "已删除"; break;
+                                default : echo "未知状态"; break;
+                            }?>
+                        </p>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center" class="tr_padding_top">
+                        <p class="font_25 color_f"><?php echo $coupon['title']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center" class="tr_padding_top">
+                        <p class="font_11 color_f"><?php echo $coupon['sub_title']?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center" class="tr_padding_top">
+                        <p class="font_11 color_f">有效期：
+                            <?php echo date("Y.m.d",$coupon['begin_timestamp'])."-".
+                            date("Y.m.d",$coupon['end_timestamp'])?>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            
+            <table border="0" cellpadding="0" cellspacing="0" class="a_table" id="qrcode">
+                <tr>
+                    <td align="center">
+                        <img src="" width="70%">
+                    </td>
+                </tr>
+            <tr>
+                    <td class="code_instr" align="center"><?php echo $coupon['notice']?></td>
+                </tr>
+            </table>
+            
+            <table border="0" cellpadding="0" cellspacing="0" class="a_table">
+                <tr>
+                    <td width="10"></td>
+                    <td class="border_bottom_1_s_e" name="coupon"><a class="coupon_manage display-ib"
+                     href="coupondetail?coupon_id=<?php echo $coupon['coupon_id']?>">
+                     <?php switch($coupon["card_type"]){
+                        case "CASH": echo "代金券"; break;
+                        case "DISCOUNT": echo "折扣券"; break;
+                        case "GIFT": echo "礼品券"; break;
+                        default: echo "优惠券"; break;
+
+                    }?>详情 </a>
+                    </td> 
+                    <td width="10"></td>
+                </tr>
+                <tr>
+                    <td width="10"></td>
+                    <td name="public">
+                        <a class="coupon_manage display-ib" href="<?php echo $coupon['promotion_url']?>">查看公众号</a>
+                    </td>
+                    <td width="10"></td>
+                </tr>
+            </table>
+            <?php if($coupon['coupon_status']==-1) { ?>
+            <p class="p_button" style="background:<?php echo $color;?>">立即领取</p>
+            <?php }?>
+        </div>
+		
+</body>
+</html>

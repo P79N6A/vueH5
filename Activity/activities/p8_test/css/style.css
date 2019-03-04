@@ -1,0 +1,232 @@
+@charset "UTF-8";
+/* CSS Document */
+body, button, select, textarea, input, label, option, fieldset, legend,p,div {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  line-height: 18px;
+   }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: none; }
+
+html {
+	width: 100%;
+	height: 100%;
+  }
+  
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.clear {
+  height: 1px;
+  overflow: hidden;
+  clear: both; }
+
+a, img {
+  border: 0; }
+
+a {
+  color: #666;
+  text-decoration: none; }
+  a:hover {
+    color: #0053a6; }
+
+li {
+  list-style-type: none; }
+  
+.wrap{
+	box-sizing: border-box;
+	padding-top:1.28rem;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #c7d26a;
+}
+/*activity*/
+.top_sing{
+	margin:0.56rem auto 0;
+	width: 5.6rem;
+	height: 2.82rem;
+}
+.top_sing img{
+	width: 100%;
+	height: 100%;
+}
+.text{
+	width: 5.23rem;
+	height: 0.99rem;
+	margin: 0.25rem auto;
+}
+.text p{
+	font-size: 0.3rem;
+	text-shadow:-1px -1px white;
+}
+.act_1{
+	float: left;
+	width: 1.23rem;
+}
+.act_2{
+	float: left;
+	width: 4rem;
+}
+.text p{
+	color: #004a33;
+	font-size: 0.24rem;
+	line-height: 0.36rem;
+}
+.prize{
+	width: 5.63rem;
+	height: 3.43rem;
+	margin: 0 auto 0.35rem;
+	background: url(../img/prize_bg.png)no-repeat;
+	background-size:100% ;
+	position: relative;
+}
+.prize_li{
+	position: absolute;
+	top: 1.43rem;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 4.9rem;
+	height: 1.3rem;
+}
+.prize_div1{
+	float: left;
+	width: 2.26rem;
+	height: 1.3rem;
+}
+.prize_div2{
+	float: right;
+	width: 2.26rem;
+	height: 1.3rem;
+}
+.p1{
+    font-size: 0.24rem;
+    line-height: 0.42rem;
+	color:#c12834 ;
+}
+.p2{
+	font-size: 0.24rem;
+	line-height: 0.42rem;
+	color:#8bb659 ;
+}
+.prize_tex{
+	font-family: "微软雅黑";
+	position: absolute;
+	bottom: 0.16rem;
+	text-align: center;
+	color: #c12632;
+	width: 100%;
+	font-size: 0.3rem;
+}
+.btn{
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 0.57rem;
+	width:5.64rem ;
+	height: 0.75rem;
+	background: url(../img/btn_bg@2x.png)no-repeat;
+	background-size:100% ;
+}
+.btn p{
+	line-height: 0.75rem;
+	font-size: 0.28rem;
+	color: white;
+}
+/*first_prize*/
+.prize_logo{
+	width: 2.87rem;
+	height: 1.04rem;
+	margin:0.16rem auto ;
+}
+.prize_logo img{
+	width: 100%;
+	height: 100%;
+}
+.prize_bg{
+	position: relative;
+	width:5.44rem ;
+	height: 6.67rem;
+	margin: 0.1rem auto;
+}
+.first_prize_bg{
+	background: url(../img/first_prize.png)no-repeat;
+	background-size:100% ;
+}
+.prize_input{
+	text-align: center;
+	width: 4.25rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 0.4rem;
+	font-family: "微软雅黑";
+	color: #59a24c;
+	font-size: 0.24rem;
+}
+.prize_input span{
+	float: left;
+	margin-right: 0.1rem;
+}
+.prize_input input{
+	float: left;
+	border: none;
+	height: 0.4rem;
+	width: 2.5rem;
+}
+.name{
+	line-height: 0.4rem;
+	height: 0.4rem;
+	margin-bottom: 0.1rem;
+}
+.name .prize_icon1{
+	float: left;
+	display: inline-block;
+	height: 0.4rem;
+	width: 0.4rem;
+	background:url(../img/user@2x.png) no-repeat;
+	background-size:100% ;
+}
+.phone{
+	line-height: 0.4rem;
+	height: 0.4rem;
+	margin-bottom: 0.1rem;
+}
+.phone .prize_icon2{
+	float: left;
+	display: inline-block;
+	height: 0.4rem;
+	width: 0.4rem;
+	background:url(../img/phone@2x.png)no-repeat;
+	background-size:100% ;
+}
+/* second_prize*/
+.second_prize_bg{
+	background: url(../img/second_prize.png)no-repeat;
+	background-size:100% ;
+}
+.address{
+	line-height: 0.4rem;
+	height: 0.4rem;
+	margin-bottom: 0.1rem;
+}
+.address .prize_icon3{
+	float: left;
+	display: inline-block;
+	height: 0.4rem;
+	width: 0.4rem;
+	background:url(../img/address@2x.png)no-repeat;
+	background-size:100% ;
+}

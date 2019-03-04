@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>测试</title>
+</head>
+<body>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/geturl.js"></script>
+    <script type="text/javascript" src="js/alert.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjssdk.js"></script>
+    <h1 class="show"></h1>
+</body>
+<script type="text/javascript">
+wx.ready(function() {
+    wx.startSearchBeacons({
+        ticket : "wwww",
+        complete: function(data) {
+            wx.onSearchBeacons({
+                complete: function(data) {
+                    var html = '';
+                    if (data.beacons.length) {
+                        for (var i in data.beacons) {
+                            var this_beacon = data.beacons[i];
+                            // html += this_beacon.major + ',';
+                            // html += this_beacon.minor + ',';
+                            // html += this_beacon.rssi + '<br>';
+                            // $('.show').html(html);
+
+                            if (this_beacon.major == 10026 && this_beacon.minor == 583) {
+                                $('.show').html(this_beacon.rssi);
+                            } 
+                            // else {
+                            //     $('.show').html('未找到');
+                            // }
+                            
+                        }
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+</html>

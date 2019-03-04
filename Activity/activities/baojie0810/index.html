@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/rem.js" ></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top_img">
+				<img src="img/top_img.png">
+			</div>
+			<div class="btn"></div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$('.btn').click(function(){
+	var getLottery = {};
+	getLottery.openid = urlGet()['openid'];
+	getLottery.activity_id = urlGet()['activity_id'];
+	$.ajax({
+	    type: "POST",
+	    url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/lottery",
+	    data: getLottery,
+	    dataType: "json",
+	    success: function(data){
+	        if(data.return_code!=200){
+	            alert(data.return_msg);
+	        }
+	        else{
+	        	var getCoupon = {};
+			    getCoupon.activity_item_id = data.data.coupon_code;
+			    getCoupon.activity_id = urlGet()['activity_id'];
+			    getCoupon.openid = urlGet()['openid'];
+				$.ajax({
+			        type: "POST",
+			        url: "http://ab.aikaka.com.cn/Acmp/AcmpApi/shakeFor/gift",
+			        data: getCoupon,
+			        dataType: "json",
+			        success: function(data){
+			            if(data.return_code!=200){
+			                alert(data.return_msg);
+			            }
+			            else{
+			            	if(urlGet()['subscribe'] == 1){
+		            		window.location.href = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + data.data.coupon_code;
+		            	}else{
+		            		window.location.href = 'http://t.cn/RcBraHp';
+		            	}
+			            }
+			        }
+			    });
+	        }
+	    },
+	    error :function(data){
+	    	alert('运气不佳');
+	    }
+    });
+
+				
+});
+
+function urlGet()
+{
+    var aQuery = window.location.href.split("?");//取得Get参数
+    var aGET = new Array();
+    if(aQuery.length > 1)
+    {
+        var aBuf = aQuery[1].split("&");
+        for(var i=0, iLoop = aBuf.length; i<iLoop; i++)
+        {
+            var aTmp = aBuf[i].split("=");//分离key与Value
+            aGET[aTmp[0]] = aTmp[1];
+        }
+    }
+    return aGET;
+}
+	
+</script>
+<script type="text/javascript">
+	third_party_openid = urlGet()['xjj_openId'];
+	if (typeof(third_party_openid) == "undefined") {
+	    var _url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8794fd4ba5b3da63&redirect_uri=http://www.szhyweb.com/MMGWEB/OauthServlet&response_type=code&scope=snsapi_base&state=http://ab.aikaka.com.cn/shakeApp/activities/baojie0810/index.htmlQwechatQ30000019QwechatQactivity_id="+urlGet()['activity_id']+"QwechatQopenid="+urlGet()['openid']+"#wechat_redirect";
+	    window.location.href = _url;
+	}
+</script>

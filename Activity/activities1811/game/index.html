@@ -1,0 +1,179 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>轻盈有加 畅爽依旧</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="weui_toast.css" rel="stylesheet" type="text/css">
+    <link href="animate.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <!-- <script type="text/javascript" src="js/geturl.js"></script> -->
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <img src="images/title.png" style="position:absolute;height:auto;width:70vw;left:15vw;top:8vw;pointer-events: none;"/>
+        <img src="images/auncel.png" style="position:absolute;height:auto;width:90vw;left:5vw;top:65vw;pointer-events: none;z-index: 10"/>
+        <img src="images/cap.png" style="position:absolute;height:auto;width:35.2vw;left:5vw;top:62.6vw;pointer-events: none;"/>
+        <img src="images/cap.png" style="position:absolute;height:auto;width:35.2vw;left:59.8vw;top:62.6vw;pointer-events: none;"/>
+        <img class="bottle" src="images/sprite.png" style="position:absolute;height:auto;width:6vw;left:68vw;top:47vw;pointer-events: none;z-index: 9"/>
+        <p style="position:absolute;height:auto;width:12vw;left:76vw;top:43vw;z-index: 9;font-size: 5vw;font-family: happy;color: #f6bc41"/>500G</p>
+        <p class="cups" style="position:absolute;height:auto;width:12vw;left:77vw;top:48vw;z-index: 10;font-size: 10vw;font-family: happy;color: white;transform:rotate(-20deg);text-shadow: -5px 0vw 0vw yellow;">X？</p>
+
+        <img id="click1" src="images/click1.png" style="position:absolute;height:auto;width:70vw;left:15vw;top:107vw;pointer-events: none;"/>
+        <img id="click2" src="images/click2.png" style="position:absolute;height:auto;width:70vw;left:15vw;top:107vw;pointer-events: none;display: none"/>
+        <img id="click3" src="images/click3.png" style="position:absolute;height:auto;width:70vw;left:18vw;top:90vw;display: none;z-index: 11"/>
+
+
+
+        <div style="position: absolute;bottom: 0vw;height: 14vw;width: 100vw;background-image: url('images/road.png');background-size: auto 100%;"></div>
+        <img class="rotateimg" src="images/gear.png" style="position:absolute;height:10vw;width:10vw;left:0vw;bottom:2vw;pointer-events: none;"/>
+        <img class="rotateimg" src="images/gear.png" style="position:absolute;height:10vw;width:10vw;left:30vw;bottom:2vw;pointer-events: none;"/>
+        <img class="rotateimg" src="images/gear.png" style="position:absolute;height:10vw;width:10vw;right:30vw;bottom:2vw;pointer-events: none;"/>
+        <img class="rotateimg" src="images/gear.png" style="position:absolute;height:10vw;width:10vw;right:0vw;bottom:2vw;pointer-events: none;"/>
+
+        <div class="bucket" style="position: absolute;height: 40vw;width: 35vw;top: 35vw;left: 5vw;">
+            <p class="tol" style="position: absolute;right: -15vw;top:27vw;font-size: 5vw;color: #f6bc41;z-index: 999;font-family: happy"></p>
+            <div class="bucket1"></div>
+            <div class="bucket2" style="transform:rotate(-20deg);"></div>
+            <div class="bucket3" style="transform:rotate(20deg);"></div>
+            <div class="bucket4" style="transform:rotate(-20deg);"></div>
+            <div class="bucket5" style="transform:rotate(20deg);"></div>
+        </div>
+        <div class="queue" style="position: absolute;left：-20vw;bottom:15vw;display:inline-block;overflow-x: hidden;  
+            overflow-y: hidden;white-space: nowrap;"></div>
+
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <img src="images/alert.png" style="position:absolute;height:auto;width:70vw;top:40vw;left:0vw;pointer-events: none;">
+                <img style="position:absolute;height:auto;width:48vw;top:56vw;left:11vw;border-radius: 3vw" class="btn">
+                <div style="position:absolute;height:20vw;width:100vw;top:106vw;left:0vw;" class="refresh"></div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+wx.ready(function() {
+    //隐藏右上角菜单禁用分享
+    wx.hideOptionMenu()
+});
+
+$(function(){
+    $('.refresh').click(function(){
+        window.location.reload();
+    });
+
+
+    sessionStorage.my_heat = 0;
+    sessionStorage.my_count = 0;
+    var queue = {
+        '1':{'pic':'food1', 'heat': 200},
+        '2':{'pic':'food2', 'heat': 200},
+        '3':{'pic':'food3', 'heat': 300},
+        '4':{'pic':'food4', 'heat': 200},
+        '5':{'pic':'food5', 'heat': 100},
+        '6':{'pic':'food6', 'heat': 200},
+        '7':{'pic':'food7', 'heat': 200}
+    };
+    for(var j = 0; j < 4; j ++){
+        for(var i in queue){
+            var this_food = '<img class="food" src="images/'+queue[i].pic+'.png" data-food="'+i+'"/>';
+            $('.queue').append(this_food);
+        }
+    }
+
+    //点击事件
+    $("body>*").bind("touchend",function(){});
+    $(document).on('touchend', '.food', function(){
+        cups = parseInt(sessionStorage.my_heat % 500);
+        if(cups == 0 && sessionStorage.my_heat !=0){
+            $('#click1').hide();
+            $('#click2').hide();
+            $('#click3').removeClass().addClass('animated jackInTheBox').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+              $(this).removeClass();
+            });
+            return false;
+        }
+
+        var this_food = $(this).data('food');
+        var this_pic = queue[this_food].pic;
+        sessionStorage.my_heat = parseInt(sessionStorage.my_heat) + parseInt(queue[this_food].heat);
+        var class_count = sessionStorage.my_count % 5 + 1;
+        var this_class = 'my'+ class_count ;
+        sessionStorage.my_count = parseInt(sessionStorage.my_count) + 1;
+
+        //计算
+        if(sessionStorage.my_heat > 0){
+            $('#click1').fadeOut();
+            $('#click2').fadeIn();
+        }
+        if(sessionStorage.my_heat > 500){
+            $('#click2').attr('src', 'images/500.png');
+        }
+        cups = parseInt(sessionStorage.my_heat % 500);
+
+        real_cups = parseInt(sessionStorage.my_heat / 500);
+        // show_count = real_cups == 0 ? '？' : real_cups;
+        $('.cups').html('X'+real_cups);
+        if(cups == 0){
+            $('#click2').hide();
+            $('#click3').show().removeClass().addClass('animated jackInTheBox').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+              $(this).removeClass();
+            });
+        }
+        $('.tol').html('=' + sessionStorage.my_heat);
+
+        //把实物扔进天平
+        $('.bucket'+class_count).html();
+        var this_food = '<img class="down '+this_class+'" src="images/'+this_pic+'.png"/>';
+        $('.bucket'+class_count).append(this_food);
+
+        $('.'+this_class).addClass('animated fadeInDownBig fast');
+    });
+
+    sessionStorage.bottle = 'cola';
+    $(document).ready(function(){
+        window.setInterval(refreshCount, 2000);
+        function refreshCount() {
+            $('.bottle').attr('src', 'images/'+sessionStorage.bottle+'.png');
+            if(sessionStorage.bottle == 'cola'){
+                sessionStorage.bottle = 'sprite';
+            }else{
+                sessionStorage.bottle = 'cola';
+            }
+        }
+    }); 
+});
+</script>
+
+</html>

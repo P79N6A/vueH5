@@ -1,0 +1,464 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>新春亨惊喜</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="weui.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript" src="js/geturl.js" ></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/orient.js"></script>
+<script type="text/javascript">
+    var host="http://ab.aikaka.com.cn/Acmp/";
+    var focus_url="http://ab.aikaka.com.cn/shakeApp/activities1612/jushihui_focus/index.html";//引导关注页的地址
+    var  third_party_openid,index_url,activity_id,openid,third_party_name;
+    var aquery = window.location.href.split("?");
+    third_party_name="jushihui";
+    third_party_openid = urlGet()['xjj_openId'];
+    openid=urlGet()['openid'];
+    activity_id=urlGet()['activity_id'];
+    index_url=aquery[0];
+	if (typeof(third_party_openid) == "undefined") {
+	    var _url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8794fd4ba5b3da63&redirect_uri=http://www.szhyweb.com/MMGWEB/OauthServlet&response_type=code&scope=snsapi_base&state="+index_url+"QwechatQ30000019QwechatQactivity_id="+urlGet()['activity_id']+"QwechatQopenid="+urlGet()['openid']+"#wechat_redirect";
+	    window.location.href = _url;
+	}
+    localStorage.setItem('unionid', urlGet()['unionid']);
+    localStorage.setItem('activity_id', urlGet()['activity_id']);
+	var turnplate={
+			restaraunts:[],				//大转盘奖品名称
+			colors:[],					//大转盘奖品区块对应背景颜色
+			outsideRadius:192,			//大转盘外圆的半径
+			textRadius:155,				//大转盘奖品位置距离圆心的距离
+			insideRadius:68,			//大转盘内圆的半径
+			startAngle:0,				//开始角度
+			bRotate:false				//false:停止;ture:旋转
+	};
+
+$(document).ready(function(){
+	
+	//动态添加大转盘的奖品与奖品区域背景颜色
+	turnplate.restaraunts = ["伊利","红包1","卡夫亨氏1","红包2","百威","红包3","轩尼诗","卡夫亨氏2"];
+	turnplate.colors = ["#c11920","#fad502","#c11920","#fad502","#c11920","#fad502","#c11920","#fad502"];
+
+	var rotateTimeOut = function (){
+		$('#wheelcanvas').rotate({
+			angle:0,
+			animateTo:2160,
+			duration:8000,
+			callback:function (){
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+	};
+
+	//旋转转盘 item:奖品位置; txt：提示语;
+	var rotateFn = function (item, onFinish){
+		var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
+		if(angles<270){
+			angles = 270 - angles; 
+		}else{
+			angles = 360 - angles + 270;
+		}
+		$('#wheelcanvas').stopRotate();
+		$('#wheelcanvas').rotate({
+			angle:0,
+			animateTo:angles+1800,
+			duration:8000,
+			callback:function (){
+				turnplate.bRotate = !turnplate.bRotate;
+				onFinish();
+			}
+		});
+	};
+
+	$('.pointer').click(function (){
+		if(turnplate.bRotate)return;
+         $("#loadingToast").show();
+	    //请求后台数据拿到奖品
+		var getCoupon = {};
+		getCoupon.activity_id = activity_id;
+        getCoupon.openid = openid;
+        getCoupon.third_party_openid = third_party_openid;
+		getCoupon.third_party_name = third_party_name;
+	     $.ajax({
+	          type: "POST",
+	          url:host+ "AcmpApi/shakeFor/drawCoupon",
+	          data: getCoupon,
+	          dataType: "json",
+	          success: function(data) {
+	          	    var selected="谢谢参与";
+	          	    $("#loadingToast").hide();
+		            if(data.return_code=="200"){
+		                if("red_pack" in data.data){
+		                 	 if(data.data.red_pack=="0"){
+                                 var random = Math.floor(Math.random()*3+1);
+                                 if(random=="1"){
+                                     selected="伊利";
+                                 }else if(random=="2"){
+                                     selected="百威";
+                                 }else{
+                                     selected="轩尼诗";  
+                                 }
+		                 	 }else{
+		                 	 	 var random = Math.floor(Math.random()*3+1);
+                                 if(random=="1"){
+                                     selected="红包1";
+                                 }else if(random=="2"){
+                                     selected="红包2";
+                                 }else{
+                                     selected="红包3";  
+                                 }
+		                 	 }
+		                 	 turnplate.bRotate = !turnplate.bRotate;
+				             //获取奖品
+				             var item = turnplate.restaraunts.indexOf(selected) + 1;
+				             rotateFn(item, function() {
+				                   if(item=="1"){								    	
+								    	$(".alert_box_QQ").css("display","block");   
+				                   } else if(item=="5"){
+                                        $(".alert_box_fj").css("display","block");
+				                   }else if(item=="7"){
+                                         $(".alert_box_xns").css("display","block");
+				                   }else{
+                                        $(".alert_box_red").css("display","block");
+				                   }
+				             });
+		                 }else if("coupon_code" in data.data){
+		                 	    var random = Math.floor(Math.random()*2+1);
+                                 if(random=="1"){
+                                     selected="卡夫亨氏1";
+                                 }else{
+                                     selected="卡夫亨氏2";  
+                                 }
+                                 var coupon_code_num=data.data.coupon_code;
+			                     turnplate.bRotate = !turnplate.bRotate;
+					             //获取奖品
+					             var item = turnplate.restaraunts.indexOf(selected) + 1;
+					             rotateFn(item, function() {
+					             	   $(".alert_box_coupon").css("display","block");
+					                   $(".coupon_btn").click(function(){
+									    	$(".alert_box_coupon").css("display","none");
+									        if(urlGet()['subscribe'] == 1){
+									    		window.location.href = 'http://ab.aikaka.com.cn/Coupon/show_webcoupon' + "?coupon_code=" + coupon_code_num;
+									    	}else{
+									    		window.location.href = focus_url;
+									    	}
+									    }) 
+					             });
+					         
+		                 }else{
+		                 	$(".alert_box_timeout1").css("display","block");		     
+		                 } 
+		                
+		            }else{
+		               if(data.return_msg=="超出每人每天参与次数，欢迎明天继续参与"){
+                           $(".alert_box_timeout").css("display","block");
+		               }else{
+                         $("#xianzhi").html(data.return_msg)
+		               	 $(".alert_box_timeout2").css("display","block");
+		               }
+		               
+		            };
+	          },
+	          error:function(data){
+	          	 $("#loadingToast").hide();
+	          	 $(".alert_box_timeout1").css("display","block");
+	          }
+	     });
+         
+        
+	});
+
+
+    $(".inform_btn").click(function(){
+    	$(".alert_box_xns").css("display","none");
+    	$(".alert_box_fj").css("display","none");
+    	$(".alert_box_QQ").css("display","none");
+    	$(".alert_box_timeout").css("display","none");
+    	$(".alert_box_timeout1").css("display","none");
+    	$(".alert_box_timeout2").css("display","none");
+    });
+    
+    $(".red_btn").click(function(){
+    	$(".alert_box_red").css("display","none");
+    	if(urlGet()['subscribe'] ==1){
+    		$(".alert_box_red").css("display","none");
+    	}else{
+            window.location.href = focus_url;
+    	}
+    	
+    })
+	
+});
+
+    //开发时的随机数
+    function rnd(n, m){
+		var random = Math.floor(Math.random()*(m-n+1)+n);
+		return random;	
+	}
+	//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
+	window.onload=function(){
+		drawRouletteWheel();
+	};
+	
+	function drawRouletteWheel() {    
+	  var canvas = document.getElementById("wheelcanvas");    
+	  if (canvas.getContext) {
+		  //根据奖品个数计算圆周角度
+		  var arc = Math.PI / (turnplate.restaraunts.length/2);
+		  var ctx = canvas.getContext("2d");
+		  //在给定矩形内清空一个矩形
+		  ctx.clearRect(0,0,422,422);
+		  //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
+		  ctx.strokeStyle = "#FFBE04";
+		  //font 属性设置或返回画布上文本内容的当前字体属性
+		  ctx.font = 'bold 18px Microsoft YaHei';      
+		  for(var i = 0; i < turnplate.restaraunts.length; i++) {       
+			  var angle = turnplate.startAngle + i * arc;
+			  ctx.fillStyle = turnplate.colors[i];
+			  ctx.beginPath();
+			  //arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
+			  ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);    
+			  ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+			  ctx.stroke();  
+			  ctx.fill();
+			  //锁画布(为了保存之前的画布状态)
+			  ctx.save();   
+			  
+			  //----绘制奖品开始----
+			  ctx.fillStyle = "#E5302F";
+			  var text = turnplate.restaraunts[i];
+			  var line_height = 24;
+			  //translate方法重新映射画布上的 (0,0) 位置
+			  ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+			  
+			  //rotate方法旋转当前的绘图
+			  ctx.rotate(angle + arc / 2 + Math.PI / 2);
+			  
+			  /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
+			  if(text.length>1){//奖品名称长度超过一定范围 
+				  text = text.substring(0,5)+"||"+text.substring(5,9)+"||"+text.substring(9);
+				  var texts = text.split("||");
+				  for(var j = 0; j<texts.length; j++){
+					  ctx.fillText("", -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }else{
+				  //在画布上绘制填色的文本。文本的默认颜色是黑色
+				  //measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
+				  ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+			  }
+			  
+			  //添加对应图标
+			  if(text.indexOf("伊利")!==-1){
+				  var img1= document.getElementById("shan-img1");
+				  img1.onload=function(){  
+					  ctx.drawImage(img,-30,-20);      
+				  }; 
+				  ctx.drawImage(img1,-50,-30);  
+			  }else if(text.indexOf("红包")!==-1){
+			  	  var img1= document.getElementById("shan-img2");
+				  img1.onload=function(){  
+					  ctx.drawImage(img,-60,-20);      
+				  }; 
+				  ctx.drawImage(img1,-35,-30);
+			  }else if(text.indexOf("百威")!==-1){
+			  	  var img1= document.getElementById("shan-img4");
+				  img1.onload=function(){  
+					  ctx.drawImage(img,-40,-20);      
+				  }; 
+				  ctx.drawImage(img1,-50,-30);
+			  }else if(text.indexOf("轩尼诗")!==-1){
+			  	  var img1= document.getElementById("shan-img5");
+				  img1.onload=function(){  
+					  ctx.drawImage(img,-30,-20);      
+				  }; 
+				  ctx.drawImage(img1,-50,-30);
+			  }else if(text.indexOf("卡夫亨氏")!==-1){
+			  	  var img1= document.getElementById("shan-img3");
+				  img1.onload=function(){  
+					  ctx.drawImage(img,-30,-20);      
+				  }; 
+				  ctx.drawImage(img1,-55,-30);
+			  }
+			  //把当前画布返回（调整）到上一个save()状态之前 
+			  ctx.restore();
+			  //----绘制奖品结束----
+		  }     
+	  } 
+	}
+
+</script>
+</head>
+<body >
+    <div class="wrap">
+    	<div class="title">
+    		<img src="images/title_img@2x.png">
+    	</div>
+    	<div class="logo">
+    		<img src="images/hengshi_logo.png">
+    	</div>
+    	<div class="rule">
+    		<img src="images/rule_img@2x.png">
+    	</div>
+		<div class="start_circle">
+		    <img src="images/QQstar_img@2x.png" id="shan-img1" style="display:none;" />
+		    <img src="images/Newyearbonus_img@2x.png" id="shan-img2" style="display:none;" />
+		    <img src="images/cardcoupons_img@2x.png" id="shan-img3" style="display:none;" />
+		    <img src="images/baiwei_img@2x.png" id="shan-img4" style="display:none;" />
+		    <img src="images/xuannishi_img@2x.png" id="shan-img5" style="display:none;" />
+			<div class="banner">
+				<div class="turnplate" style="background-image:url(images/turning_img@2x.png);background-size:100% 100%;">
+					<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+					<img class="pointer" src="images/start_img@2x.png"/>
+				</div>
+			</div>
+		</div>
+		<!-- 红包 -->
+		<div class="alert_box_red" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+			   	<div style="padding-top:16.5%; color:white; font-size: 0.32rem;"> 恭喜您获得</div>
+			   	<div style="padding-top:0.40rem;padding-bottom: 0.14rem; width:1.51rem;height:0.29rem;margin: 0 auto;"><img src="images/hengshi_logo-small.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.37rem;padding-top:0.20rem;">卡夫亨氏<br>“亨”给力新年红包</div>
+			   	<div style="width:2.23rem;;height:33.4%;margin: 0 auto;"><img src="images/redpacket_img@2x.png"></div>
+		   	<div class="red_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;bottom:0.14rem;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">立即领取</div>
+		   </div>
+	    </div>
+	    <!-- 亨氏卡券 -->
+	    <div class="alert_box_coupon" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+			   	<div style="padding-top:16.5%; color:white; font-size: 0.32rem;"> 恭喜您获得</div>
+			   	<div style="padding-top:0.40rem;padding-bottom: 0.14rem; width:1.51rem;height:0.29rem;margin: 0 auto;"><img src="images/hengshi_logo-small.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.37rem;padding-top:0.30rem;padding-bottom:0.10rem;">“亨”给力升级优惠券</div>
+			   	<div style="width:2.5rem;;height:33.4%;margin: 0 auto;"><img src="images/coupon_img@2x.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.24rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:80%;">详情请查看礼品升级优惠券说明</div>
+		   	<div class="coupon_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">立即领取</div>
+		   </div>
+	    </div>
+	    <!-- 傅佳告知 -->
+	    <div class="alert_box_fj" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;"> 活动告知</div>
+			   	<div style="padding-top:0.25rem; padding-bottom: 0.02rem; width:1.52rem;height:0.37rem; margin: 0 auto;"><img src="images/fujia_logo.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.25rem;line-height: 0.3rem;padding-bottom:0.02rem;">百威出品</div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.1rem;padding-bottom:0.10rem;">购买福佳500ml  12听 礼盒装<br><span style="font-size: 0.3rem;font-weight: 700;">赠杯子1个</span><br>购买福佳500ml 6听<br><span style="font-size: 0.3rem;font-weight: 700;">赠台历1本</span><br>购买福佳500ml 4听<br><span style="font-size: 0.3rem;font-weight: 700;">赠冰箱贴1个</span></div>
+			   	<div style="color:#6c3902;font-size: 0.24rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:81%;">详情请咨询各大卖场</div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+	    <!-- QQ告知 -->
+	    <div class="alert_box_QQ" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;"> 活动告知</div>
+			   	<div style="padding-top:0.40rem; padding-bottom: 0.14rem; width:1.38rem;height:0.73rem; margin: 0 auto;"><img src="images/QQstar_logo.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.20rem;padding-bottom:0.10rem;">12月31日前，凡购买
+                     <br>伊利QQ星系列产品任意一提<br>即可获得抽奖机会，奖品丰厚<br><span style="display:block; font-size: 0.35rem;font-weight: 700;margin-top: 0.2rem;">期待您的参与</span></div>
+			   	<div style="color:#6c3902;font-size: 0.24rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:81%;">详情请咨询各大卖场</div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+	    <!-- MHD告知 -->
+	    <div class="alert_box_xns" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;">活动告知</div>
+			   	<div style="padding-top:0.40rem; padding-bottom: 0.14rem; width:1.28rem;height:0.6rem; margin: 0 auto;"><img src="images/xuannishi_logo.png"></div>
+			   	<div style="color:#6c3902;font-size: 0.25rem;line-height: 0.3rem;">轩尼诗</div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.2rem;">即日起至2017年1月26日<br>凡购买轩尼诗产品<span style="font-size: 0.35rem;font-weight: 700;">满700元</span><br>即享<span style="font-size: 0.35rem;font-weight: 700;">50元狂欢礼</span><br>以此类推</div>
+			   	<div style="color:#6c3902;font-size: 0.24rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:81%;">详情请咨询各大卖场</div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+	    <!-- 提示 -->
+	    <div class="alert_box_timeout" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;">温馨提示</div>
+			   	<div style="padding-top:0.40rem; padding-bottom: 0.14rem; width:1.24rem;height:0.41rem; margin: 0 auto;"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.20rem;padding-bottom:0.10rem;"><span style="font-size: 0.35rem;font-weight: 700;">超出每人每天参与次数</span><br><span style="font-size: 0.35rem;font-weight: 700;">欢迎明天继续参与</span></div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+	    <!-- 提示2 -->
+	    <div class="alert_box_timeout1" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;">温馨提示</div>
+			   	<div style="padding-top:0.70rem; padding-bottom: 0.14rem; width:1.24rem;height:0.41rem; margin: 0 auto;"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.20rem;padding-bottom:0.10rem;"><span style="font-size: 0.35rem;font-weight: 700;">很抱歉</span><br><span style="font-size: 0.35rem;font-weight: 700;">网络异常，请稍后重试</span></div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+	    <!-- 提示3 -->
+	    <div class="alert_box_timeout2" style="display:none; position: absolute;top: 0;left: 0; width: 100%;height: 100%;z-index:9;background: rgba(0, 0, 0, 0.5)">
+		   <div class="alert_show" style="text-align: center;">
+                <div style="padding-top:16.5%; color:white; font-size: 0.32rem;">温馨提示</div>
+			   	<div style="padding-top:0.70rem; padding-bottom: 0.14rem; width:1.24rem;height:0.41rem; margin: 0 auto;"></div>
+			   	<div style="color:#6c3902;font-size: 0.27rem;line-height: 0.4rem;padding-top:0.20rem;padding-bottom:0.10rem;"><span id="xianzhi" style="font-size: 0.35rem;font-weight: 700;"></span></div>
+		   	<div class="inform_btn" type="button" style="width:3.47rem;height:0.67rem;position:absolute;left: 0;right: 0;margin: 0 auto;top:88%;background-image: url(images/button@2x.png);background-size: 100% 100%;border:none;color:#ffffff;font-size: 0.27rem;line-height: 0.67rem;">确认</div>
+		   </div>
+	    </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+	wx.ready(function () {
+    //隐藏右上角菜单禁用分享
+       wx.hideOptionMenu()
+    });
+    var clwidth=document.body.clientWidth;
+    var clheight=document.body.clientHeight;
+    var clbi=clheight/clwidth
+    if(clbi<1.49){
+    	$(".start_circle").css({"width":"5.4rem","height":"5.4rem"})
+    }
+
+</script>
+<!--数据跟踪脚本-->
+<script type="text/javascript">
+var page_name = 'cny转盘活动首页';
+
+window.ubs = window.ubs || [];
+
+(function() {
+    window.ubs.user_id = localStorage.unionid;
+    window.ubs.app_id = 'ACMP';
+    window.ubs.app_version = '1.0';
+    window.ubs.page_name = page_name;
+    window.ubs.ps = {
+        activity_id: localStorage.activity_id
+    };
+    (function() {
+        window.ubs.host = 'http://beta.aikaka.com.cn/UserBehavior';
+        var ubc = document.createElement('script');
+        ubc.type = 'text/javascript';
+        ubc.async = true;
+        ubc.src = window.ubs.host + '/jssdk/ubc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ubc, s);
+    })();
+})();
+</script>
+</html>

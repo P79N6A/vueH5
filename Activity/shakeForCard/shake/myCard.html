@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>我的卡券</title>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript">
+    	window.onload = function(){
+    		$("#card_list li").click(function(){
+    			var card_id = $(this).find("span[name=card_id]").text();
+    			var begin_timestamp = $(this).find("span[name=begin]").text();
+    			var signature = $(this).find("span[name=signature]").text();
+    			readyFunc(card_id,begin_timestamp,signature);
+    		});
+    		var readyFunc = function onBridgeReady(card_id,begin_timestamp,signature) {
+            	WeixinJSBridge.invoke('batchAddCard', {
+	                "card_list": [{
+	                    "card_id": card_id,
+	                    "card_ext": "{\"code\":\"\",\"openid\":\"\",\"timestamp\":\""+begin_timestamp+"\",\"signature\":\""+signature+"\"}"
+	                    }]
+	                },
+	                function(res){
+	                    if(!res.card_list){  //微信有时会拒绝请求，返回access denied
+	                        alert("获取卡券失败，请关闭页面重试！")
+	                    }
+	                }
+            	);
+            }
+    	}
+
+    </script>
+</head>
+<body>
+	<ul id = "card_list">
+		<li style = "height:50px;border:1px">
+			CardID:<span name = "card_id">pToLbjqmcEsZsanXKgSE70kBSvss</span>
+			Begin_Timestamp:<span name = "begin">1437840000	</span>
+			Signatre:<span name = "signature">989665e6800574a1a3f170c73dba9e6c2da72b8e</span>
+		</li>
+	</ul>
+</body>
+</html>

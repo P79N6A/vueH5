@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>糯米</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/sweetalert2.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+</head>
+<body>
+	<div class="container">
+		<div id="card">
+			<img class="bg-img" src="images/manage.png" style="z-index: -1;">
+			<div id="content" style="position: absolute;color:#d63333">
+				商户名称：<input type="text" class="mb10"><br>	
+				优惠类型：
+				<select name="type" id=""  class="mb10"style="width:173px;    margin-left: -8px;">
+					<option>折上折</option>
+					<option>特价菜</option>
+				</select><br>
+				流水单号：<input type="text" class="mb10">	<br>
+				上传小票：<input type="file" class="mb10" style="width:173px; ">	<br>
+			</div>
+			<div class="btn-common"></div>
+		</div>
+	</div>
+	<div class="popup">
+		下一步请进入Aikaka公众号扫一扫核销优惠券
+	</div>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/card1.js"></script>
+<script>
+	$('.btn-common').click(function(){
+		$('.popup').show();
+	});
+</script>
+</body>
+</html>

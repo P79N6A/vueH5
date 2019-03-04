@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+	<title>咔咔惠</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/global.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/a1023.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/sweetalert2.css">
+	<script src="js/openid_judge.js"></script>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<img src="images/a1023/top@2x.png">
+		</header>
+		<section>
+			<div class="item item1 addCard" data-cardid="pToLbjuOchUBrhg12dH2gMOR2t6w">
+				<button id="btn-1" class="btn-get">点击领取</button>
+			</div>
+		</section>
+		<section>
+			<div class="item item2 addCard" data-cardid="pToLbjtFRVgZUcLVK6UotLk9ybgg">
+				<button id="btn-2" class="btn-get">点击领取</button>
+			</div>
+		</section>
+		<section>
+			<div class="item item3 addCard" data-cardid="pToLbjk5mXUSoD41o0xXnUj-OhA8">
+				<button id="btn-3" class="btn-get">点击领取</button>
+			</div>
+		</section>
+		<section>
+			<div class="item item4 addCard" data-cardid="pToLbjk56wG8-aMWdN8Gw4DVDQj8">
+				<button id="btn-4" class="btn-get">点击领取</button>
+			</div>
+		</section>
+		<section>
+			<div class="item item5 addCard" data-cardid="pToLbjnqZai98rVBIwcC1vmzNFMg">
+				<button id="btn-5" class="btn-get">点击领取</button>
+			</div>
+		</section>
+
+	</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
+<script src="js/add_card.js"></script>
+
+<script>
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
+$('.item').css({'height':screenWidth*25/70 + 'px'});
+if( screenHeight > 600) {
+	$('.btn-get').css({'bottom':screenWidth*25/70*0.08 + 'px'});
+}else {
+	$('.btn-get').css({'bottom':screenWidth*25/70*0.03 + 'px'});
+}
+
+
+</script>
+</body>
+</html>

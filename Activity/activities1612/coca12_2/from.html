@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>课后尽享畅爽</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/weui.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+		<script type="text/javascript" src="js/rem.js" ></script>
+		<script type="text/javascript" src = "js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+        <script type="text/javascript" src="js/alert.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<img class="bgimg" src="img/bg.jpg">
+            <div class="logo_img">
+                <img src="img/logo.png"/>
+            </div>
+            <div class="logo_bottom">
+                <img src="img/store_list.png"/>
+            </div>
+			<div class="btn_form" id="showLoadingToast">
+				<img src="img/btn_form.png" class="gift">
+			</div>
+		</div>
+		<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+                <div class="weui_mask_transparent"></div>
+                <div class="weui_toast">
+                    <div class="weui_loading">
+                        <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                        <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+                    </div>
+                    <p class="weui_toast_content">卡券领取中</p>
+                </div>
+        </div>
+	</body>
+	<script>
+        wx.ready(function () {
+            //显示右上角菜单启用分享
+            wx.showOptionMenu()
+        });
+        // if(typeof(urlGet()['from_openid']) != 'undefined'){
+        //     getCoupon();
+        // }
+		$('.gift').click(function(){
+            getCoupon();
+        });
+
+        function getCoupon(){
+		  	var getCoupon = {};
+		    getCoupon.activity_item_id = 405;
+		    getCoupon.activity_id = urlGet()['activity_id'];
+		    getCoupon.openid = urlGet()['openid'];
+            getCoupon.from_openid = urlGet()['from_openid'];
+		    $("#loadingToast").show();
+		    $.ajax({
+		        type: "POST",
+		        url: acmp_host + "AcmpApi/shakeFor/drawCoupon",
+		        data: getCoupon,
+		        dataType: "json",
+		        success: function(data){
+		        	$("#loadingToast").hide();
+                    var coupon_url = coupon_bag_host + 'couponlist';
+                    if(data.return_code!=200){
+                        alert(data.return_msg);
+                    }
+                    location.href = oauth_api + encodeURIComponent(coupon_url);
+		      	},
+                error:function(){
+                  $("#loadingToast").hide();  
+                  var data = {
+                        type:"confirm",
+                        //type: "select",
+                        text: '请求失败',
+                        inte: "",
+                        desc: "",
+                    };
+                    var alertBox = alertFn(data);
+                    $('#alert_box').remove();
+                    $('body').append(alertBox);
+
+                    alertBox.fadeIn(); //在固定的位置直接使用
+                    alertBox.find('#alert_confirm').on('click', function() {
+                        alertBox.hide();
+                        WeixinJSBridge.call('closeWindow');
+                    });
+                }
+		    });
+        }
+
+</script>
+</html>

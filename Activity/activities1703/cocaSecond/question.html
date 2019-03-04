@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>天降大礼第二波</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/weui.css" />
+    <script type="text/javascript" src="js/rem.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script type="text/javascript" src="http://ab.aikaka.com.cn/PublicService/Weixin/js/wxjspsdk.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="img_ping">
+            <img src="img/ques_ping.png" />
+        </div>
+        <div class="logo">
+            <img src="img/question_logo.png" />
+        </div>
+        <div class="ques_one">
+            <span style="font-weight: 600;text-align: left;">1.我的味道怎么样？</span>
+            <br/>
+            <div class="option que_one_f">
+                <div class="que_one" style="border-left: 1px solid #770226">
+                    <div class="emotion">
+                        <img src="img/Emoticon1.png">
+                    </div>
+                    <div class="emobot_tex"><b>好喝!喜大普奔</b></div>
+                </div>
+                <div class="que_one" style="border-left: 1px solid #770226">
+                    <div class="emotion">
+                        <img src="img/Emoticon2.png">
+                    </div>
+                    <div class="emobot_tex"><b>一般般!</b></div>
+                </div>
+                <div class="que_one" style="border-left: 1px solid #770226;border-right: 1px solid #770226">
+                    <div class="emotion">
+                        <img src="img/Emoticon3.png">
+                    </div>
+                    <div class="emobot_tex"><b>不好喝!蓝瘦香菇</b></div>
+                </div>
+            </div>
+        </div>
+        <div class="ques_two">
+            <span style="font-weight: 600;">2.如果有一瓶樱桃可乐摆在你面前，你愿意购买吗？</span>
+            <br/>
+            <div class="option">
+                <div class="left"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">我愿意</b></div>
+                <div class="middle"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem; float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">看本帅心情</b></div>
+                <div class="right"><span class="radio span_2" style="width:0.32rem;height: 0.32rem;display:inline-block;margin-right: 0.16rem; float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">我选择狗带</b></div>
+            </div>
+        </div>
+        <div class="ques_three">
+            <span style="font-weight: 600;">3.你愿意把我推荐给你的朋友吗？</span>
+            <br/>
+            <div class="option">
+                <div class="left"><span class="radio span_3" style="width:0.32rem;height: 0.32rem; top:0;display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">当然！厉害了我的樱桃可乐</b></div>
+                <div class="left2"><span class="radio span_3" style="width:0.32rem;height: 0.32rem;top:0.5rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">吃瓜群众一脸蒙b表示不懂</b></div>
+                <div class="left3"><span class="radio span_3" style="width:0.32rem;height: 0.32rem;top:0.5rem; display:inline-block;margin-right: 0.16rem;float: left;margin-top: 0.03rem;"></span><b style="height: 0.32rem;display:inline-block;font-size: 0.26rem;">No!友谊的小船说翻就翻</b></div>
+            </div>
+        </div>
+        <button class="ques_btn" style="background:none;border: none;z-index: 10;" type="button" disabled="disabled">
+            <img src="img/disabled.png" />
+        </button>
+        <div class="show_box">
+            <div class="show_100"></div>
+            <div class="alert_gift_box">
+                <img class="coupon_img" src="img/free.png">
+                <button class="get_coupon" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">加载中</p>
+        </div>
+    </div>
+</body>
+<script>
+var share_data, share_code_judge, activity_id;
+activity_id = urlGet()['activity_id'];
+share_code_judge = urlGet()['share_code'];
+// 请求分享
+$.ajax({
+    type: "GET",
+    url: acmp_host + "share/info?activity_id=" + urlGet()['activity_id'],
+    dataType: "json",
+    success: function(data) {
+        if (data.return_code = 200) {
+            share_data = data.data;
+            wx.ready(function() {
+                var share_url = share_data.share_url;
+                var share_code = urlGet()['openid'] + Date.parse(new Date());
+                var con;
+                if (share_url.indexOf('?') >= 0) {
+                    con = '&';
+                } else {
+                    con = '?';
+                }
+                var activity_url = share_url + con + "share_code=" + share_code + "&from_openid=" + urlGet()['openid'] + "&activity_id=" + urlGet()['activity_id'];
+                var wx_share_url = oauth_api + encodeURIComponent(activity_url);
+                var shareData = {
+                    title: share_data.share_title,
+                    desc: share_data.share_details,
+                    link: wx_share_url,
+                    imgUrl: acmp_host + share_data.share_icon
+                };
+                var shareMessageData = {
+                    title: shareData.title,
+                    desc: shareData.desc,
+                    link: shareData.link,
+                    imgUrl: shareData.imgUrl,
+                    success: function() {
+                        if (share_code_judge) {
+                            getTime(urlGet()["openid"], "message", "1", activity_id, share_code, info_url_get, share_code_judge);
+                        } else {
+                            getTime(urlGet()["openid"], "message", "1", activity_id, share_code, info_url_get);
+
+                        }
+
+                    },
+                    cancel: function() {
+                        if (share_code_judge) {
+                            getTime(urlGet()["openid"], "message", "0", activity_id, share_code, info_url_get, share_code_judge);
+                        } else {
+                            getTime(urlGet()["openid"], "message", "0", activity_id, share_code, info_url_get);
+                        }
+
+                    }
+                };
+                var shareTimelineData = {
+                    title: shareData.title,
+                    desc: shareData.desc,
+                    link: shareData.link,
+                    imgUrl: shareData.imgUrl,
+                    success: function() {
+                        if (share_code_judge) {
+                            getTime(urlGet()["openid"], "time_line", "1", activity_id, share_code, info_url_get, share_code_judge);
+                        } else {
+                            getTime(urlGet()["openid"], "time_line", "1", activity_id, share_code, info_url_get);
+                        }
+
+                    },
+                    cancel: function() {
+                        if (share_code_judge) {
+                            getTime(urlGet()["openid"], "time_line", "0", activity_id, share_code, info_url_get, share_code_judge);
+                        } else {
+                            getTime(urlGet()["openid"], "time_line", "0", activity_id, share_code, info_url_get);
+                        }
+
+                    }
+                };
+                wx.onMenuShareAppMessage(shareMessageData);
+                wx.onMenuShareTimeline(shareTimelineData);
+            });
+        }
+    }
+});
+var a, b, c, coupon_code;
+$('.radio').css({
+    "background": "url(img/n.png)",
+    "background-size": "100% 100%"
+})
+$('.que_one').click(function() {
+    a = $(this).find("b").html()
+    $(this).css({
+        "background": "#ffffff"
+    }).addClass('checkYes').find('b').css("color", "#c0225d");
+    $('.que_one').not(this).css({
+        "background": "none"
+    }).removeClass('checkYes').find('b').css("color", "#ffffff");
+    btn_check()
+    console.log(a)
+})
+$('.span_2').click(function() {
+    b = $(this).siblings("b").html()
+    $(this).css({
+        "background": "url(img/y.png)",
+        "background-size": "100% 100%"
+    }).addClass('checkYes');
+    $('.span_2').not(this).css({
+        "background": "url(img/n.png)",
+        "background-size": "100% 100%"
+    }).removeClass('checkYes');
+    btn_check()
+})
+$('.span_3').click(function() {
+    c = $(this).siblings("b").html()
+    $(this).css({
+        "background": "url(img/y.png)",
+        "background-size": "100% 100%"
+    }).addClass('checkYes');
+    $('.span_3').not(this).css({
+        "background": "url(img/n.png)",
+        "background-size": "100% 100%"
+    }).removeClass('checkYes');
+    btn_check()
+})
+
+function btn_check() {
+    if ($('.checkYes').length == 3) {
+        $('.ques_btn').removeAttr("disabled");
+        $('.ques_btn img').attr('src', "img/active.png");
+    }
+}
+var no_repeat_share_code = urlGet()['share_code'] + "stop_back";
+$('.ques_btn').click(function() {
+    if (localStorage[no_repeat_share_code] == "ok") {
+        my_alert("confirm_error", "很遗憾", "您已经参与此次问卷活动", "", ["知道啦"], ["green"], function() {});
+        return false
+    }
+    if (!urlGet()['activity_id']) {
+        my_alert("confirm_error", "很遗憾", "无法参与此活动", "", ["知道啦"], ["green"], function() {});
+        return false
+    }
+    $("#loadingToast").show();
+    var getData = {};
+    getData.openid = urlGet()['openid'];
+    getData.activity_id = urlGet()['activity_id'];
+    getData.from_openid = urlGet()['from_openid'];
+    getData.from_share_code = urlGet()['share_code'];
+    getData.buyer_get_info = a + "||" + b + "||" + c;
+    getData.activity_item_id = free_cola_item_id;
+    $.ajax({
+        type: "POST",
+        url: acmp_host + "shakeFor/drawCoupon",
+        data: getData,
+        dataType: "json",
+        success: function(data) {
+            $("#loadingToast").hide();
+            if (data.return_code != 200) {
+                if (data.return_msg == "超出每人每天参与次数，欢迎明天继续参与") {
+                    my_alert("confirm_error", "很遗憾", "超出每人每天参与次数", "欢迎明天继续参与", ["知道啦"], ["green"], function() {});
+                } else {
+                    my_alert("confirm_error", "很遗憾", data.return_msg, "", ["知道啦"], ["green"], function() {});
+                };
+            } else {
+                localStorage[no_repeat_share_code] = "ok";
+                $(".get_coupon").css("background-image","url(img/cola.png)");
+                $(".show_box").show();
+                coupon_code = data.data.coupon_code;
+            }
+        },
+        error: function() {
+            $("#loadingToast").hide();
+            my_alert("confirm_error", "加载失败", "网络出小差啦", "请再试试吧！", ["知道啦"], ["green"], function() {})
+        }
+    });
+
+    $(".get_coupon").click(function(event) {
+        window.location.href = coupon_bag_host + 'webcoupon.html' + "?coupon_code=" + coupon_code + "&openid=" + urlGet()['openid'];
+        // window.location.href = "http://ab.aikaka.com.cn/shakeApp/activities/qr_entry/Coupon/" + 'webcoupon.html' + "?coupon_code=" + coupon_code + "&openid=" + urlGet()['openid'];
+    });
+
+})
+</script>
+
+</html>

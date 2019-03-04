@@ -1,0 +1,212 @@
+*{margin:0px; padding:0px; font-family:"微软雅黑"; font-size:14px; }
+body {
+	background: #eee;
+}
+table{width:100%;}
+a{text-decoration:none;color:#333333;}
+input,textarea,a,select{outline:none;}
+meter{width:100px;}
+.border_bottom_1_s_e{border-bottom: 1px solid #eeeeee;}
+/*---------C----------*/
+.color_f{color:#ffffff;}
+
+.font_11{font-size:11px;}
+.font_14{font-size:14px;}
+.font_20{font-size:20px;}
+.font_25{font-size:25px;}
+.font_30{font-size:30px;}
+
+
+.coupon_manage{
+	padding: 10px 0px 10px 10px;
+}
+.p_button{
+	margin: 20px 10px 0px 10px;
+	color: #ffffff;
+	background-color: green;
+	padding: 10px;
+	text-align: center;
+}
+.tr_padding_top{
+	padding-top: 5px;
+}
+.main_table{
+	padding: 15px 5px 15px 5px;
+	background-color: green;
+}
+.p_img{
+	border-radius:35px;
+	width: 30px;
+	height: 30px;
+}
+.a_table{
+	background-color: #ffffff;
+	margin-top: 20px;
+}
+.coupon_title{
+	padding: 15px 0px 5px 10px;
+	font-size: 11px;
+	color: #C5C1AA;
+}
+
+.p_used{
+	float: right;
+	border-radius: 50px;
+	border: 1px solid;
+	padding: 5px;
+	color: #ffffff;
+}
+
+.table_main{
+	position: absolute;
+	padding: 15px 5px 110px 5px;
+	background-color: lightblue;
+}
+
+.div_detail{
+	position: relative;
+	margin: 0 auto;
+	width: 75%;
+	background-color: #FFFFFF;
+	min-height: 150px;
+	max-height: 230px;
+	overflow-y: auto;
+	top: 140px;
+	-webkit-box-shadow: 3px 3px 3px #000;
+	-moz-box-shadow: 3px 3px 3px #000;
+	box-shadow: 3px 3px 3px #000;
+	padding: 5px;
+}
+
+.tr_detail{
+	padding: 5px;
+	font-size: 14px;
+}
+
+.p_dan{
+	width: 50%;
+	top: 200px;
+	position: relative;
+	margin: 0 auto;
+	color: #ffffff;
+	background-color: lightblue;
+	padding: 10px;
+	text-align: center;
+}
+
+.dan_table{
+	padding: 15px 5px 15px 5px;
+}
+
+.box{
+	text-align: center; /* 针对IE的Hack */
+	margin: 0 auto;
+    padding: 0px 5px 0px 5px;
+	position: relative;
+}
+
+.MsgTip{
+	margin: 5px;
+	padding: 5px 25px 5px 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 2px 2px 20px #888;
+	-moz-box-shadow: 2px 2px 20px #888;
+	background-color: #72667B;
+	font-size: 15px;
+	z-index: 2;
+	color: #FFFFFF;
+	position: absolute;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.MsgTip img{
+	width: 20px;
+	vertical-align: middle;
+}
+.send{
+	width:95%;
+	height:30px;
+	padding: 5px;
+}
+.send .s_txt{
+	width:65%;
+	height:25px;
+	border-radius:4px 0 0 4px;
+	outline:none;
+	border:1px solid #5bba32;
+}
+.send .s_sub{
+	margin-left: 3px;
+	padding: 2px;
+	width:30%;
+	height:27px;
+	background:#65c33d;
+	border:0;
+	outline:none;
+	font-size:14px;
+	color:#fff;
+	cursor:pointer;
+	border-radius:0 4px 4px 0;
+	border:1px solid #5bba32;
+}
+.send .s_sub:hover{
+	background:#3eaf0e;
+}
+
+#container{padding:10px;}
+/*---------A----------*/
+/*---------B----------*/
+.bg_f9{background-color:#f9f9f9;}/*--浅灰色--*/
+.bg_efefef{background-color:#EFEFEF}
+.bg_f{background-color:#ffffff;}
+
+.td_title{
+	background-color:#f9f9f9;
+	border-top:1px solid #ece3dc;
+	border-bottom:1px solid #ece3dc;
+	padding: 5px 20px 5px 20px;
+	text-align: center;
+}
+
+.td_tag{
+	padding: 5px;
+	text-align: center;
+	cursor: pointer;
+	border-top:1px solid #e4d6cb;
+	border-right:1px solid #e4d6cb;
+}
+
+.border_1_s_ece3dc{border:1px solid #ece3dc}/*----10%金色-----*/
+.border_left_1_s_e4d6cb{border-left:1px solid #e4d6cb;}/*----20%金色-----*/
+/*---------C----------*/
+.color_7e5300{color:#7e5300}/*--金色--*/
+.color_828282{color:#828282}/*--深灰--*/
+/*---------F----------*/
+.font_11{font-size:11px;}
+.font_12{font-size:12px;}
+.font_14{font-size:14px;}
+
+.font_weight_bold{font-weight:bold;}
+/*---------M----------*/
+.margin_bottom_5{margin-bottom:5px;}
+/*---------P----------*/
+.padding_5{padding:5px;}
+.padding_10{padding:10px;}
+.padding_left_5{padding-left:5px;}
+.padding_right_5{padding-right:5px;}
+/*---------T----------*/
+.text_align_center{text-align:center;}
+
+.display-ib {
+	display: inline-block;
+}
+
+td a {
+	width: 100%;
+}
+
+#qrcode {
+	display: none;
+}

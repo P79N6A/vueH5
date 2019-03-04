@@ -1,0 +1,139 @@
+﻿body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    color: #333;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+select,
+input,
+img,
+select {
+    vertical-align: middle;
+}
+
+input {
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+}
+
+body {
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+.wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 7.5rem;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#loadingToast {
+    font-size: 12px;
+}
+
+.title {
+    width: 5.76rem;
+    height: 24.7%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 2.11rem;
+    height: 0.65rem;
+    position: absolute;
+    top: 0.46rem;
+    left: 0.5rem;
+}
+.sub_logo{
+    width: 7.5rem;
+    height: 31.26%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;  
+}
+.text{
+    font-size: 0.30rem;
+    line-height:0.46rem; 
+    width: 6.3rem;
+    padding:0 0.6rem;
+    color: #ffffff;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;    
+}
+.title_move{
+width: 2.3rem;
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;    
+}
+.br{
+    width: 100%;
+    margin-top: 0.2rem;
+    display: block;
+}
